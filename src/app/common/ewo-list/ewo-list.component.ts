@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import Ewos from '../../../assets/ewos.json';
 @Component({
   selector: 'app-ewo-list',
   templateUrl: './ewo-list.component.html',
@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EwoListComponent implements OnInit {
 
-  constructor() { }
+
+  constructor() {
+    console.log('Reading json');
+    console.log(Ewos);
+
+
+   }
 
   ngOnInit() {
   }
