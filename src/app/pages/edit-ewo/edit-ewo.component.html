@@ -1,0 +1,10 @@
+<h1>Edit EWO</h1>
+
+<div class="row" *ngIf=login>
+<p><strong class='orange'>{{user}}</strong> is logged in. <code>{{login}}</code></p>
+</div>
+<div class="row" *ngIf=!login>
+
+  <app-login></app-login>
+
+</div>

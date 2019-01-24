@@ -1,0 +1,96 @@
+
+/* You can add global styles to this file, and also import other style files */
+$pink: rgb(255, 0, 242);
+$orange: rgb(255, 123, 0);
+$lt-orange:lighten($orange, 10%);
+$dk-orange: darken($orange, 10%);
+$gray: rgb(75, 75, 75);
+$lt-gray: lighten($gray, 10%);
+$dk-gray:darken($gray, 10%);
+$blue: #003cb4;
+$lt-blue:lighten($blue, 10%);
+$dk-blue:darken($blue, 10%);
+$red: #f90303;
+$black: #000000;
+/* You can add global styles to this file, and also import other style files */
+
+// colors
+.red {
+  color: $red;
+}
+
+.pink {
+  color: $pink;
+}
+
+.orange {
+  color: $orange;
+}
+.lt-orange {
+  color: $lt-orange;
+}
+
+.blue {
+  color: $blue;
+}
+.gray {
+  color: $lt-gray;
+}
+.info {
+  color: rgb(0, 153, 255);
+}
+
+header {
+  h1 {
+    font-size: 2rem;
+    color: $black;
+
+    small {
+      font-size: .8rem;
+    }
+  }
+
+  h3 {
+    color: $blue;
+  }
+
+  .smalltxt {
+    font-size: 1rem;
+    font-weight: 100;
+    color: rgb(99, 99, 99);
+    display: inline;
+  }
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
+
+
+// forms
+.system {
+  border: 1px solid rgb(0, 221, 250);
+  border-radius: .3rem;
+  padding: 1rem;
+}
+
+.required {
+  border: 1px solid rgb(255, 0, 0);
+  border-radius: .3rem;
+  padding: 1rem;
+}
+
+.optional {
+  border: 1px solid $gray;
+  border-radius: .3rem;
+  padding: 1rem;
+}
+
+.report {
+  padding: 1rem;
+  background-color: #f2f2f2;
+  border: 1pt solid $dk-gray;
+  border-radius: .5rem;
+}
