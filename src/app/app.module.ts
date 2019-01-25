@@ -17,6 +17,9 @@ import { LoginComponent } from './common/login/login.component';
 import { UserComponent } from './pages/user/user.component';
 import { EngineerComponent } from './pages/engineer/engineer.component';
 import { AdminComponent } from './pages/admin/admin.component';
+// services
+import { EwoService } from './service/ewo.service';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,7 @@ import { AdminComponent } from './pages/admin/admin.component';
     FormsModule
 
   ],
-  providers: [],
+  providers: [EwoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

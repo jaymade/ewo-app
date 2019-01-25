@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EwoService } from 'src/app/service/ewo.service';
 
 @Component({
   selector: 'app-ewo-detail',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ewo-detail.component.scss']
 })
 export class EwoDetailComponent implements OnInit {
-
-  constructor() { }
+  public ewos = [];
+  constructor(private ewoService: EwoService) { }
 
   ngOnInit() {
+    this.ewos = this.ewoService.getEwoList();
   }
 
 }
