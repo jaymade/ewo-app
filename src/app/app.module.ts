@@ -19,6 +19,7 @@ import { EngineerComponent } from './pages/engineer/engineer.component';
 import { AdminComponent } from './pages/admin/admin.component';
 // services
 import { EwoService } from './service/ewo.service';
+import { EwoListEngComponent } from './common/EWo/ewo-list-eng/ewo-list-eng.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { EwoService } from './service/ewo.service';
     CreateEwoComponent,
     EwoDetailComponent,
     EngineerComponent,
-    UserComponent
+    UserComponent,
+    EwoListEngComponent
   ],
   imports: [
     BrowserModule,

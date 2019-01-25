@@ -1,5 +1,5 @@
-import { EwoService } from '../../../service/ewo.service';
 import { Component, OnInit } from '@angular/core';
+import { EwoService } from '../../../service/ewo.service';
 // import ewolist from '../../../../assets/data/ewos.json';
 
 @Component({
@@ -9,14 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EwoListComponent implements OnInit {
   public ewos = [];
-  constructor(private ewoService: EwoService) {
-    // console.log('Reading local json files');
-    // if (this.ewos) {
-    //   console.log('got ewo JSON');
-    // } else {
-    //   console.log('error: no ewo JSON');
-    // }
-  }
+  constructor(private ewoService: EwoService) {}
 
   ngOnInit() {
     this.ewos = this.ewoService.getEwoList();
