@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PagesComponent } from './pages.component';
+import { EwoDetailComponent } from './ewo-detail.component';
 
-describe('PagesComponent', () => {
-  let component: PagesComponent;
-  let fixture: ComponentFixture<PagesComponent>;
+describe('EwoDetailComponent', () => {
+  let component: EwoDetailComponent;
+  let fixture: ComponentFixture<EwoDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PagesComponent ]
+      declarations: [ EwoDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PagesComponent);
+    fixture = TestBed.createComponent(EwoDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

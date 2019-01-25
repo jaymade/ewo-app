@@ -1,0 +1,28 @@
+{
+  "users": [{
+      "username": "Billy U",
+      "eng": true,
+      "admin": false
+    },
+    {
+      "username": "Greg B",
+      "eng": true,
+      "admin": false
+    },
+    {
+      "username": "Robert H",
+      "eng": true,
+      "admin": false
+    },
+    {
+      "username": "Joe D",
+      "eng": true,
+      "admin": false
+    },
+    {
+      "username": "Jay R",
+      "eng": true,
+      "admin": true
+    }
+  ]
+}

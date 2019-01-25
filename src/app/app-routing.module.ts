@@ -1,19 +1,20 @@
+import { EngineerComponent } from './pages/engineer/engineer.component';
+import { EwoListComponent } from './common/EWo/ewo-list/ewo-list.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { EditEwoComponent } from './pages/edit-ewo/edit-ewo.component';
-import { CreateEwoComponent } from './pages/create-ewo/create-ewo.component';
-import { HomeComponent } from './pages/home/home.component';
+import { EditEwoComponent } from './common/EWo/edit-ewo/edit-ewo.component';
+import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserComponent } from './pages/user/user.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'create', component: CreateEwoComponent },
-  { path: 'edit', component: EditEwoComponent },
+  { path: '', redirectTo: 'user', pathMatch: 'full' },
+  { path: 'user', component: UserComponent },
+  { path: 'eng', component: EngineerComponent },
   { path: 'admin', component: AdminComponent },
 
-  { path: '**', redirectTo: '/home', pathMatch: 'full' }
+  { path: '**', redirectTo: '/user', pathMatch: 'full' }
 ];
 
 @NgModule({

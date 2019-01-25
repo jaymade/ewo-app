@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-ewo.component.scss']
 })
 export class CreateEwoComponent implements OnInit {
+  public title = '';
+  public descript = '';
+
 
   constructor() { }
 
   ngOnInit() {
   }
-
+onSubmit() {
+}
 }
