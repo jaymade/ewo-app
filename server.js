@@ -5,7 +5,7 @@ var mongo = require('mongoose');
 
 var db = mongo.connect('mongodb://topelf:rpw4NIC@ds213255.mlab.com:13255/ewo_db', function (err, res) {
   if (err) {
-    console.log(err)
+    console.log(err);
   } else {
     console.log('conected to ' + db, ' + ', res);
   }
@@ -31,21 +31,36 @@ app.use(function (req, res, next) {
 
 var Schema = mongo.Schema;
 
-var UsersSchema = new Schema({
-  name: {
-    type: String
-  },
-  password: {
-    type: String
-  },
-}, {
-  versionKey: false
+// Define schema
+var Schema = mongoose.Schema;
+
+var EwoSchema = new Schema({
+  userId: string,
+  ewoId: number,
+  title: string,
+  descript: string,
+  completed: boolean
 });
 
-var model = mongo.model('users', UsersSchema, 'users');
+// Compile model from schema
+var Ewo = mongoose.model('Ewo', EwoSchema);
+
+// Define schema
+var Schema = mongoose.Schema;
+
+var UserSchema = new Schema({
+  userId: string,
+  pw: string,
+  eng: boolean,
+  admin: boolean
+});
+
+// Compile model from schema
+var User = mongoose.model('User', UserSchema);
+
 
 app.post("/api/saveUser", function (req, res) {
-  var mod = new model(req.body);
+  var mod = new User(req.body);
   if (req.body.mode == "Save") {
     mod.save(function (err, data) {
       if (err) {
@@ -62,7 +77,7 @@ app.post("/api/saveUser", function (req, res) {
 
 
 app.post("/api/deleteUser", function (req, res) {
-  model.remove({
+  User.remove({
     _id: req.body.id
   }, function (err) {
     if (err) {
@@ -77,7 +92,7 @@ app.post("/api/deleteUser", function (req, res) {
 
 
 app.post("/api/getUser", function (req, res) {
-  model.find({}, function (err, data) {
+  User.find({}, function (err, data) {
     if (err) {
       res.send(err);
     } else {

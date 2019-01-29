@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,14 +42,8 @@ import { UsersService } from './service/users.service';
     UserComponent,
     EwoListEngComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpModule,
-    FormsModule
-
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpModule, ReactiveFormsModule, FormsModule],
   providers: [EwoService, UsersService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
