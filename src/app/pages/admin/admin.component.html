@@ -16,38 +16,60 @@
       <td>{{user.pw}}</td>
       <td>{{user.eng}}</td>
       <td>{{user.admin}}</td>
-      <td><button class="btn btn-primary" (click)='edit(user)'><i class="far fa-edit"></i></button></td>
-      <td><button class="btn btn-danger" (click)='delete(user)'><i class="fas fa-user-minus"></i></button></td>
+      <td><button class="btn btn-primary" (click)='edit()'><i class="far fa-edit"></i></button></td>
+      <td><button class="btn btn-danger" (click)='delete()'><i class="fas fa-user-minus"></i></button></td>
     </tr>
   </tbody>
 </table>
 <h4>Add / Edit User</h4>
 
-<form  [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="uname">User Name: </label>
-    <input class="form-control col" type="text" formControlName="uname" name="uname" placeholder="user name">
+    <label for="uname" class="">User Name: </label>
+<input class="form-control col" type="email" formControlName="uname" name="uname" placeholder="user name" [ngClass]="{ 'is-valid' : submitted && userForm.get('uname').errors }">
   </div>
   <div class="form-group">
     <label for="pw1">Password: </label>
-    <input class="form-control mr-3" type="password" formControlName="pw1" name="pw1" id="pw1" placeholder="password">
+    <input class="form-control mr-3" type="password" formControlName="pw1" name="pw1" id="pw1" placeholder="password" required>
+<p class="invalid-feedback">Must enter a user name.</p>
   </div>
   <div class="form-group">
     <label for="pw2"> Confirm Password: </label>
-    <input class="form-control mr-3" type="password" id="pw2" placeholder="match password">
+    <input class="form-control mr-3" type="password" formControlName="pw2" name="pw2" id="pw2" placeholder="match password" required>
+<p class="invalid-feedback">Password does not match. </p>
   </div>
   <div class="form-group">
     <label for="">Permissions: </label>
     <div class="form-check form-check-inline ml-5">
-      <input class="form-check-input" type="checkbox" value="" id="check_eng">
+<input class="form-check-input" formControlName="check_eng" name="check_eng" type="checkbox" value="" id="check_eng"
+  required>
       <label class="form-check-label" for="check_eng"> Engineer </label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" value="" id="check_admin">
+      <input class="form-check-input" formControlName="check_admin" name="check_admin" type="checkbox" value="" id="check_admin" >
       <label class="form-check-label" for="check_admin"> Admin </label>
+    </div>
+    <div *ngIf="">
+<p class="invalid-feedback">"You must give a permission to the user.</p>
+
     </div>
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="btn-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-secondary" (click)="onLoadDataClick()">Load User</button>
+    </div>
   </div>
 </form>
+<code>
+  Form touched: {{userForm.touched}}<br>
+  Form dirty:{{userForm.dirty}}<br>
+  Form Valid: {{userForm.dirty}}<br>
+  Form Values: {{userForm.value | json}}<br>
+  <hr>
+  uname touched: {{userForm.get('pw1').touched}}<br>
+  uname dirty: {{userForm.get('pw1').dirty}}<br>
+  uname Valid: {{userForm.get('pw1').valid}}<br>
+  uname Values: {{userForm.get('pw1').value}}<br>
+
+</code>
