@@ -15,24 +15,29 @@ export class AdminComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
   userForm: FormGroup;
   submitted = false;
-  // userlist = [];
+  userlist = [];
   // buttonValue = 'Add New User';
   // errorMessage;
 
   ngOnInit() {
-    this.userForm = this.fb.group({
-      uname: ['', Validators.required, Validators.email],
-      pw1: ['', [Validators.required, Validators.minLength(6)]],
-      pw2: ['', Validators.required],
-      check_eng: true,
-      check_admin: false
-    } , {
-      validator: MustMatch('pw1', 'pw2')
-    });
+    this.userForm = this.fb.group(
+      {
+        uname: ['', Validators.required, Validators.email],
+        pw1: ['', [Validators.required, Validators.minLength(6)]],
+        pw2: ['', Validators.required],
+        check_eng: true,
+        check_admin: false
+      },
+      {
+        validator: MustMatch('pw1', 'pw2')
+      }
+    );
   }
 
   // convenience getter for easy access to form fields
-  get f(): any {return this.userForm.controls; }
+  get f(): any {
+    return this.userForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -51,4 +56,7 @@ export class AdminComponent implements OnInit {
       check_admin: true
     });
   }
+  save() {}
+  delete() {}
+  edit() {}
 }
