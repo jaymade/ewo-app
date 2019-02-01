@@ -24,6 +24,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 // services
 import { EwoService } from './service/ewo.service';
 import { UsersService } from './service/users.service';
+import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { UsersService } from './service/users.service';
     EwoDetailComponent,
     EngineerComponent,
     UserComponent,
-    EwoListEngComponent
+    EwoListEngComponent,
+    ConfirmEqualDirective
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule, ReactiveFormsModule, FormsModule],
   providers: [EwoService, UsersService],

@@ -36,9 +36,9 @@
   <!-- uname -->
   <div class="form-group">
     <label>eMail: </label>
-    <input type="email" formControlName="uname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.uname.errors }"
+    <input type="email" formControlName="uname" class="form-control" [ngClass]="{ 'is-invalid': f.uname.errors && f.uname.touched   }"
       name="uname" placeholder="user name is your email address" />
-    <div *ngIf="submitted && f.uname.errors" class="invalid-feedback">
+    <div *ngIf="f.uname.touched && f.uname.errors" class="invalid-feedback">
       <div *ngIf="f.uname.errors.required">Email is required</div>
       <div *ngIf="f.uname.errors.email">Email must be a valid email address</div>
     </div>
@@ -47,8 +47,8 @@
   <div class="form-group">
     <label for="pw1">Password: </label>
     <input class="form-control mr-3" type="text" formControlName="pw1" name="pw1" id="pw1" placeholder="password"
-      [ngClass]="{ 'is-invalid': submitted && f.pw1.errors }" required />
-    <div *ngIf="submitted && f.pw1.errors" class="invalid-feedback">
+      [ngClass]="{ 'is-invalid': f.uname.errors && f.uname.touched   }"/>
+    <div *ngIf="f.pw1.touched && f.pw1.errors" class="invalid-feedback">
       <div *ngIf="f.pw1.errors.required">Password is required</div>
       <div *ngIf="f.pw1.errors.minlength">Password must be at least 6 characters</div>
     </div>
@@ -56,29 +56,29 @@
   <!-- PW2 -->
   <div class="form-group">
     <label for="pw2"> Confirm Password: </label>
-    <input class="form-control mr-3" type="text" class="form-control mr-3" formControlName="pw2" name="pw2" id="pw2"
-      placeholder="match password" [ngClass]="{ 'is-invalid': submitted && f.pw2.errors }" required />
-    <div *ngIf="submitted && f.pw2.errors" class="invalid-feedback">
+    <input class="form-control mr-3" type="text" class="form-control mr-3" formControlName="pw2" appConfirmEqual="pw1"
+      name="pw2" id="pw2" placeholder="match password" [ngClass]="{ 'is-invalid': f.pw2.errors && f.pw2.touched   }"/>
+    <div *ngIf="f.pw2.touched && f.pw2.errors" class="invalid-feedback">
       <div *ngIf="f.pw2.errors.required">Confirm Password is required</div>
-      <div *ngIf="f.pw2.errors.mustMatch">Passwords must match</div>
+      <div *ngIf="f.pw2.errors?.notEqual">Passwords must match</div>
     </div>
   </div>
   <!-- permissions -->
   <div class="form-group">
     <label for="">Permissions: </label>
     <!-- eng -->
-    <div class="form-check form-check-inline ml-5">
+    <div class="form-check form-check-inline ml-3">
       <input class="form-check-input" formControlName="check_eng" name="check_eng" type="checkbox" id="check_eng"
         required />
       <label class="form-check-label" for="check_eng"> Engineer </label>
     </div>
     <!-- admin -->
-    <div class="form-check form-check-inline">
+    <div class="form-check form-check-inline ml-3">
       <input class="form-check-input" formControlName="check_admin" name="check_admin" type="checkbox" id="check_admin" />
       <label class="form-check-label" for="check_admin"> Admin </label>
     </div>
     <!-- active -->
-    <div class="form-check form-check-inline">
+    <div class="form-check form-check-inline ml-3">
       <input class="form-check-input" formControlName="check_active" name="check_active" type="checkbox" id="check_admin" />
       <label class="form-check-label" for="check_active"> Active User</label>
     </div>
@@ -98,9 +98,11 @@
   Form dirty:{{ userForm.dirty }}<br />
   Form Valid: {{ userForm.dirty }}<br />
   Form Values: {{ userForm.value | json }}<br />
-  <!-- <hr />
-  pw1 touched: {{ userForm.get('pw1').touched }}<br />
-  pw1 dirty: {{ userForm.get('pw1').dirty }}<br />
-  pw1 Valid: {{ userForm.get('pw1').valid }}<br />
-  pw1 Values: {{ userForm.get('pw1').value }}<br /> -->
+  <hr />
+  pw2 touched: {{ userForm.get('pw2').touched }}<br />
+  pw2 dirty: {{ userForm.get('pw2').dirty }}<br />
+  pw2 Valid: {{ userForm.get('pw2').valid }}<br />
+  pw2 Values: {{ userForm.get('pw2').value }}<br />
+  pw2 notEqual: {{ f.pw2.errors.notEqual }}<br />
+  pw2 required: {{ f.pw2.errors?.required }}<br />
 </code>
