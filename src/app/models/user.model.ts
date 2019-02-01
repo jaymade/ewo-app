@@ -3,4 +3,6 @@ export interface User {
   pw: string;
   eng: boolean;
   admin: boolean;
+  active: boolean;
+  _id?: number;
 }

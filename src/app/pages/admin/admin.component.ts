@@ -16,17 +16,18 @@ export class AdminComponent implements OnInit {
   userForm: FormGroup;
   submitted = false;
   userlist = [];
-  // buttonValue = 'Add New User';
-  // errorMessage;
+
 
   ngOnInit() {
+
     this.userForm = this.fb.group(
       {
         uname: ['', Validators.required, Validators.email],
         pw1: ['', [Validators.required, Validators.minLength(6)]],
         pw2: ['', Validators.required],
         check_eng: true,
-        check_admin: false
+        check_admin: false,
+        check_active: false
       },
       {
         validator: MustMatch('pw1', 'pw2')
@@ -45,16 +46,17 @@ export class AdminComponent implements OnInit {
     if (this.userForm.invalid) {
       return;
     }
+
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.userForm.value));
   }
   onLoadDataClick(): void {
-    this.userForm.setValue({
-      uname: 'enewton',
-      pw1: 'paaaaswd',
-      pw2: 'paaaaswd',
-      check_eng: true,
-      check_admin: true
-    });
+    // this.userForm.setValue({
+    //   uname: 'enewton',
+    //   pw1: 'paaaaswd',
+    //   pw2: 'paaaaswd',
+    //   check_eng: true,
+    //   check_admin: true
+    // });
   }
   save() {}
   delete() {}
