@@ -23,7 +23,7 @@ import { EngineerComponent } from './pages/engineer/engineer.component';
 import { AdminComponent } from './pages/admin/admin.component';
 // services
 import { EwoService } from './service/ewo.service';
-import { UsersService } from './service/users.service';
+import { UserService } from './service/user.service';
 import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
 
 
@@ -45,7 +45,7 @@ import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
     ConfirmEqualDirective
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule, ReactiveFormsModule, FormsModule],
-  providers: [EwoService, UsersService],
+  providers: [EwoService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

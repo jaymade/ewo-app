@@ -1,28 +1,38 @@
 {
-  "users": [{
+  "userList": [{
       "username": "Billy U",
+      "pw": "newton",
       "eng": true,
-      "admin": false
+      "admin": false,
+      "active": true
     },
     {
       "username": "Greg B",
+      "pw": "newton",
       "eng": true,
-      "admin": false
+      "admin": false,
+      "active": true
     },
     {
       "username": "Robert H",
+      "pw": "newton",
       "eng": true,
-      "admin": false
+      "admin": false,
+      "active": true
     },
     {
       "username": "Joe D",
+      "pw": "newton",
       "eng": true,
-      "admin": false
+      "admin": false,
+      "active": true
     },
     {
       "username": "Jay R",
+      "pw": "newton",
       "eng": true,
-      "admin": true
+      "admin": true,
+      "active": true
     }
   ]
 }

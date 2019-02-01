@@ -7,7 +7,7 @@ var UserSchema = new Schema({
   pw: "string",
   eng: "boolean",
   admin: "boolean",
-  active: "boolean"
+  isactive: "boolean"
 });
 
 // Compile model from schema

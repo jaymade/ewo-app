@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from './../../service/users.service';
+import { UserService } from '../../service/user.service';
 import { Response, Headers, RequestOptions } from '@angular/http';
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
 // import { MustMatch } from '../../_helpers/must-match.validator';
