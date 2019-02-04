@@ -1,8 +1,9 @@
 <h4> Create an EWO </h4>
 <form class="mb-5">
+
   <div class="form-group">
     <label for="input_title">EWO Title: </label>
-    <input type="text" class="form-control" name="title" [(ngModel)]="title" id="input_title" placeholder=" What we calling it?"
+    <input type="text" class="form-control" name="title" [(ngModel)]="enteredTitle" id="input_title" placeholder=" What we calling it?"
       required>
     <div class="valid-feedback"> Need a title
     </div>
@@ -10,18 +11,28 @@
 
   <div class="form-group">
     <label for="input_descript">Description of Project: </label>
-    <textarea class="form-control" name="descript" [(ngModel)]="descript" id="input_descript" rows="3" placeholder="What are we doing?"></textarea>
+    <textarea class="form-control" name="descript" [(ngModel)]="enteredDescript" id="input_descript" rows="3" placeholder="What are we doing?"></textarea>
     <div class="valid-feedback"> Need some input </div>
   </div>
+
+
   <div class="form-group">
-    <button class="btn btn-primary" (click)="onSubmit()"> Submit </button>
+    <button class="btn btn-primary" (click)="onAddEwo()" > Submit </button>
   </div>
 </form>
 
-
 <code>
   <ul>
-    <li>Title: {{title}}</li>
-    <li>Decription: {{descript}}</li>
+    <li>Title: {{enteredTitle}}</li>
+    <li>Decription: {{enteredDescript}}</li>
   </ul>
 </code>
+
+
+<!--
+userId: string;
+ewoId: number;
+title: string;
+descript: string;
+completed: boolean;
+_id?: string; -->

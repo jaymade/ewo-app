@@ -1,25 +1,34 @@
 <h4>Active EWO List</h4>
-<div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">EWO #</th>
-        <th scope="col">Engineer</th>
-        <th scope="col">Title</th>
-        <th scope="col">Completed</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let ewo of ewos">
-        <td>{{ewo.ewoId}}</td>
-        <td>{{ewo.userId}}</td>
-        <td>{{ewo.title}}</td>
-        <td>{{ewo.completed}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row" *ngIf="ewos.length > 0">
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <!-- <th scope="col">EWO #</th> -->
+          <!-- <th scope="col">Engineer</th> -->
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Completed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ewo of ewos">
+          <!-- <td>{{ewo.ewoId}}</td> -->
+          <!-- <td>{{ewo.userId}}</td> -->
+          <td>{{ewo.title}}</td>
+          <td>{{ewo.descript}}</td>
+          <td>{{ewo.complete}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<p>Click on EWO in the list above to see details below.</p>
+<div class="row" *ngIf="ewos.length <= 0">
+  <p class="text-center"><strong class="text-danger">No Active EWOs</strong></p>
 
-<app-ewo-detail></app-ewo-detail>
+</div>
+
+<!-- <p>Click on EWO in the list above to see details below.</p>
+
+<app-ewo-detail></app-ewo-detail> -->

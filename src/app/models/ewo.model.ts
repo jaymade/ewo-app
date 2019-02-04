@@ -1,7 +1,8 @@
 export interface Ewo {
-  userId: string;
-  ewoId: number;
   title: string;
   descript: string;
-  completed: boolean;
+  userId?: string;
+  ewoId?: number;
+  completed?: boolean;
+  _id?: string;
 }

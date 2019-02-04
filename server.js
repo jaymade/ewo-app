@@ -1,37 +1,16 @@
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const PORT = 3000;
+const api = require('./routes/api');
 
-
-var db = mongoose.connect('mongodb://topelf:rpw4NIC@ds213255.mlab.com:13255/ewo_db', function (err, res) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('conected to DB' );
-  }
+app.use(cors());
+app.use(bodyParser.json());
+app.use('/api', api);
+app.get('/', function (req, res) {
+  res.send('HELLO FORM SERVER');
 });
-
-var app = express();
-app.use(bodyParser());
-app.use(bodyParser.json({
-  limit: '5mb'
-}));
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-app.use(function (req, res, next) {
-  res.setHeader('Access-Controle-Allow-Origin', 'http://localhost:4200');
-  res.setHeader('Access-Controle-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Controle-Allow-Header', 'X-Requested-With, content-type');
-  res.setHeader('Access-Controle-Allow-Credentials', true);
-  next();
-});
-
-var Schema = mongoose.Schema;
-
-
-app.listen(8080, function () {
-  console.log("app is listening in port 8080");
+app.listen(PORT, function () {
+  console.log('SERVER RUNNING ON LOCALHOST:' + PORT);
 });
