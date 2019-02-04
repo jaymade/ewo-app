@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Ewo } from '../../../models/ewo.model';
+import { Component, OnInit } from '@angular/core';
+import { NgForm} from '@angular/forms';
+import { EwoService } from '../../../service/ewo.service';
 
 @Component({
   selector: 'app-create-ewo',
@@ -9,16 +10,12 @@ import { Ewo } from '../../../models/ewo.model';
 export class CreateEwoComponent implements OnInit {
   public enteredTitle = '';
   public enteredDescript = '';
-  @Output() ewoCreated = new EventEmitter<Ewo>();
 
-  constructor() {}
+  constructor(public ewoService: EwoService) {}
 
   ngOnInit() {}
-  onAddEwo() {
-    const ewo: Ewo = {
-      title: this.enteredTitle,
-      descript: this.enteredDescript
-    };
-    this.ewoCreated.emit(ewo);
+  onAddEwo(form: NgForm) {
+    this.ewoService.addEwo( form.value.title, form.value.descript );
+ 
   }
 }

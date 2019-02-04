@@ -45,7 +45,7 @@ import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
     ConfirmEqualDirective
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule, ReactiveFormsModule, FormsModule],
-  providers: [EwoService, UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

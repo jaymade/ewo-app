@@ -1,36 +1,28 @@
 import { Injectable } from '@angular/core';
-import ewolist from '../../assets/data/ewos.json';
 import { Ewo } from '../models/ewo.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EwoService {
+  private ewos: Ewo[] = [];
+  private ewosUpdated = new Subject<Ewo[]>();
+
   constructor() {}
-  getEwo(id) {}
+
   getEwoList() {
-    return [
-      {
-        userId: 'Billy',
-        ewoId: 1,
-        title: 'delectus aut autem',
-        completed: false
-      },
-      {
-        userId: 'Greg',
-        ewoId: 2,
-        title: 'delicious goodies are fun to eat',
-        completed: true
-      },
-      {
-        userId: 'unassigned',
-        ewoId: 3,
-        title: 'geter dun',
-        completed: false
-      }
-    ];
+    return [...this.ewos];
   }
-  addEwo() {}
-  updateEwo() {}
-  deleteEwo(ewoId) {}
+
+  getEwoUpdatedListener() {
+    return this.ewosUpdated.asObservable();
+  }
+
+  addEwo(title: string, descript: string) {
+    const ewo: Ewo =  { title: title, descript: descript };
+    this.ewos.push(ewo);
+    this.ewosUpdated.next([...this.ewos]);
+  }
+
 }

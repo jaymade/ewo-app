@@ -1,38 +1,31 @@
 <h4> Create an EWO </h4>
-<form class="mb-5">
+<form class="mb-5" (submit)="onAddEwo(ewoForm)" #ewoForm="ngForm">
 
   <div class="form-group">
     <label for="input_title">EWO Title: </label>
-    <input type="text" class="form-control" name="title" [(ngModel)]="enteredTitle" id="input_title" placeholder=" What we calling it?"
+    <input type="text" class="form-control" ngModel name="title" id="input_title" #title="ngModel" placeholder=" What we calling it?"
       required>
-    <div class="valid-feedback"> Need a title
+    <div *ngIf="title.errors">
+      <p class="invalid-feedback"> need a title</p>
     </div>
   </div>
 
   <div class="form-group">
     <label for="input_descript">Description of Project: </label>
-    <textarea class="form-control" name="descript" [(ngModel)]="enteredDescript" id="input_descript" rows="3" placeholder="What are we doing?"></textarea>
-    <div class="valid-feedback"> Need some input </div>
+    <textarea class="form-control" ngModel name="descript" #descript="ngModel" id="input_descript" rows="3" placeholder="What are we doing?"
+      required ></textarea>
+    <div *ngIf="descript.errors" class="invalid-feedback"> Need some input </div>
   </div>
 
-
   <div class="form-group">
-    <button class="btn btn-primary" (click)="onAddEwo()" > Submit </button>
+    <button class="btn btn-primary" type="submit" > Submit </button>
   </div>
 </form>
 
-<code>
+<!-- <code>
   <ul>
     <li>Title: {{enteredTitle}}</li>
     <li>Decription: {{enteredDescript}}</li>
   </ul>
-</code>
+</code> -->
 
-
-<!--
-userId: string;
-ewoId: number;
-title: string;
-descript: string;
-completed: boolean;
-_id?: string; -->
