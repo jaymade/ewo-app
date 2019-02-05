@@ -14,7 +14,7 @@ export class EwoListComponent implements OnInit, OnDestroy {
   constructor(public ewoService: EwoService) {}
 
   ngOnInit() {
-    this.ewos = this.ewoService.getEwoList();
+    this.ewoService.getEwoList();
     this.ewosSub = this.ewoService
       .getEwoUpdatedListener()
       .subscribe((ewos: Ewo[]) => {

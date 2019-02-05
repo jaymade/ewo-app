@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { User } from './../../../server/models/user.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  public userlist: any[] = [
+  public userlist: User[] = [
     {
       username: 'BillyU@enewton.com',
       pw: 'newton',

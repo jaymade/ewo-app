@@ -11,7 +11,7 @@ export class EwoDetailComponent implements OnInit {
   constructor(private ewoService: EwoService) { }
 
   ngOnInit() {
-    this.ewos = this.ewoService.getEwoList();
+   this.ewoService.getEwoList();
   }
 
 }

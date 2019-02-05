@@ -14,7 +14,7 @@ export class EditEwoComponent implements OnInit {
   constructor(private ewoService: EwoService) { }
 
   ngOnInit() {
-    this.ewos = this.ewoService.getEwoList();
+   this.ewoService.getEwoList();
 
   }
 

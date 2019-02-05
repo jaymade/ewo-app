@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // common
@@ -25,7 +24,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { EwoService } from './service/ewo.service';
 import { UserService } from './service/user.service';
 import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,14 @@ import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
     EwoListEngComponent,
     ConfirmEqualDirective
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpModule, ReactiveFormsModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
