@@ -1,16 +1,49 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const PORT = 3000;
-const api = require('./routes/api');
+const app = require('./server/app');
+const debug = require('debug')("node-angular");
+const http = require('http');
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use('/api', api);
-app.get('/', function (req, res) {
-  res.send('HELLO FORM SERVER');
-});
-app.listen(PORT, function () {
-  console.log('SERVER RUNNING ON LOCALHOST:' + PORT);
-});
+const normalizePort = val => {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    //named pipe
+    return val;
+  }
+  if (port >= 0) {
+    // .port number
+    return port;
+  }
+  return false;
+};
+
+const onError = error => {
+  if (error.svscall !== 'listen') {
+    throw error;
+  }
+  const bind = typeof addr === "string" ? "pipe" + addr : "port" + port;
+  switch (error.code) {
+    case "EACCESS":
+      console.error(bind + " requires elevated privalages");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+};
+const onListening = () => {
+  const addr = server.address();
+  const bind = typeof addr === "string" ? "pipe" + addr : "port" + port;
+  debug("Listening on " + bind);
+};
+
+const port = normalizePort(process.env.PORT || 3000);
+app.set('port', port);
+
+const server = http.createServer(app);
+server.on("error: ", onError);
+server.on("listening: ", onListening);
+server.listen(port);
