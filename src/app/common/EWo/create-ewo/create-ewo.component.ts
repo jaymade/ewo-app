@@ -15,7 +15,7 @@ export class CreateEwoComponent implements OnInit {
 
   ngOnInit() {}
   onAddEwo(form: NgForm) {
-    this.ewoService.addEwo( form.value.title, form.value.descript );
- 
+    this.ewoService.addEwo( form.value.title, form.value.descript);
+    form.resetForm();
   }
 }

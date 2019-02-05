@@ -20,7 +20,7 @@ export class EwoService {
   }
 
   addEwo(title: string, descript: string) {
-    const ewo: Ewo =  { title: title, descript: descript };
+    const ewo: Ewo =  { title: title, descript: descript, status: 'active' };
     this.ewos.push(ewo);
     this.ewosUpdated.next([...this.ewos]);
   }

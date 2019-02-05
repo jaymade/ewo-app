@@ -3,6 +3,6 @@ export interface Ewo {
   descript: string;
   userId?: string;
   ewoId?: number;
-  completed?: boolean;
+  status: string;
   _id?: string;
 }
