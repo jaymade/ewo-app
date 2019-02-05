@@ -1,10 +1,25 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 var cors = require('cors');
-// const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
 app.use(cors());
 
-app.use('/api/ewos', (req, res, next) => {
+app.post('/api/ewos', (req, res, next) => {
+  const ewo = req.body;
+  console.log('EWO info sent to server: ', ewo);
+  res.status(201).json({
+    message: 'WOOT! The EWO was added succesfully!',
+    ewo: ewo
+  });
+});
+
+app.get('/api/ewos', (req, res, next) => {
   const ewos = [{
       id: 'sdfsdfsdfsdf',
       title: 'First EWO',

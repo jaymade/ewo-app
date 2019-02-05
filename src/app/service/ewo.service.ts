@@ -32,7 +32,12 @@ export class EwoService {
       status: 'active',
       id: null
     };
-    this.ewos.push(ewo);
-    this.ewosUpdated.next([...this.ewos]);
+    this.http
+      .post<{ message: string }>('http://localhost:3000/api/ewos', ewo)
+      .subscribe(responseData => {
+        console.log(responseData.message);
+        this.ewos.push(ewo);
+        this.ewosUpdated.next([...this.ewos]);
+      });
   }
 }
