@@ -1,13 +1,25 @@
 // Define schema
-var Schema = mongoose.Schema;
-
-var EwoSchema = new Schema({
-   userId: string,
-   ewoId: number,
-   title: string,
-   descript: string,
-   completed: boolean
+var mongoose = require("mongoose");
+var ewoSchema = mongoose.Schema({
+  userId: {
+    type: String
+  },
+  ewoId: {
+    type: Number
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  descript: {
+    type: String,
+    required: true
+  },
+  status: {
+    type: String,
+    required: true
+  }
 });
 
 // Compile model from schema
-var Ewo = mongoose.model('Ewo', EwoSchema);
+module.exports = mongoose.model('Ewo', ewoSchema);

@@ -1,7 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const app = express();
-var cors = require('cors');
+
+mongoose.connect('mongodb://topelf:rpw4NIC@ds213255.mlab.com:13255/ewo_db', {
+    useNewUrlParser: true
+  })
+  .then(() => {
+    console.log("Boom goes the dynomite!");
+  })
+  .catch(() => {
+    console.log("Danger Will Roberson, db error!");
+  });
+
+const cors = require('cors');
+const User = require('./models/user');
+const EWO = require('./models/ewo');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -11,8 +25,13 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 app.post('/api/ewos', (req, res, next) => {
-  const ewo = req.body;
-  console.log('EWO info sent to server: ', ewo);
+  const ewo = new EWO({
+    title: req.body.title,
+    descript: req.body.descript,
+    status: req.body.status
+  });
+  ewo.save();
+  console.log('EWO sent to server: ', ewo);
   res.status(201).json({
     message: 'WOOT! The EWO was added succesfully!',
     ewo: ewo
