@@ -24,4 +24,7 @@ export class EwoListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.ewosSub.unsubscribe();
   }
+  onDeleteEwo(ewoId: string) {
+    this.ewoService.deleteEwo(ewoId);
+  }
 }

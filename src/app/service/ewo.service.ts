@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Ewo } from '../models/ewo.model';
+import { post } from 'selenium-webdriver/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,9 +16,20 @@ export class EwoService {
 
   getEwoList() {
     this.http
-      .get<{ message: string; ewos: Ewo[] }>('http://localhost:3000/api/ewos')
-      .subscribe(ewoData => {
-        this.ewos = ewoData.ewos;
+      .get<{ message: string; ewos: any }>('http://localhost:3000/api/ewos')
+      // .pipe(
+      //   map(ewoData => {
+      //     return ewoData.ewos.map(ewo => {
+      //       return {
+      //         title: ewo.title,
+      //         discript: ewo.descript,
+      //         id: ewo._id
+      //       };
+      //     });
+      //   })
+      // )
+      .subscribe(mapedEwos => {
+        this.ewos = mapedEwos.ewos;
         this.ewosUpdated.next([...this.ewos]);
       });
   }
@@ -30,7 +43,7 @@ export class EwoService {
       title: title,
       descript: descript,
       status: 'active',
-      id: null
+      _id: null
     };
     this.http
       .post<{ message: string }>('http://localhost:3000/api/ewos', ewo)
@@ -38,6 +51,13 @@ export class EwoService {
         console.log(responseData.message);
         this.ewos.push(ewo);
         this.ewosUpdated.next([...this.ewos]);
+      });
+  }
+  deleteEwo(ewoId: string) {
+    this.http
+      .delete('http://localhost:3000/api/ewos/' + ewoId)
+      .subscribe(() => {
+        console.log('Deleted EWO: ' + ewoId);
       });
   }
 }

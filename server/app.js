@@ -39,31 +39,24 @@ app.post('/api/ewos', (req, res, next) => {
 });
 
 app.get('/api/ewos', (req, res, next) => {
-  const ewos = [{
-      id: 'sdfsdfsdfsdf',
-      title: 'First EWO',
-      descript: 'comming from Server',
-      status: 'active'
-    },
-    {
-      id: 'eryeryrtyertyert',
-      title: 'Second EWO',
-      descript: '2nd EWO comming from Server',
-      status: 'active'
-    },
-    {
-      id: 'qweqwert',
-      title: 'Third EWO',
-      descript: '3rd EWO comming from Server',
-      status: 'closed'
-    }
-
-  ];
-  res.status(200).json({
-    message: 'EWOs fetched from server',
-    ewos: ewos
+  EWO.find().then(documents => {
+    res.status(200).json({
+      message: 'EWOs fetched from server',
+      ewos: documents
+    });
   });
 });
-
+app.delete('/api/ewos/:_id', (req, res, next) => {
+  console.log('Check _id', req.params);
+  EWO.deleteOne({
+      _id: req.params._id
+    })
+    .then(result => {
+      console.log(result);
+      res.status(200).json({
+        message: "Yo, deleted that EWO for ya!"
+      });
+    });
+});
 
 module.exports = app;
