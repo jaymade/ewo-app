@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { EwoService } from '../../../service/ewo.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Ewo } from 'src/app/models/ewo.model';
 
 @Component({
   selector: 'app-create-ewo',
@@ -8,14 +10,28 @@ import { EwoService } from '../../../service/ewo.service';
   styleUrls: ['./create-ewo.component.scss']
 })
 export class CreateEwoComponent implements OnInit {
-  public enteredTitle = '';
-  public enteredDescript = '';
+  enteredTitle = '';
+  enteredDescript = '';
+  EWO: Ewo;
+  private mode = 'create';
+  private ewoId: string;
 
-  constructor(public ewoService: EwoService) {}
+  constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('ewoId')) {
+        this.mode = 'edit';
+        this.ewoId = paramMap.get('ewoId');
+        this.ewo = this.ewoService.getEwo(this.ewoId);
+      } else {
+        this.mode = 'create';
+        this.ewoId = null;
+      }
+    });
+  }
   onAddEwo(form: NgForm) {
-    this.ewoService.addEwo( form.value.title, form.value.descript);
+    this.ewoService.addEwo(form.value.title, form.value.descript);
     form.resetForm();
   }
 }

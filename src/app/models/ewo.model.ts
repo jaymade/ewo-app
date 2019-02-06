@@ -4,5 +4,5 @@ export interface Ewo {
   userId?: string;
   ewoId?: number;
   status: string;
-  _id?: string;
+  _id: string;
 }

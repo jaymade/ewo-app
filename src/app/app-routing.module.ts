@@ -9,8 +9,9 @@ import { UserComponent } from './pages/user/user.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'user', pathMatch: 'full' },
-  { path: 'user', component: UserComponent },
+  { path: '', redirectTo: 'create', pathMatch: 'full' },
+  { path: 'create', component: UserComponent },
+  { path: 'edit', component: UserComponent },
   { path: 'eng', component: EngineerComponent },
   { path: 'admin', component: AdminComponent },
 

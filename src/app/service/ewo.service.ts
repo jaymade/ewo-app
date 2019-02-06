@@ -32,6 +32,9 @@ export class EwoService {
         this.ewosUpdated.next([...this.ewos]);
       });
   }
+  getEwo(_id: string) {
+    return { ...this.ewos.find(e => e._id === _id) };
+  }
 
   getEwoUpdatedListener() {
     return this.ewosUpdated.asObservable();
