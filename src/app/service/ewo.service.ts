@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+// import { map } from 'rxjs/operators';
 
 import { Ewo } from '../models/ewo.model';
-import { post } from 'selenium-webdriver/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -46,9 +45,14 @@ export class EwoService {
       _id: null
     };
     this.http
-      .post<{ message: string }>('http://localhost:3000/api/ewos', ewo)
+      .post<{ message: string; ewoId: string }>(
+        'http://localhost:3000/api/ewos',
+        ewo
+      )
       .subscribe(responseData => {
-        console.log(responseData.message);
+        // console.log(responseData.message);
+        const id = responseData.ewoId;
+        ewo._id = id;
         this.ewos.push(ewo);
         this.ewosUpdated.next([...this.ewos]);
       });
@@ -57,7 +61,10 @@ export class EwoService {
     this.http
       .delete('http://localhost:3000/api/ewos/' + ewoId)
       .subscribe(() => {
-        console.log('Deleted EWO: ' + ewoId);
+        // console.log('Deleted EWO: ' + ewoId);
+        const updatedEwos = this.ewos.filter(ewo => ewo._id !== ewoId);
+        this.ewos = updatedEwos;
+        this.ewosUpdated.next([...this.ewos]);
       });
   }
 }

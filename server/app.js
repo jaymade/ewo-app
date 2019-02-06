@@ -30,12 +30,14 @@ app.post('/api/ewos', (req, res, next) => {
     descript: req.body.descript,
     status: req.body.status
   });
-  ewo.save();
-  console.log('EWO sent to server: ', ewo);
-  res.status(201).json({
-    message: 'WOOT! The EWO was added succesfully!',
-    ewo: ewo
+  ewo.save().then(createdEWO => {
+    // console.log('EWO save info', createdEWO);
+    res.status(201).json({
+      message: 'WOOT! The EWO was added succesfully!',
+      ewoId: createdEWO._id
+    });
   });
+  // console.log('EWO sent to server: ', ewo);
 });
 
 app.get('/api/ewos', (req, res, next) => {
