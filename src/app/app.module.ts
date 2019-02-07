@@ -16,7 +16,7 @@ import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component
 import { EwoDetailComponent } from './common/EWo/ewo-detail/ewo-detail.component';
 import { LoginComponent } from './common/login/login.component';
 // pages
-import { UserComponent } from './pages/user/user.component';
+// import { UserComponent } from './pages/user/user.component';
 import { EngineerComponent } from './pages/engineer/engineer.component';
 import { AdminComponent } from './pages/admin/admin.component';
 // services
@@ -24,6 +24,7 @@ import { EwoService } from './service/ewo.service';
 import { UserService } from './service/user.service';
 import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,9 @@ import { HttpClientModule } from '@angular/common/http';
     CreateEwoComponent,
     EwoDetailComponent,
     EngineerComponent,
-    UserComponent,
-    ConfirmEqualDirective
+    // UserComponent,
+    ConfirmEqualDirective,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

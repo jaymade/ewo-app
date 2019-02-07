@@ -13,9 +13,9 @@ import { Ewo } from '../../../models/ewo.model';
 export class CreateEwoComponent implements OnInit {
   enteredTitle = '';
   enteredDescript = '';
-  public EWO: Ewo;
-  private mode = 'create';
-  private ewoId: string;
+  EWO: Ewo;
+  mode = 'create';
+  ewoId: string;
 
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 

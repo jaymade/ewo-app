@@ -1,10 +1,11 @@
 import { EngineerComponent } from './pages/engineer/engineer.component';
-import { EwoListComponent } from './common/EWo/ewo-list/ewo-list.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component';
+import { EwoListComponent } from './common/EWo/ewo-list/ewo-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserComponent } from './pages/user/user.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+// import { UserComponent } from './pages/user/user.component';
 
 
 const routes: Routes = [
@@ -14,8 +15,9 @@ const routes: Routes = [
   { path: 'edit/:ewoId', component: CreateEwoComponent },
   { path: 'eng', component: EngineerComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'oops', component: NotFoundComponent },
 
-  { path: '**', redirectTo: '/user', pathMatch: 'full' }
+  { path: '**', redirectTo: 'oops', pathMatch: 'full' }
 ];
 
 @NgModule({
