@@ -32,9 +32,15 @@ export class EwoService {
         this.ewosUpdated.next([...this.ewos]);
       });
   }
-  getEwo(id: string) {
-    console.log(id);
-    return { ...this.ewos.find(e => e._id === id) };
+  getEwo(_id: string) {
+    // console.log(id);
+    // return { ...this.ewos.find(e => e._id === id) };
+    return this.http.get<{
+      _id: string;
+      title: string;
+      descript: string;
+      status: string;
+    }>('http://localhost:3000/api/ewos/' + _id);
   }
 
   getEwoUpdatedListener() {
@@ -60,6 +66,18 @@ export class EwoService {
         this.ewos.push(ewo);
         this.ewosUpdated.next([...this.ewos]);
       });
+  }
+
+  updateEwo(_id: string, title: string, descript: string, status: string) {
+    const ewo: Ewo = {
+      _id: _id,
+      title: title,
+      descript: descript,
+      status: status
+    };
+    this.http
+      .put('http://localhost:3000/api/ewos' + _id, ewo)
+      .subscribe(response => console.log(response));
   }
   deleteEwo(ewoId: string) {
     this.http

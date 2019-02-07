@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { Ewo } from '../../../models/ewo.model';
 import { EwoService } from '../../../service/ewo.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-ewo-list',
@@ -10,10 +11,12 @@ import { Subscription } from 'rxjs';
 })
 export class EwoListComponent implements OnInit, OnDestroy {
   ewos: Ewo[] = [];
+  admin = false;
   private ewosSub: Subscription;
   constructor(public ewoService: EwoService) {}
 
   ngOnInit() {
+    this.ewoService.getEwoList();
     this.ewoService.getEwoList();
     this.ewosSub = this.ewoService
       .getEwoUpdatedListener()
@@ -21,10 +24,13 @@ export class EwoListComponent implements OnInit, OnDestroy {
         this.ewos = ewos;
       });
   }
-  ngOnDestroy() {
-    this.ewosSub.unsubscribe();
-  }
   onDeleteEwo(ewoId: string) {
     this.ewoService.deleteEwo(ewoId);
+  }
+  onShowDetail() {
+    console.log('');
+  }
+  ngOnDestroy() {
+    this.ewosSub.unsubscribe();
   }
 }

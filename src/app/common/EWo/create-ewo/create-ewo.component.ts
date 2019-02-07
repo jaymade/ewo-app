@@ -13,7 +13,7 @@ import { Ewo } from '../../../models/ewo.model';
 export class CreateEwoComponent implements OnInit {
   enteredTitle = '';
   enteredDescript = '';
-  EWO: Ewo;
+  ewo: Ewo;
   mode = 'create';
   ewoId: string;
 
@@ -24,15 +24,34 @@ export class CreateEwoComponent implements OnInit {
       if (paramMap.has('ewoId')) {
         this.mode = 'edit';
         this.ewoId = paramMap.get('ewoId');
-        this.EWO = this.ewoService.getEwo(this.ewoId);
+        this.ewoService.getEwo(this.ewoId).subscribe(ewoData => {
+          this.ewo = {
+            _id: ewoData._id,
+            title: ewoData.title,
+            descript: ewoData.descript,
+            status: ewoData.status
+          };
+        });
       } else {
         this.mode = 'create';
         this.ewoId = null;
       }
     });
   }
-  onAddEwo(form: NgForm) {
-    this.ewoService.addEwo(form.value.title, form.value.descript);
+  onSaveEwo(form: NgForm) {
+    if (form.errors) {
+      return;
+    }
+    if (this.mode === 'create') {
+      this.ewoService.addEwo(form.value.title, form.value.descript);
+    } else {
+      this.ewoService.updateEwo(
+        this.ewoId,
+        form.value.title,
+        form.value.descript,
+        form.value.status
+      );
+    }
     form.resetForm();
   }
 }

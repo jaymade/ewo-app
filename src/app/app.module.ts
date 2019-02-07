@@ -10,10 +10,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
 import { NavComponent } from './common/nav/nav.component';
 import { FooterComponent } from './common/footer/footer.component';
-import { EditEwoComponent } from './common/EWo/edit-ewo/edit-ewo.component';
 import { EwoListComponent } from './common/EWo/ewo-list/ewo-list.component';
 import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component';
-import { EwoDetailComponent } from './common/EWo/ewo-detail/ewo-detail.component';
 import { LoginComponent } from './common/login/login.component';
 // pages
 // import { UserComponent } from './pages/user/user.component';
@@ -31,13 +29,11 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    EditEwoComponent,
     AdminComponent,
     NavComponent,
     EwoListComponent,
     LoginComponent,
     CreateEwoComponent,
-    EwoDetailComponent,
     EngineerComponent,
     // UserComponent,
     ConfirmEqualDirective,
