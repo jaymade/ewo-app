@@ -1,6 +1,5 @@
 <h4>Active EWO List</h4>
 <div *ngIf="ewos.length > 0">
-  <div>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -22,33 +21,21 @@
           <td>{{ewo.descript}}</td>
           <td>{{ewo.status}}</td>
           <td>
-            <div *ngIf="admin">
-              <a class="btn btn-primary" [routerLink]="['/edit', ewo._id]" routerLinkActive="router-link-active">
-                <i class="far fa-edit"></i>
-              </a>
-            </div>
-            <div *ngIf="!admin">
-              <a class="btn btn-primary" [routerLink]="['/edit', ewo._id]" routerLinkActive="router-link-active">
-                <i class="far fa-edit"></i>
-              </a>
-            </div>
+            <a class="btn btn-primary" [routerLink]="['/edit, ewo._id']" routerLinkActive="router-link-active">
+              <i class="far fa-edit"></i>
+            </a>
           </td>
           <td>
-<button class="btn btn-danger" [ngClass]="{ 'disabled': !admin  }" (click)="onDeleteEwo(ewo._id)">
+            <button class="btn btn-danger" (click)="onDeleteEwo(ewo._id)">
               <i class="far fa-trash-alt"></i>
             </button>
           </td>
         </tr>
       </tbody>
     </table>
-  </div>
 </div>
 
 <div *ngIf="ewos.length <= 0">
   <p class="text-center"><strong class="text-danger">No Active EWOs</strong></p>
-
 </div>
 
-<!-- <p>Click on EWO in the list above to see details below.</p>
-
-<app-ewo-detail></app-ewo-detail> -->

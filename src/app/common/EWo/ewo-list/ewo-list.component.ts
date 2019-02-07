@@ -11,12 +11,11 @@ import { EwoService } from '../../../service/ewo.service';
 })
 export class EwoListComponent implements OnInit, OnDestroy {
   ewos: Ewo[] = [];
-  admin = false;
   private ewosSub: Subscription;
+
   constructor(public ewoService: EwoService) {}
 
   ngOnInit() {
-    this.ewoService.getEwoList();
     this.ewoService.getEwoList();
     this.ewosSub = this.ewoService
       .getEwoUpdatedListener()
@@ -27,9 +26,7 @@ export class EwoListComponent implements OnInit, OnDestroy {
   onDeleteEwo(ewoId: string) {
     this.ewoService.deleteEwo(ewoId);
   }
-  onShowDetail() {
-    console.log('');
-  }
+
   ngOnDestroy() {
     this.ewosSub.unsubscribe();
   }

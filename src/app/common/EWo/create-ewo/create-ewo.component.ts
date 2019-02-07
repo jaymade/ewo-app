@@ -15,7 +15,7 @@ export class CreateEwoComponent implements OnInit {
   enteredDescript = '';
   ewo: Ewo;
   mode = 'create';
-  ewoId: string;
+  private ewoId: string;
 
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
@@ -39,7 +39,7 @@ export class CreateEwoComponent implements OnInit {
     });
   }
   onSaveEwo(form: NgForm) {
-    if (form.errors) {
+    if (form.invalid) {
       return;
     }
     if (this.mode === 'create') {
