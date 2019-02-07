@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { EwoService } from '../../../service/ewo.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Ewo } from 'src/app/models/ewo.model';
+
+import { EwoService } from '../../../service/ewo.service';
+import { Ewo } from '../../../models/ewo.model';
 
 @Component({
   selector: 'app-create-ewo',
@@ -23,7 +24,7 @@ export class CreateEwoComponent implements OnInit {
       if (paramMap.has('ewoId')) {
         this.mode = 'edit';
         this.ewoId = paramMap.get('ewoId');
-        this.ewo = this.ewoService.getEwo(this.ewoId);
+        this.EWO = this.ewoService.getEwo(this.ewoId);
       } else {
         this.mode = 'create';
         this.ewoId = null;

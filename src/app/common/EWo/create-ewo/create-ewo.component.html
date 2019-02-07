@@ -3,8 +3,15 @@
 
   <div class="form-group">
     <label for="input_title">EWO Title: </label>
-    <input type="text" class="form-control" ngModel name="title" id="input_title" #title="ngModel" placeholder=" What we calling it?"
-      required>
+    <input
+      type="text"
+      name="title"
+      ngModel
+      required
+      class="form-control"
+      placeholder=" What we calling it?"
+      #title="ngModel"
+    >
     <div *ngIf="title.errors">
       <p class="invalid-feedback"> Need a title</p>
     </div>
@@ -12,13 +19,14 @@
 
   <div class="form-group">
     <label for="input_descript">Description of Project: </label>
-    <textarea class="form-control" ngModel name="descript" #descript="ngModel" id="input_descript" rows="3" placeholder="What are we doing?"
-      required ></textarea>
+    <textarea class="form-control" ngModel ngModel name="descript" #descript="ngModel" id="input_descript"
+      rows="3" placeholder="What are we doing?" required>
+    </textarea>
     <div *ngIf="descript.errors" class="invalid-feedback"> Need some input </div>
   </div>
 
   <div class="form-group">
-    <button class="btn btn-primary" type="submit" > Submit </button>
+    <button class="btn btn-primary" type="submit"> Submit </button>
   </div>
 </form>
 
@@ -28,4 +36,3 @@
     <li>Decription: {{enteredDescript}}</li>
   </ul>
 </code> -->
-

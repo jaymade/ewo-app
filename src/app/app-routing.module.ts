@@ -11,7 +11,7 @@ import { UserComponent } from './pages/user/user.component';
 const routes: Routes = [
   { path: '', redirectTo: 'create', pathMatch: 'full' },
   { path: 'create', component: UserComponent },
-  { path: 'edit', component: UserComponent },
+  { path: 'edit/:ewoId', component: UserComponent },
   { path: 'eng', component: EngineerComponent },
   { path: 'admin', component: AdminComponent },
 
