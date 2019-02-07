@@ -1,7 +1,6 @@
 import { EngineerComponent } from './pages/engineer/engineer.component';
 import { EwoListComponent } from './common/EWo/ewo-list/ewo-list.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { EditEwoComponent } from './common/EWo/edit-ewo/edit-ewo.component';
 import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,9 +8,10 @@ import { UserComponent } from './pages/user/user.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'create', pathMatch: 'full' },
-  { path: 'create', component: UserComponent },
-  { path: 'edit/:ewoId', component: UserComponent },
+  { path: '', redirectTo: 'ewo', pathMatch: 'full' },
+  { path: 'ewo', component: EwoListComponent },
+  { path: 'create', component: CreateEwoComponent },
+  { path: 'edit/:ewoId', component: CreateEwoComponent },
   { path: 'eng', component: EngineerComponent },
   { path: 'admin', component: AdminComponent },
 

@@ -13,7 +13,7 @@ import { Ewo } from '../../../models/ewo.model';
 export class CreateEwoComponent implements OnInit {
   enteredTitle = '';
   enteredDescript = '';
-  EWO: Ewo;
+  public EWO: Ewo;
   private mode = 'create';
   private ewoId: string;
 

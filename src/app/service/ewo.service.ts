@@ -32,8 +32,9 @@ export class EwoService {
         this.ewosUpdated.next([...this.ewos]);
       });
   }
-  getEwo(_id: string) {
-    return { ...this.ewos.find(e => e._id === _id) };
+  getEwo(id: string) {
+    console.log(id);
+    return { ...this.ewos.find(e => e._id === id) };
   }
 
   getEwoUpdatedListener() {

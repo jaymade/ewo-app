@@ -3,15 +3,7 @@
 
   <div class="form-group">
     <label for="input_title">EWO Title: </label>
-    <input
-      type="text"
-      name="title"
-      ngModel
-      required
-      class="form-control"
-      placeholder=" What we calling it?"
-      #title="ngModel"
-    >
+    <input type="text" name="title" ngModel required class="form-control" placeholder=" What we calling it?" #title="ngModel">
     <div *ngIf="title.errors">
       <p class="invalid-feedback"> Need a title</p>
     </div>
@@ -19,8 +11,8 @@
 
   <div class="form-group">
     <label for="input_descript">Description of Project: </label>
-    <textarea class="form-control" ngModel ngModel name="descript" #descript="ngModel" id="input_descript"
-      rows="3" placeholder="What are we doing?" required>
+    <textarea class="form-control" ngModel ngModel name="descript" #descript="ngModel" id="input_descript" rows="3"
+      placeholder="What are we doing?" required>
     </textarea>
     <div *ngIf="descript.errors" class="invalid-feedback"> Need some input </div>
   </div>
