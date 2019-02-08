@@ -42,7 +42,7 @@ router.get("", (req, res, next) => {
   });
 });
 
-router.get("/:id",cors(), (req, res, next) => {
+router.get("/:id", (req, res, next) => {
   Ewo.findById(req.params.id).then(ewo => {
     if (ewo) {
       res.status(200).json(ewo);
