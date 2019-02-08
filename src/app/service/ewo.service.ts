@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 // import { map } from 'rxjs/operators';
 
@@ -12,7 +13,7 @@ export class EwoService {
   private ewos: Ewo[] = [];
   private ewosUpdated = new Subject<Ewo[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router ) {}
 
   getEwoList() {
     this.http
@@ -66,6 +67,7 @@ export class EwoService {
         ewo._id = id;
         this.ewos.push(ewo);
         this.ewosUpdated.next([...this.ewos]);
+        this.router.navigate(['/']);
       });
   }
 
@@ -84,6 +86,8 @@ export class EwoService {
         updatedEwos[oldEwosIndex] = ewo;
         this.ewos = updatedEwos;
         this.ewosUpdated.next([...this.ewos]);
+        this.router.navigate(['/']);
+
       });
   }
   deleteEwo(ewoId: string) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -21,7 +21,7 @@ export class CreateEwoComponent implements OnInit {
   btnTxt = 'Save';
   private ewoId: string;
 
-  constructor(public ewoService: EwoService, private router: Router, public route: ActivatedRoute) {}
+  constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -58,7 +58,7 @@ export class CreateEwoComponent implements OnInit {
       );
     }
     form.resetForm();
-    this.router.navigate(['ewo']);
+    // this.router.navigate(['ewo']);
 
   }
 }
