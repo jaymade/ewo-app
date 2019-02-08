@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 // import { map } from 'rxjs/operators';
 
 import { Ewo } from '../models/ewo.model';
+import { EDEADLK } from 'constants';
 @Injectable({
   providedIn: 'root'
 })
@@ -77,7 +78,13 @@ export class EwoService {
     };
     this.http
       .put('http://localhost:3000/api/ewos/' + _id, ewo)
-      .subscribe(response => console.log(response));
+      .subscribe(response => {
+        const updatedEwos = [...this.ewos];
+        const oldEwosIndex = updatedEwos.findIndex(e => e._id === ewo._id);
+        updatedEwos[oldEwosIndex] = ewo;
+        this.ewos = updatedEwos;
+        this.ewosUpdated.next([...this.ewos]);
+      });
   }
   deleteEwo(ewoId: string) {
     this.http
