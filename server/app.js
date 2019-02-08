@@ -17,15 +17,16 @@ mongoose
   .catch(() => {
     console.log("Danger Will Roberson, db connection error!");
   });
-
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Content - Type, Access - Control - Allow - Headers, Authorization, X - Requested - With "
+    "Origin, X-Requested-With, Content-Type, Accept"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",

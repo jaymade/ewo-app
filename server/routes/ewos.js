@@ -27,11 +27,12 @@ router.put("/:id", (req, res, next) => {
     descript: req.body.descript,
     status: req.body.status,
   });
-  ewo.updateOne({ _id: req.params.id}, ewo).then(result => {
+  Ewo.updateOne({ _id: req.params._id}, ewo).then(result => {
       console.log('update result: ', result);
       res.status(200).json({ message: "Roger Roger!" });
     });
 });
+
 
 router.get("", (req, res, next) => {
   Ewo.find().then(documents => {
