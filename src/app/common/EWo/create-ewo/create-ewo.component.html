@@ -14,8 +14,17 @@
     <label for="input_descript">Description of Project: </label>
     <textarea class="form-control" rows="4" name="descript" [ngModel]="ewo?.descript" required placeholder="What we doing?"
       #descript="ngModel"></textarea>
-
     <div *ngIf="descript.errors" class="invalid-feedback"> Need some input </div>
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status: </label>
+    <select class="form-control" name="status" [ngModel]="ewo?.status">
+      <option selected>Update Status</option>
+      <option value = "active">Active</option>
+      <option value = "closed">Closed</option>
+      <option value = "hold">Hold</option>
+    </select>
   </div>
 
   <div class="form-group">
