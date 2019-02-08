@@ -1,9 +1,8 @@
 const express = require("express");
-// const cors = require('cors');
 const Ewo = require("../models/ewo");
-
 const router = express.Router();
-// router.use(cors());
+
+// post ewo
 router.post('', (req, res, next) => {
   const ewo = new Ewo({
     title: req.body.title,
@@ -20,6 +19,7 @@ router.post('', (req, res, next) => {
   // console.log('EWO sent to server: ', ewo);
 });
 
+// put an updated ewo
 router.put("/:id", (req, res, next) => {
   const ewo = new Ewo({
     _id: req.body._id,
@@ -27,13 +27,16 @@ router.put("/:id", (req, res, next) => {
     descript: req.body.descript,
     status: req.body.status,
   });
-  Ewo.updateOne({_id: req.params.id }, ewo).then(result => {
+  Ewo.updateOne({
+    _id: req.params.id
+  }, ewo).then(result => {
     res.status(200).json({
-      message: "Update successful!"});
+      message: "Update successful!"
+    });
   });
 });
 
-
+// get all ewos
 router.get("", (req, res, next) => {
   Ewo.find().then(documents => {
     res.status(200).json({
@@ -43,6 +46,7 @@ router.get("", (req, res, next) => {
   });
 });
 
+// get a ewo by ID
 router.get("/:id", (req, res, next) => {
   Ewo.findById(req.params.id).then(ewo => {
     if (ewo) {
@@ -55,6 +59,7 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
+// delete ewo by ID
 router.delete('/:_id', (req, res, next) => {
   console.log('Check _id', req.params);
   Ewo.deleteOne({
@@ -67,4 +72,5 @@ router.delete('/:_id', (req, res, next) => {
       });
     });
 });
+
 module.exports = router;
