@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { EwoService } from '../../../service/ewo.service';
@@ -11,6 +11,7 @@ import { Ewo } from '../../../models/ewo.model';
   styleUrls: ['./create-ewo.component.scss']
 })
 export class CreateEwoComponent implements OnInit {
+  form: FormGroup;
   enteredTitle = '';
   enteredDescript = '';
   isLoading = false;
@@ -22,6 +23,13 @@ export class CreateEwoComponent implements OnInit {
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.form = new FormGroup({
+      title: new FormControl(null, {
+        validators: [Validators.required, Validators.minLength(3)]
+      }),
+      descript: new FormControl(null, { validators: [Validators.required] }),
+      status: new FormControl('active', { validators: [Validators.required] })
+    });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('ewoId')) {
         this.mode = 'edit';
@@ -36,6 +44,11 @@ export class CreateEwoComponent implements OnInit {
             descript: ewoData.descript,
             status: ewoData.status
           };
+          this.form.setValue({
+            title: this.ewo.title,
+            descript: this.ewo.descript,
+            status: this.ewo.status
+          });
         });
       } else {
         this.mode = 'create';
@@ -43,21 +56,21 @@ export class CreateEwoComponent implements OnInit {
       }
     });
   }
-  onSaveEwo(form: NgForm) {
-    if (form.invalid) {
+  onSaveEwo() {
+    if (this.form.invalid) {
       return;
     }
     this.isLoading = true;
     if (this.mode === 'create') {
-      this.ewoService.addEwo(form.value.title, form.value.descript);
+      this.ewoService.addEwo(this.form.value.title, this.form.value.descript); // check to see if status needs adding
     } else {
       this.ewoService.updateEwo(
         this.ewoId,
-        form.value.title,
-        form.value.descript,
-        form.value.status
+        this.form.value.title,
+        this.form.value.descript,
+        this.form.value.status
       );
     }
-    form.resetForm();
+    this.form.reset();
   }
 }
