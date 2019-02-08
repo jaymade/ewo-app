@@ -12,7 +12,7 @@
     <label for="input_title">EWO Title: </label>
     <input class="form-control" type="text" formControlName="title"  placeholder=" What we calling it?"
       >
-    <div *ngIf="form.get('title').errors">
+    <div *ngIf="form.get('title').invalid">
       <p class="invalid-feedback"> Need a title</p>
     </div>
   </div>
@@ -21,7 +21,7 @@
     <label for="input_descript">Description of Project: </label>
     <textarea class="form-control" rows="4" formControlName="descript" placeholder="What we doing?"
       ></textarea>
-    <div *ngIf="form.get('descript').errors" class="invalid-feedback"> Need some input </div>
+    <div *ngIf="form.get('descript').invalid" class="invalid-feedback"> Need some input </div>
   </div>
 
   <div class="form-group">
