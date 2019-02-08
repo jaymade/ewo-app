@@ -1,5 +1,12 @@
 <h4> {{ mode | titlecase }} an EWO </h4>
-<form class="mb-5" (submit)="onSaveEwo(ewoForm)" #ewoForm="ngForm">
+
+<!-- loading spinner -->
+<div class="spinner-border text-info mx-auto" role="status" *ngIf="isLoading">
+  <span class="sr-only">Loading...</span>
+</div>
+
+
+<form class="mb-5" (submit)="onSaveEwo(ewoForm)" #ewoForm="ngForm" *ngIf="!isLoading">
 
   <div class="form-group">
     <label for="input_title">EWO Title: </label>

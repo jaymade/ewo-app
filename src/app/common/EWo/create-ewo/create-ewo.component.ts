@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-// import { Router } from '@angular/router';
-
-
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { EwoService } from '../../../service/ewo.service';
@@ -16,6 +13,7 @@ import { Ewo } from '../../../models/ewo.model';
 export class CreateEwoComponent implements OnInit {
   enteredTitle = '';
   enteredDescript = '';
+  isLoading = false;
   ewo: Ewo;
   mode = 'create';
   btnTxt = 'Save';
@@ -29,7 +27,9 @@ export class CreateEwoComponent implements OnInit {
         this.mode = 'edit';
         this.btnTxt = 'Update';
         this.ewoId = paramMap.get('ewoId');
+        this.isLoading = true;
         this.ewoService.getEwo(this.ewoId).subscribe(ewoData => {
+          this.isLoading = false;
           this.ewo = {
             _id: ewoData._id,
             title: ewoData.title,
@@ -47,6 +47,7 @@ export class CreateEwoComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     if (this.mode === 'create') {
       this.ewoService.addEwo(form.value.title, form.value.descript);
     } else {
@@ -58,7 +59,5 @@ export class CreateEwoComponent implements OnInit {
       );
     }
     form.resetForm();
-    // this.router.navigate(['ewo']);
-
   }
 }
