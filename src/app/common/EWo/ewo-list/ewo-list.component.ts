@@ -11,15 +11,18 @@ import { EwoService } from '../../../service/ewo.service';
 })
 export class EwoListComponent implements OnInit, OnDestroy {
   ewos: Ewo[] = [];
+  isLoading = false;
   private ewosSub: Subscription;
 
   constructor(public ewoService: EwoService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.ewoService.getEwoList();
     this.ewosSub = this.ewoService
       .getEwoUpdatedListener()
       .subscribe((ewos: Ewo[]) => {
+        this.isLoading = false;
         this.ewos = ewos;
       });
   }

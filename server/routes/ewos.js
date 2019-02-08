@@ -29,9 +29,7 @@ router.put("/:id", (req, res, next) => {
   });
   ewo.updateOne({ _id: req.params.id}, ewo).then(result => {
       console.log('update result: ', result);
-      res.status(200).json({
-        message: "Roger Roger!"
-      });
+      res.status(200).json({ message: "Roger Roger!" });
     });
 });
 
@@ -49,9 +47,7 @@ router.get("/:id", (req, res, next) => {
     if (ewo) {
       res.status(200).json(ewo);
     } else {
-      res.status(404).json({
-        message: "EWO not found!"
-      });
+      res.status(404).json({ message: "EWO not found!" });
     }
   });
 });
