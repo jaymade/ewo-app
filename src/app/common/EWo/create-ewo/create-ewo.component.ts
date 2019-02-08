@@ -18,6 +18,7 @@ export class CreateEwoComponent implements OnInit {
   enteredDescript = '';
   ewo: Ewo;
   mode = 'create';
+  btnTxt = 'Save';
   private ewoId: string;
 
   constructor(public ewoService: EwoService, private router: Router, public route: ActivatedRoute) {}
@@ -26,6 +27,7 @@ export class CreateEwoComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('ewoId')) {
         this.mode = 'edit';
+        this.btnTxt = 'Update';
         this.ewoId = paramMap.get('ewoId');
         this.ewoService.getEwo(this.ewoId).subscribe(ewoData => {
           this.ewo = {

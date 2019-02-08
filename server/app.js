@@ -6,6 +6,7 @@ const ewosRoutes = require("./routes/ewos");
 
 const app = express();
 
+
 mongoose
 .connect('mongodb://topelf:rpw4NIC@ds213255.mlab.com:13255/ewo_db', {
     useNewUrlParser: true
@@ -24,7 +25,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Content - Type, Access - Control - Allow - Headers, Authorization, X - Requested - With "
   );
   res.setHeader(
     "Access-Control-Allow-Methods",

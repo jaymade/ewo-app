@@ -1,9 +1,9 @@
 const express = require("express");
-
+// const cors = require('cors');
 const Ewo = require("../models/ewo");
 
 const router = express.Router();
-
+// router.use(cors());
 router.post('', (req, res, next) => {
   const ewo = new Ewo({
     title: req.body.title,
@@ -42,7 +42,7 @@ router.get("", (req, res, next) => {
   });
 });
 
-router.get("/:id", (req, res, next) => {
+router.get("/:id",cors(), (req, res, next) => {
   Ewo.findById(req.params.id).then(ewo => {
     if (ewo) {
       res.status(200).json(ewo);
