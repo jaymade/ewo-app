@@ -14,7 +14,6 @@ import { EwoListComponent } from './common/EWo/ewo-list/ewo-list.component';
 import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component';
 import { LoginComponent } from './common/login/login.component';
 // pages
-// import { UserComponent } from './pages/user/user.component';
 import { EngineerComponent } from './pages/engineer/engineer.component';
 import { AdminComponent } from './pages/admin/admin.component';
 // services
@@ -35,7 +34,6 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     LoginComponent,
     CreateEwoComponent,
     EngineerComponent,
-    // UserComponent,
     ConfirmEqualDirective,
     NotFoundComponent
   ],

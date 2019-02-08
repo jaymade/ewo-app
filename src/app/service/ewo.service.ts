@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
 // import { map } from 'rxjs/operators';
 
 import { Ewo } from '../models/ewo.model';
-import { EDEADLK } from 'constants';
 @Injectable({
   providedIn: 'root'
 })
