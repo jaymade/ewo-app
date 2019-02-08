@@ -22,15 +22,15 @@ router.post('', (req, res, next) => {
 
 router.put("/:id", (req, res, next) => {
   const ewo = new Ewo({
-    _id: req.body.id,
+    _id: req.body._id,
     title: req.body.title,
     descript: req.body.descript,
     status: req.body.status,
   });
-  Ewo.updateOne({ _id: req.params._id}, ewo).then(result => {
-      console.log('update result: ', result);
-      res.status(200).json({ message: "Roger Roger!" });
-    });
+  Ewo.updateOne({_id: req.params.id }, ewo).then(result => {
+    res.status(200).json({
+      message: "Update successful!"});
+  });
 });
 
 
@@ -48,7 +48,9 @@ router.get("/:id", (req, res, next) => {
     if (ewo) {
       res.status(200).json(ewo);
     } else {
-      res.status(404).json({ message: "EWO not found!" });
+      res.status(404).json({
+        message: "EWO not found!"
+      });
     }
   });
 });
