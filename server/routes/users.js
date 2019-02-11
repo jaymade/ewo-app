@@ -2,40 +2,41 @@ const express = require("express");
 const User = require("../models/user");
 const router = express.Router();
 
-// post ewo
+// post user
 router.post('', (req, res, next) => {
   const user = new User({
     userId: req.body.userId,
-    pw: req.body.descript,
+    pw: req.body.pw,
     eng: req.body.eng,
     admin: req.body.admin,
-    status: req.body.status
+    active: req.body.active
   });
-  ewo.save().then(createdUser => {
-    // console.log('EWO save info', createdEWO);
+  user.save().then(createdUser => {
+    console.log('save user info to DB', createdUser);
     res.status(201).json({
       message: 'WOOT! The User was added succesfully!',
       userId: createdUser._id
     });
   });
-  // console.log('User sent to server: ', ewo);
+
+  // console.log('User sent to server: ', user);
 });
 
 // put an updated user
 router.put("/:id", (req, res, next) => {
-  const ewo = new Ewo({
+  const user = new User({
     _id: req.body._id,
     userId: req.body.userId,
     pw: req.body.pw,
     eng: req.body.eng,
     admin: req.body.admin,
-    status: req.body.status,
+    active: req.body.active,
   });
   User.updateOne({
     _id: req.params.id
   }, user).then(result => {
     res.status(200).json({
-      message: "Updated User successful!"
+      message: " User Updated successful!"
     });
   });
 });
@@ -44,7 +45,7 @@ router.put("/:id", (req, res, next) => {
 router.get("", (req, res, next) => {
   User.find().then(documents => {
     res.status(200).json({
-      message: 'EWOs fetched from server',
+      message: 'Users fetched from server',
       users: documents
     });
   });
@@ -54,7 +55,7 @@ router.get("", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   User.findById(req.params.id).then(user => {
     if (user) {
-      res.status(200).json(ewo);
+      res.status(200).json(user);
     } else {
       res.status(404).json({
         message: "User not found!"

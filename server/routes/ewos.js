@@ -31,7 +31,7 @@ router.put("/:id", (req, res, next) => {
     _id: req.params.id
   }, ewo).then(result => {
     res.status(200).json({
-      message: "Update successful!"
+      message: "EWO Updated  successful!"
     });
   });
 });

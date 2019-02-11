@@ -5,8 +5,6 @@ import { Subject } from 'rxjs';
 // import { map } from 'rxjs/operators';
 
 import { User } from '../models/user.model';
-// import { enableBindings } from '@angular/core/src/render3';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -58,14 +56,14 @@ export class UserService {
     pw: string,
     admin: boolean,
     eng: boolean,
-    status: boolean
+    active: boolean
   ) {
     const user: User = {
       userId: userId,
       pw: pw,
-      eng: true,
-      admin: true,
-      active: true,
+      eng: eng,
+      admin: admin,
+      active: active,
       _id: null
     };
 
@@ -75,12 +73,12 @@ export class UserService {
         user
       )
       .subscribe(responseData => {
-        // console.log(responseData.message);
+        console.log('user resData: ', responseData.message);
         const id = responseData.userId;
         user._id = id;
         this.users.push(user);
         this.usersUpdated.next([...this.users]);
-        this.router.navigate(['/']);
+        // this.router.navigate(['/']);
       });
   }
 

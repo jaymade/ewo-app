@@ -14,8 +14,8 @@
     <input type="email" formControlName="userId" class="form-control" [ngClass]="{ 'is-invalid': userForm.get('userId').invalid && userForm.get('userId').touched }"
       name="userId" placeholder="user ID is your Newton email address" />
     <div *ngIf="userForm.get('userId').touched && userForm.get('userId').invalid" class="invalid-feedback">
-      <div *ngIf="userForm.get('userId').invalid.required">Email is required</div>
-      <div *ngIf="userForm.get('userId').invalid.email">Email must be a valid email address</div>
+      <div *ngIf="userForm.get('userId').errors">Email is required</div>
+      <div *ngIf="userForm.get('userId').errors">Email must be a valid email address</div>
     </div>
   </div>
   <!-- PW1 -->

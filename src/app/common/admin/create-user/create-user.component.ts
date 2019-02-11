@@ -28,18 +28,14 @@ export class CreateUserComponent implements OnInit {
         validators: [Validators.required, Validators.email]
       }),
       pw: new FormControl(null, {
-        validators: [
-          Validators.required,
-           Validators.minLength(6)]
+        validators: [Validators.required, Validators.minLength(6)]
       }),
       pwConfirm: new FormControl(null, {
-        validators: [
-          Validators.required,
-          Validators.minLength(6)]
+        validators: [Validators.required, Validators.minLength(6)]
       }),
-      eng: new FormControl(''),
-      admin: new FormControl(''),
-      active: new FormControl('active')
+      eng: new FormControl(true),
+      admin: new FormControl(false),
+      active: new FormControl(false)
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('uId')) {
@@ -97,5 +93,4 @@ export class CreateUserComponent implements OnInit {
     }
     this.userForm.reset();
   }
-
 }
