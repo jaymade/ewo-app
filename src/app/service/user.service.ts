@@ -1,47 +1,124 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+// import { map } from 'rxjs/operators';
+
 import { User } from '../models/user.model';
+// import { enableBindings } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  public userlist: User[] = [
-    {
-      username: 'BillyU@enewton.com',
-      pw: 'newton',
-      eng: true,
-      admin: false,
-      isactive: true,
-    },
-    {
-      username: 'GregB@enewton.com',
-      pw: 'newton',
-      eng: true,
-      admin: false,
-      isactive: true,
-    },
-    {
-      username: 'RobertH@enewton.com',
-      pw: 'newton',
-      eng: true,
-      admin: false,
-      isactive: true,
-    },
-    {
-      username: 'JoeD@enewton.com',
-      pw: 'newton',
-      eng: true,
-      admin: false,
-      isactive: true,
-    },
-    {
-      username: 'JayR@enewton.com',
-      pw: 'newton',
+  private users: User[] = [];
+  private usersUpdated = new Subject<User[]>();
+
+  constructor(private http: HttpClient, private router: Router) {}
+
+  getUserList() {
+    this.http
+      .get<{ message: string; users: any }>('http://localhost:3000/api/users')
+      // .pipe(
+      //   map(ewoData => {
+      //     return ewoData.ewos.map(ewo => {
+      //       return {
+      //         title: ewo.title,
+      //         discript: ewo.descript,
+      //         id: ewo._id
+      //       };
+      //     });
+      //   })
+      // )
+      .subscribe(mapedUsers => {
+        this.users = mapedUsers.users;
+        this.usersUpdated.next([...this.users]);
+      });
+  }
+  // get user by ID
+  getUser(id: string) {
+    // console.log(id);
+    // return { ...this.ewos.find(e => e._id === id) };
+    return this.http.get<{
+      _id: string;
+      userId: string;
+      pw: string;
+      eng: boolean;
+      admin: boolean;
+      active: boolean;
+    }>('http://localhost:3000/api/users/' + id);
+  }
+  // update Users observable
+  getUserUpdatedListener() {
+    return this.usersUpdated.asObservable();
+  }
+
+  addUser(
+    userId: string,
+    pw: string,
+    admin: boolean,
+    eng: boolean,
+    status: boolean
+  ) {
+    const user: User = {
+      userId: userId,
+      pw: pw,
       eng: true,
       admin: true,
-      isactive: true,
-    }
-  ];
+      active: true,
+      _id: null
+    };
+    this.http
+      .post<{ message: string; userId: string }>(
+        'http://localhost:3000/api/users',
+        user
+      )
+      .subscribe(responseData => {
+        // console.log(responseData.message);
+        const id = responseData.userId;
+        user._id = id;
+        this.users.push(user);
+        this.usersUpdated.next([...this.users]);
+        this.router.navigate(['/']);
+      });
+  }
 
-  constructor() {}
+  updateUser(
+    _id: string,
+    userId: string,
+    pw: string,
+    eng: boolean,
+    admin: boolean,
+    active: boolean
+  ) {
+    const user: User = {
+      _id: _id,
+      userId: userId,
+      pw: pw,
+      eng: eng,
+      admin: admin,
+      active: active
+    };
+    this.http
+      .put('http://localhost:3000/api/users/' + _id, user)
+      .subscribe(response => {
+        const updatedUsers = [...this.users];
+        const oldUserIndex = updatedUsers.findIndex(u => u._id === user._id);
+        updatedUsers[oldUserIndex] = user;
+        this.users = updatedUsers;
+        this.usersUpdated.next([...this.users]);
+        this.router.navigate(['/']);
+      });
+  }
+  // delete user
+  deleteUser(userId: string) {
+    this.http
+      .delete('http://localhost:3000/api/users/' + userId)
+      .subscribe(() => {
+        // console.log('Deleted EWO: ' + ewoId);
+        const updatedUsers = this.users.filter(user => user._id !== userId);
+        this.users = updatedUsers;
+        this.usersUpdated.next([...this.users]);
+      });
+  }
 }

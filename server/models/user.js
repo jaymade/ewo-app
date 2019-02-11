@@ -15,10 +15,12 @@ var userSchema = mongoose.Schema({
   admin: {
     type: Boolean
   },
-  status: {
+  active: {
     type: String,
-    required: true
-  }
+  },
+    _id: {
+      type: String
+    }
 });
 
 // Compile model from schema
