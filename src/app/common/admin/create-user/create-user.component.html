@@ -1,0 +1,66 @@
+<h4>{{ mode | titlecase }} User</h4>
+
+<!-- loading spinner -->
+<div class="spinner-border text-info mx-auto" role="status" *ngIf="isLoading">
+  <span class="sr-only">Loading...</span>
+</div>
+
+
+<form [formGroup]="userForm" (ngSubmit)="onSaveUser()" [formGroup]="userForm" *ngIf="!isLoading">
+
+  <!-- userId -->
+  <div class="form-group">
+    <label for="userId">User ID: </label>
+    <input type="email" formControlName="userId" class="form-control" [ngClass]="{ 'is-invalid': userForm.get('userId').invalid && userForm.get('userId').touched }"
+      name="userId" placeholder="user ID is your Newton email address" />
+    <div *ngIf="userForm.get('userId').touched && userForm.get('userId').invalid" class="invalid-feedback">
+      <div *ngIf="userForm.get('userId').invalid.required">Email is required</div>
+      <div *ngIf="userForm.get('userId').invalid.email">Email must be a valid email address</div>
+    </div>
+  </div>
+  <!-- PW1 -->
+  <div class="form-group">
+    <label for="pw">Password: </label>
+    <input class="form-control mr-3" type="text" formControlName="pw" name="pw" id="pw" placeholder="password"
+      [ngClass]="{ 'is-invalid': userForm.get('pw').invalid && userForm.get('pw').touched   }" />
+    <div *ngIf="userForm.get('pw').touched && userForm.get('pw').errors" class="invalid-feedback">
+      <div *ngIf="userForm.get('pw').errors">Password is required</div>
+      <div *ngIf="userForm.get('pw').errors">Password must be at least 6 characters</div>
+    </div>
+  </div>
+  <!-- PW2 -->
+  <div class="form-group">
+    <label for="pwConfirm"> Confirm Password: </label>
+    <input class="form-control mr-3" type="text" class="form-control mr-3" formControlName="pwConfirm" appConfirmEqual="pw"
+      name="pwConfirm" id="pwConfirm" placeholder="match password" [ngClass]="{ 'is-invalid': userForm.get('pwConfirm').invalid && userForm.get('pwConfirm').touched   }" />
+    <div *ngIf="userForm.get('pwConfirm').touched && userForm.get('pwConfirm').invalid" class="invalid-feedback">
+      <!-- <div *ngIf="userForm.get('pwConfirm').errors.required">Confirm Password is required</div>
+      <div *ngIf="userForm.get('pw').errors?.notEqual">Passwords must match</div> -->
+    </div>
+  </div>
+  <!-- permissions -->
+  <div class="form-group">
+    <label for="">Permissions: </label>
+    <!-- eng -->
+    <div class="form-check form-check-inline ml-3">
+      <input class="form-check-input" formControlName="eng" name="eng" type="checkbox" id="eng" required />
+      <label class="form-check-label" for="eng"> Engineer </label>
+    </div>
+    <!-- admin -->
+    <div class="form-check form-check-inline ml-3">
+      <input class="form-check-input" formControlName="admin" name="admin" type="checkbox" id="admin" />
+      <label class="form-check-label" for="admin"> Admin </label>
+    </div>
+    <!-- active -->
+    <div class="form-check form-check-inline ml-3">
+      <input class="form-check-input" formControlName="active" name="active" type="checkbox" id="admin" />
+      <label class="form-check-label" for="active"> Active User</label>
+    </div>
+    <!-- buttons -->
+    <div class="form-group">
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary">{{btnTxt}}</button>
+      </div>
+    </div>
+  </div>
+</form>

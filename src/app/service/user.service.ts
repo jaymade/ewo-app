@@ -68,6 +68,7 @@ export class UserService {
       active: true,
       _id: null
     };
+
     this.http
       .post<{ message: string; userId: string }>(
         'http://localhost:3000/api/users',

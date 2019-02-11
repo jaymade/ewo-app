@@ -4,5 +4,5 @@ export interface User {
   eng: boolean;
   admin: boolean;
   active: boolean;
-  _id?: string;
+  _id: string;
 }

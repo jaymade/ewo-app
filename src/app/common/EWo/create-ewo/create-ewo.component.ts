@@ -11,7 +11,7 @@ import { Ewo } from '../../../models/ewo.model';
   styleUrls: ['./create-ewo.component.scss']
 })
 export class CreateEwoComponent implements OnInit {
-  form: FormGroup;
+  ewoForm: FormGroup;
   enteredTitle = '';
   enteredDescript = '';
   isLoading = false;
@@ -23,7 +23,7 @@ export class CreateEwoComponent implements OnInit {
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.form = new FormGroup({
+    this.ewoForm = new FormGroup({
       title: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
@@ -44,7 +44,7 @@ export class CreateEwoComponent implements OnInit {
             descript: ewoData.descript,
             status: ewoData.status
           };
-          this.form.setValue({
+          this.ewoForm.setValue({
             title: this.ewo.title,
             descript: this.ewo.descript,
             status: this.ewo.status
@@ -57,20 +57,20 @@ export class CreateEwoComponent implements OnInit {
     });
   }
   onSaveEwo() {
-    if (this.form.invalid) {
+    if (this.ewoForm.invalid) {
       return;
     }
     this.isLoading = true;
     if (this.mode === 'create') {
-      this.ewoService.addEwo(this.form.value.title, this.form.value.descript); // check to see if status needs adding
+      this.ewoService.addEwo(this.ewoForm.value.title, this.ewoForm.value.descript); // check to see if status needs adding
     } else {
       this.ewoService.updateEwo(
         this.ewoId,
-        this.form.value.title,
-        this.form.value.descript,
-        this.form.value.status
+        this.ewoForm.value.title,
+        this.ewoForm.value.descript,
+        this.ewoForm.value.status
       );
     }
-    this.form.reset();
+    this.ewoForm.reset();
   }
 }

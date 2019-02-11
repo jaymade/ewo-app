@@ -1,0 +1,40 @@
+<h4>User List</h4>
+
+<!-- loading spinner -->
+<div class="spinner-border text-info mx-auto" role="status" *ngIf="isLoading">
+  <span class="sr-only">Loading...</span>
+</div>
+
+<!-- USER table -->
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">PassWord</th>
+      <th scope="col">Engineer</th>
+      <th scope="col">Admin</th>
+      <th scope="col">Active</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.userId }}</td>
+      <td>{{ user.pw }}</td>
+      <td>{{ user.eng }}</td>
+      <td>{{ user.admin }}</td>
+      <td>{{ user.active }}</td>
+      <td>
+        <button class="btn btn-primary">
+          <i class="far fa-edit"></i>
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-danger">
+          <i class="fas fa-user-minus"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

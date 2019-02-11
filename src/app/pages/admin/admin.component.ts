@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from '@angular/forms';
 import { UserService } from '../../service/user.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Response, Headers, RequestOptions } from '@angular/http';
+import { User } from '../../models/user.model';
+import { Subscription } from 'rxjs';
 
 // import userlist from '../../../assets/data/users.json';
 @Component({
@@ -10,37 +18,6 @@ import { Response, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
-  userForm: FormGroup;
-  submitted = false;
-  userlist = [];
-
-  ngOnInit() {
-    this.userForm = this.fb.group(
-      {
-        userId: ['', Validators.required, Validators.email],
-        pw: ['', [Validators.required, Validators.minLength(6)]],
-        pwConfirm: ['', Validators.required],
-        eng: true,
-        admin: false,
-        active: true
-      }
-    );
-  }
-
-  // convenience getter for easy access to form fields
-  get f(): any {
-    return this.userForm.controls;
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    // stop if invalid
-    if (this.userForm.invalid) {
-      return;
-    }
-
-
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.userForm.value));
-  }
+  constructor() {}
+  ngOnInit() {}
 }

@@ -16,7 +16,7 @@ var userSchema = mongoose.Schema({
     type: Boolean
   },
   active: {
-    type: String,
+    type: Boolean,
   },
     _id: {
       type: String

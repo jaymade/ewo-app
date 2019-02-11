@@ -22,6 +22,8 @@ import { UserService } from './service/user.service';
 import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CreateUserComponent } from './common/admin/create-user/create-user.component';
+import { UserListComponent } from './common/admin/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     CreateEwoComponent,
     EngineerComponent,
     ConfirmEqualDirective,
-    NotFoundComponent
+    NotFoundComponent,
+    CreateUserComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

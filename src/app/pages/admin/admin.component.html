@@ -1,95 +1,9 @@
 <h2 class="mb-5">Administration View</h2>
-<h4>User List</h4>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Personel</th>
-      <th scope="col">Engineer</th>
-      <th scope="col">Admin</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of userlist">
-      <td>{{ user.username }}</td>
-      <td>{{ user.pw }}</td>
-      <td>{{ user.eng }}</td>
-      <td>{{ user.admin }}</td>
-      <td>
-        <button class="btn btn-primary" (click)="edit()">
-          <i class="far fa-edit"></i>
-        </button>
-      </td>
-      <td>
-        <button class="btn btn-danger" (click)="delete()">
-          <i class="fas fa-user-minus"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<app-user-list></app-user-list>
+<app-create-user></app-create-user>
 
-<h4>Add / Edit User</h4>
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
-  <!-- userId -->
-  <div class="form-group">
-    <label>eMail: </label>
-    <input type="email" formControlName="userId" class="form-control" [ngClass]="{ 'is-invalid': f.userId.errors && f.userId.touched   }"
-      name="userId" placeholder="user name is your email address" />
-    <div *ngIf="f.userId.touched && f.userId.errors" class="invalid-feedback">
-      <div *ngIf="f.userId.errors.required">Email is required</div>
-      <div *ngIf="f.userId.errors.email">Email must be a valid email address</div>
-    </div>
-  </div>
-  <!-- PW1 -->
-  <div class="form-group">
-    <label for="pw">Password: </label>
-    <input class="form-control mr-3" type="text" formControlName="pw" name="pw" id="pw" placeholder="password"
-      [ngClass]="{ 'is-invalid': f.userId.errors && f.userId.touched   }" />
-    <div *ngIf="f.pw.touched && f.pw.errors" class="invalid-feedback">
-      <div *ngIf="f.pw.errors.required">Password is required</div>
-      <div *ngIf="f.pw.errors.minlength">Password must be at least 6 characters</div>
-    </div>
-  </div>
-  <!-- PW2 -->
-  <div class="form-group">
-    <label for="pwConfirm"> Confirm Password: </label>
-    <input class="form-control mr-3" type="text" class="form-control mr-3" formControlName="pwConfirm" appConfirmEqual="pw"
-      name="pwConfirm" id="pwConfirm" placeholder="match password" [ngClass]="{ 'is-invalid': f.pwConfirm.errors && f.pwConfirm.touched   }" />
-    <div *ngIf="f.pwConfirm.touched && f.pwConfirm.errors" class="invalid-feedback">
-      <div *ngIf="f.pwConfirm.errors.required">Confirm Password is required</div>
-      <div *ngIf="f.pwConfirm.errors?.notEqual">Passwords must match</div>
-    </div>
-  </div>
-  <!-- permissions -->
-  <div class="form-group">
-    <label for="">Permissions: </label>
-    <!-- eng -->
-    <div class="form-check form-check-inline ml-3">
-      <input class="form-check-input" formControlName="eng" name="eng" type="checkbox" id="eng" required />
-      <label class="form-check-label" for="eng"> Engineer </label>
-    </div>
-    <!-- admin -->
-    <div class="form-check form-check-inline ml-3">
-      <input class="form-check-input" formControlName="admin" name="admin" type="checkbox" id="admin" />
-      <label class="form-check-label" for="admin"> Admin </label>
-    </div>
-    <!-- active -->
-    <div class="form-check form-check-inline ml-3">
-      <input class="form-check-input" formControlName="active" name="active" type="checkbox" id="admin" />
-      <label class="form-check-label" for="active"> Active User</label>
-    </div>
-    <!-- buttons -->
-    <div class="form-group">
-      <div class="btn-group">
-        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
-      </div>
-    </div>
-  </div>
-</form>
-<code>
+<!-- <code>
   Form touched: {{ userForm.touched }}<br />
   Form dirty:{{ userForm.dirty }}<br />
   Form Valid: {{ userForm.dirty }}<br />
@@ -99,6 +13,5 @@
   pwConfirm dirty: {{ userForm.get('pwConfirm').dirty }}<br />
   pwConfirm Valid: {{ userForm.get('pwConfirm').valid }}<br />
   pwConfirm Values: {{ userForm.get('pwConfirm').value }}<br />
-  pwConfirm notEqual: {{ f.pwConfirm.errors.notEqual }}<br />
-  pwConfirm required: {{ f.pwConfirm.errors?.required }}<br />
 </code>
+ -->
