@@ -17,10 +17,8 @@ var userSchema = mongoose.Schema({
   },
   active: {
     type: Boolean,
-  },
-    _id: {
-      type: String
-    }
+  }
+
 });
 
 // Compile model from schema
