@@ -10,11 +10,10 @@ import { UserService } from '../../../service/user.service';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit, OnDestroy {
-
   users: User[] = [];
   isLoading = false;
   private usersSub: Subscription;
-  constructor( public userService: UserService) {}
+  constructor(public userService: UserService) {}
 
   ngOnInit() {
     this.isLoading = true;

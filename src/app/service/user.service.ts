@@ -78,7 +78,7 @@ export class UserService {
         user._id = id;
         this.users.push(user);
         this.usersUpdated.next([...this.users]);
-        // this.router.navigate(['/']);
+        this.router.navigate(['/admin']);
       });
   }
 
@@ -106,7 +106,7 @@ export class UserService {
         updatedUsers[oldUserIndex] = user;
         this.users = updatedUsers;
         this.usersUpdated.next([...this.users]);
-        this.router.navigate(['/']);
+        this.router.navigate(['/admin']);
       });
   }
   // delete user
