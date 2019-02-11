@@ -33,34 +33,34 @@
 <h4>Add / Edit User</h4>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
-  <!-- uname -->
+  <!-- userId -->
   <div class="form-group">
     <label>eMail: </label>
-    <input type="email" formControlName="uname" class="form-control" [ngClass]="{ 'is-invalid': f.uname.errors && f.uname.touched   }"
-      name="uname" placeholder="user name is your email address" />
-    <div *ngIf="f.uname.touched && f.uname.errors" class="invalid-feedback">
-      <div *ngIf="f.uname.errors.required">Email is required</div>
-      <div *ngIf="f.uname.errors.email">Email must be a valid email address</div>
+    <input type="email" formControlName="userId" class="form-control" [ngClass]="{ 'is-invalid': f.userId.errors && f.userId.touched   }"
+      name="userId" placeholder="user name is your email address" />
+    <div *ngIf="f.userId.touched && f.userId.errors" class="invalid-feedback">
+      <div *ngIf="f.userId.errors.required">Email is required</div>
+      <div *ngIf="f.userId.errors.email">Email must be a valid email address</div>
     </div>
   </div>
   <!-- PW1 -->
   <div class="form-group">
-    <label for="pw1">Password: </label>
-    <input class="form-control mr-3" type="text" formControlName="pw1" name="pw1" id="pw1" placeholder="password"
-      [ngClass]="{ 'is-invalid': f.uname.errors && f.uname.touched   }"/>
-    <div *ngIf="f.pw1.touched && f.pw1.errors" class="invalid-feedback">
-      <div *ngIf="f.pw1.errors.required">Password is required</div>
-      <div *ngIf="f.pw1.errors.minlength">Password must be at least 6 characters</div>
+    <label for="pw">Password: </label>
+    <input class="form-control mr-3" type="text" formControlName="pw" name="pw" id="pw" placeholder="password"
+      [ngClass]="{ 'is-invalid': f.userId.errors && f.userId.touched   }" />
+    <div *ngIf="f.pw.touched && f.pw.errors" class="invalid-feedback">
+      <div *ngIf="f.pw.errors.required">Password is required</div>
+      <div *ngIf="f.pw.errors.minlength">Password must be at least 6 characters</div>
     </div>
   </div>
   <!-- PW2 -->
   <div class="form-group">
-    <label for="pw2"> Confirm Password: </label>
-    <input class="form-control mr-3" type="text" class="form-control mr-3" formControlName="pw2" appConfirmEqual="pw1"
-      name="pw2" id="pw2" placeholder="match password" [ngClass]="{ 'is-invalid': f.pw2.errors && f.pw2.touched   }"/>
-    <div *ngIf="f.pw2.touched && f.pw2.errors" class="invalid-feedback">
-      <div *ngIf="f.pw2.errors.required">Confirm Password is required</div>
-      <div *ngIf="f.pw2.errors?.notEqual">Passwords must match</div>
+    <label for="pwConfirm"> Confirm Password: </label>
+    <input class="form-control mr-3" type="text" class="form-control mr-3" formControlName="pwConfirm" appConfirmEqual="pw"
+      name="pwConfirm" id="pwConfirm" placeholder="match password" [ngClass]="{ 'is-invalid': f.pwConfirm.errors && f.pwConfirm.touched   }" />
+    <div *ngIf="f.pwConfirm.touched && f.pwConfirm.errors" class="invalid-feedback">
+      <div *ngIf="f.pwConfirm.errors.required">Confirm Password is required</div>
+      <div *ngIf="f.pwConfirm.errors?.notEqual">Passwords must match</div>
     </div>
   </div>
   <!-- permissions -->
@@ -68,27 +68,23 @@
     <label for="">Permissions: </label>
     <!-- eng -->
     <div class="form-check form-check-inline ml-3">
-      <input class="form-check-input" formControlName="check_eng" name="check_eng" type="checkbox" id="check_eng"
-        required />
-      <label class="form-check-label" for="check_eng"> Engineer </label>
+      <input class="form-check-input" formControlName="eng" name="eng" type="checkbox" id="eng" required />
+      <label class="form-check-label" for="eng"> Engineer </label>
     </div>
     <!-- admin -->
     <div class="form-check form-check-inline ml-3">
-      <input class="form-check-input" formControlName="check_admin" name="check_admin" type="checkbox" id="check_admin" />
-      <label class="form-check-label" for="check_admin"> Admin </label>
+      <input class="form-check-input" formControlName="admin" name="admin" type="checkbox" id="admin" />
+      <label class="form-check-label" for="admin"> Admin </label>
     </div>
     <!-- active -->
     <div class="form-check form-check-inline ml-3">
-      <input class="form-check-input" formControlName="check_active" name="check_active" type="checkbox" id="check_admin" />
-      <label class="form-check-label" for="check_active"> Active User</label>
+      <input class="form-check-input" formControlName="active" name="active" type="checkbox" id="admin" />
+      <label class="form-check-label" for="active"> Active User</label>
     </div>
     <!-- buttons -->
     <div class="form-group">
       <div class="btn-group">
         <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
-        <button type="button" class="btn btn-secondary" (click)="onLoadDataClick()">
-          Load User
-        </button>
       </div>
     </div>
   </div>
@@ -99,10 +95,10 @@
   Form Valid: {{ userForm.dirty }}<br />
   Form Values: {{ userForm.value | json }}<br />
   <hr />
-  pw2 touched: {{ userForm.get('pw2').touched }}<br />
-  pw2 dirty: {{ userForm.get('pw2').dirty }}<br />
-  pw2 Valid: {{ userForm.get('pw2').valid }}<br />
-  pw2 Values: {{ userForm.get('pw2').value }}<br />
-  pw2 notEqual: {{ f.pw2.errors.notEqual }}<br />
-  pw2 required: {{ f.pw2.errors?.required }}<br />
+  pwConfirm touched: {{ userForm.get('pwConfirm').touched }}<br />
+  pwConfirm dirty: {{ userForm.get('pwConfirm').dirty }}<br />
+  pwConfirm Valid: {{ userForm.get('pwConfirm').valid }}<br />
+  pwConfirm Values: {{ userForm.get('pwConfirm').value }}<br />
+  pwConfirm notEqual: {{ f.pwConfirm.errors.notEqual }}<br />
+  pwConfirm required: {{ f.pwConfirm.errors?.required }}<br />
 </code>

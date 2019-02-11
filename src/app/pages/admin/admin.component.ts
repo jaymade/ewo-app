@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../service/user.service';
 import { Response, Headers, RequestOptions } from '@angular/http';
-import { createOfflineCompileUrlResolver } from '@angular/compiler';
-// import { MustMatch } from '../../_helpers/must-match.validator';
-import { ConfirmEqualDirective } from './../../_helpers/confirm-equal.directive';
 
 // import userlist from '../../../assets/data/users.json';
 @Component({
@@ -21,12 +18,12 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.userForm = this.fb.group(
       {
-        uname: ['', Validators.required, Validators.email],
-        pw1: ['', [Validators.required, Validators.minLength(6)]],
-        pw2: ['', Validators.required],
-        check_eng: true,
-        check_admin: false,
-        check_active: true
+        userId: ['', Validators.required, Validators.email],
+        pw: ['', [Validators.required, Validators.minLength(6)]],
+        pwConfirm: ['', Validators.required],
+        eng: true,
+        admin: false,
+        active: true
       }
     );
   }
@@ -46,17 +43,4 @@ export class AdminComponent implements OnInit {
 
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.userForm.value));
   }
-  onLoadDataClick(): void {
-    // this.userForm.setValue({
-    //   uname: 'enewton',
-    //   pw1: 'paaaaswd',
-    //   pw2: 'paaswd',
-    //   check_eng: true,
-    //   check_admin: true,
-    //   check_active: true
-    // });
-  }
-  save() {}
-  delete() {}
-  edit() {}
 }
