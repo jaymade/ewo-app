@@ -6,6 +6,7 @@ $gray: rgb(75, 75, 75);
 $blue: #003cb4;
 $red: #f90303;
 $black: #000000;
+$green: #135e00;
 /* You can add global styles to this file, and also import other style files */
 
 // colors
@@ -14,6 +15,9 @@ $black: #000000;
 }
 .pink {
   color: $pink;
+}
+.green {
+  color: $green;
 }
 .orange {
   color: $orange;
@@ -72,6 +76,9 @@ header {
 footer {
   border-top: 1px solid #ccc;
   padding-top: 1rem;
+  .stack {
+    max-height: 5rem;
+  }
 }
 
 

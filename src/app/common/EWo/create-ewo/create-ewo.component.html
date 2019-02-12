@@ -18,9 +18,10 @@
 
   <div class="form-group">
     <label for="input_descript">Description of Project: </label>
-    <textarea class="form-control" rows="4" formControlName="descript" placeholder="What we doing?" [ngClass]="{ 'is-invalid': ewoForm.get('descript').invalid && ewoForm.get('descript').touched }" ></textarea>
-   
-    <div *ngIf="ewoForm.get('descript').touched && ewoForm.get('descript').errors" class="invalid-feedback"> Give us an idea of what you need done.
+    <textarea class="form-control" rows="4" formControlName="descript" placeholder="What we doing?" [ngClass]="{ 'is-invalid': ewoForm.get('descript').invalid && ewoForm.get('descript').touched }"></textarea>
+
+    <div *ngIf="ewoForm.get('descript').touched && ewoForm.get('descript').errors" class="invalid-feedback"> Give us an
+      idea of what you need done.
     </div>
   </div>
 
