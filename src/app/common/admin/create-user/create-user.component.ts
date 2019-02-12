@@ -54,7 +54,7 @@ export class CreateUserComponent implements OnInit {
             admin: userData.admin,
             active: userData.active
           };
-          console.log('This User: ', this.user);
+          // console.log('This User: ', this.user);
           this.userForm.setValue({
             uname: this.user.uname,
             pw: this.user.pw,

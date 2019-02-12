@@ -61,7 +61,7 @@ router.get("/:id", (req, res, next) => {
 
 // delete ewo by ID
 router.delete('/:_id', (req, res, next) => {
-  console.log('Check _id', req.params);
+  // console.log('Check _id', req.params);
   Ewo.deleteOne({
       _id: req.params._id
     })

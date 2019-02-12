@@ -73,7 +73,7 @@ export class UserService {
         user
       )
       .subscribe(responseData => {
-        console.log('user resData: ', responseData.message);
+        // console.log('user resData: ', responseData.message);
         const id = responseData.userId;
         user._id = id;
         this.users.push(user);
