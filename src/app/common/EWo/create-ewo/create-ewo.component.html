@@ -11,23 +11,22 @@
   <!-- ewo title -->
   <div class="form-group">
     <label for="input_title">EWO Title: </label>
-    <input class="form-control" type="text" formControlName="title"  placeholder=" What we calling it?"
-      >
-    <div *ngIf="ewoForm.get('title').invalid">
-      <p class="invalid-feedback"> Need a title</p>
+    <input class="form-control" type="text" formControlName="title" placeholder=" What we calling it?" [ngClass]="{ 'is-invalid': ewoForm.get('title').invalid && ewoForm.get('title').touched }" />
+    <div *ngIf="ewoForm.get('title').touched && ewoForm.get('title').errors" class="invalid-feedback"> Need a title
     </div>
   </div>
 
   <div class="form-group">
     <label for="input_descript">Description of Project: </label>
-    <textarea class="form-control" rows="4" formControlName="descript" placeholder="What we doing?"
-      ></textarea>
-    <div *ngIf="ewoForm.get('descript').invalid" class="invalid-feedback"> Need some input </div>
+    <textarea class="form-control" rows="4" formControlName="descript" placeholder="What we doing?" [ngClass]="{ 'is-invalid': ewoForm.get('descript').invalid && ewoForm.get('descript').touched }" ></textarea>
+   
+    <div *ngIf="ewoForm.get('descript').touched && ewoForm.get('descript').errors" class="invalid-feedback"> Give us an idea of what you need done.
+    </div>
   </div>
 
   <div class="form-group">
     <label for="status">Status: </label>
-    <select class="form-control"  formControlName="status">
+    <select class="form-control" formControlName="status">
       <option selected>Update Status</option>
       <option value="active">Active</option>
       <option value="closed">Closed</option>

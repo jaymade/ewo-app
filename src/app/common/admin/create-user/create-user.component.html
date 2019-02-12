@@ -34,8 +34,8 @@
     <input class="form-control mr-3" type="text" class="form-control mr-3" formControlName="pwConfirm" appConfirmEqual="pw"
       name="pwConfirm" id="pwConfirm" placeholder="match password" [ngClass]="{ 'is-invalid': userForm.get('pwConfirm').invalid && userForm.get('pwConfirm').touched   }" />
     <div *ngIf="userForm.get('pwConfirm').touched && userForm.get('pwConfirm').invalid" class="invalid-feedback">
-      <!-- <div *ngIf="userForm.get('pwConfirm').errors.required">Confirm Password is required</div>
-      <div *ngIf="userForm.get('pw').errors?.notEqual">Passwords must match</div> -->
+      <div *ngIf="userForm.get('pw').errors">Confirm must Match</div>
+      <!-- <div *ngIf="userForm.get('pw').errors?.notEqual">Passwords must match</div> -->
     </div>
   </div>
   <!-- permissions -->
