@@ -18,6 +18,8 @@ export class CreateEwoComponent implements OnInit {
   ewo: Ewo;
   mode = 'create';
   btnTxt = 'Add Ewo';
+  timeStamp = this.currentDate();
+
   private ewoId: string;
 
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
@@ -53,7 +55,8 @@ export class CreateEwoComponent implements OnInit {
           this.ewoForm.setValue({
             title: this.ewo.title,
             descript: this.ewo.descript,
-            status: this.ewo.status
+            status: this.ewo.status,
+
           });
         });
       } else {
@@ -62,13 +65,21 @@ export class CreateEwoComponent implements OnInit {
       }
     });
   }
+
+  currentDate() {
+    const timeStamp = new Date();
+    return timeStamp;
+
+  }
   onSaveEwo() {
     if (this.ewoForm.invalid) {
       return;
     }
     this.isLoading = true;
     if (this.mode === 'create') {
-      this.ewoService.addEwo(this.ewoForm.value.title, this.ewoForm.value.descript); // check to see if status needs adding
+      this.ewoService.addEwo(
+        this.ewoForm.value.title,
+        this.ewoForm.value.descript, ); // check to see if status needs adding
     } else {
       this.ewoService.updateEwo(
         this.ewoId,

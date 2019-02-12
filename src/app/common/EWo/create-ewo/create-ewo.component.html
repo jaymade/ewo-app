@@ -7,11 +7,12 @@
 
 
 <form class="mt-5 mb-5" (submit)="onSaveEwo()" [formGroup]="ewoForm" *ngIf="!isLoading">
+  <p>{{timeStamp | date}}</p>
 
   <!-- ewo starter -->
   <div class="form-group">
     <label for="input_starter">Your Name: </label>
-    <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?" 
+    <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?"
     [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
     <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a contact name
     </div>
@@ -20,7 +21,7 @@
   <div class="form-group">
     <label for="input_team">Team / Department: </label>
     <input class="form-control" type="text" formControlName="team" placeholder=" What department?" />
-   
+
   </div>
   <!-- ewo title -->
   <div class="form-group">
