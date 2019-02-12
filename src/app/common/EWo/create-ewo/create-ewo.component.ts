@@ -17,7 +17,7 @@ export class CreateEwoComponent implements OnInit {
   isLoading = false;
   ewo: Ewo;
   mode = 'create';
-  btnTxt = 'Save';
+  btnTxt = 'Add Ewo';
   private ewoId: string;
 
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
@@ -27,13 +27,15 @@ export class CreateEwoComponent implements OnInit {
       title: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
-      descript: new FormControl(null, { validators: [Validators.required] }),
-      status: new FormControl('active', { validators: [Validators.required] })
+      descript: new FormControl(null, {
+        validators: [Validators.required] }),
+      status: new FormControl('active', {
+        validators: [Validators.required] })
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('ewoId')) {
         this.mode = 'edit';
-        this.btnTxt = 'Update';
+        this.btnTxt = 'Update EWO';
         this.ewoId = paramMap.get('ewoId');
         this.isLoading = true;
         this.ewoService.getEwo(this.ewoId).subscribe(ewoData => {

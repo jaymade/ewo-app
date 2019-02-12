@@ -1,5 +1,5 @@
 export interface User {
-  userId: string;
+  uname: string;
   pw: string;
   eng: boolean;
   admin: boolean;

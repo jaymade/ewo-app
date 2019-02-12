@@ -1,9 +1,9 @@
 // Define schema
 var mongoose = require("mongoose");
 var ewoSchema = mongoose.Schema({
-  userId: {
-    type: String
-  },
+  // userId: {
+  //   type: String
+  // },
   ewoId: {
     type: Number
   },

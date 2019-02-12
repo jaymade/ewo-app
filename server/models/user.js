@@ -1,7 +1,7 @@
 // Define schema
 var mongoose = require("mongoose");
 var userSchema = mongoose.Schema({
-  userId: {
+  uname: {
     type: String,
     required: true
   },

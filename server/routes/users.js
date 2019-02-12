@@ -5,7 +5,7 @@ const router = express.Router();
 // post user
 router.post('', (req, res, next) => {
   const user = new User({
-    userId: req.body.userId,
+    uname: req.body.uname,
     pw: req.body.pw,
     eng: req.body.eng,
     admin: req.body.admin,
@@ -26,7 +26,7 @@ router.post('', (req, res, next) => {
 router.put("/:id", (req, res, next) => {
   const user = new User({
     _id: req.body._id,
-    userId: req.body.userId,
+    uname: req.body.uname,
     pw: req.body.pw,
     eng: req.body.eng,
     admin: req.body.admin,

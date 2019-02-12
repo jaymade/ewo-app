@@ -20,15 +20,15 @@
   </thead>
   <tbody>
     <tr *ngFor="let user of users">
-      <td>{{ user.userId }}</td>
+      <td>{{ user.uname }}</td>
       <td>{{ user.pw }}</td>
       <td>{{ user.eng }}</td>
       <td>{{ user.admin }}</td>
       <td>{{ user.active }}</td>
       <td>
-        <button class="btn btn-primary">
+        <a class="btn btn-primary" [routerLink]="['/useredit', user._id]">
           <i class="far fa-edit"></i>
-        </button>
+        </a>
       </td>
       <td>
         <button class="btn btn-danger" (click)="onDeleteUser(user._id)">

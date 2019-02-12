@@ -18,13 +18,13 @@ export class CreateUserComponent implements OnInit {
   user: User;
   mode = 'create';
   btnTxt = 'Add User';
-  private uId: string;
+  private userId: string;
 
   constructor(public userService: UserService, public route: ActivatedRoute) {}
 
   ngOnInit() {
     this.userForm = new FormGroup({
-      userId: new FormControl(null, {
+      uname: new FormControl(null, {
         validators: [Validators.required, Validators.email]
       }),
       pw: new FormControl(null, {
@@ -35,27 +35,30 @@ export class CreateUserComponent implements OnInit {
       }),
       eng: new FormControl(true),
       admin: new FormControl(false),
-      active: new FormControl(false)
+      active: new FormControl(true)
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('uId')) {
+      if (paramMap.has('userId')) {
         this.mode = 'edit';
-        this.btnTxt = 'Update';
-        this.uId = paramMap.get('uId');
+        this.btnTxt = 'Update User';
+        this.userId = paramMap.get('userId');
+        // console.log('User ID: ', this.userId);
         this.isLoading = true;
-        this.userService.getUser(this.uId).subscribe(userData => {
+        this.userService.getUser(this.userId).subscribe(userData => {
           this.isLoading = false;
           this.user = {
             _id: userData._id,
-            userId: userData.userId,
+            uname: userData.uname,
             pw: userData.pw,
             eng: userData.eng,
             admin: userData.admin,
             active: userData.active
           };
+          console.log('This User: ', this.user);
           this.userForm.setValue({
-            userId: this.user.userId,
+            uname: this.user.uname,
             pw: this.user.pw,
+            pwConfirm: this.user.pw, // to match pw on db user call
             eng: this.user.eng,
             admin: this.user.admin,
             active: this.user.active
@@ -63,7 +66,7 @@ export class CreateUserComponent implements OnInit {
         });
       } else {
         this.mode = 'create';
-        this.uId = null;
+        this.userId = null;
       }
     });
   }
@@ -75,7 +78,7 @@ export class CreateUserComponent implements OnInit {
     this.isLoading = true;
     if (this.mode === 'create') {
       this.userService.addUser(
-        this.userForm.value.userId,
+        this.userForm.value.uname,
         this.userForm.value.pw,
         this.userForm.value.eng,
         this.userForm.value.admin,
@@ -83,8 +86,8 @@ export class CreateUserComponent implements OnInit {
       ); // check to see if status needs adding
     } else {
       this.userService.updateUser(
-        this.uId,
-        this.userForm.value.userId,
+        this.userId,
+        this.userForm.value.uname,
         this.userForm.value.pw,
         this.userForm.value.eng,
         this.userForm.value.admin,

@@ -15,7 +15,6 @@ import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component
 import { LoginComponent } from './common/login/login.component';
 // pages
 import { EngineerComponent } from './pages/engineer/engineer.component';
-import { AdminComponent } from './pages/admin/admin.component';
 // services
 import { EwoService } from './service/ewo.service';
 import { UserService } from './service/user.service';
@@ -30,7 +29,6 @@ import { UserListComponent } from './common/admin/user-list/user-list.component'
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AdminComponent,
     NavComponent,
     EwoListComponent,
     LoginComponent,

@@ -8,14 +8,14 @@
 
 <form [formGroup]="userForm" (ngSubmit)="onSaveUser()" [formGroup]="userForm" *ngIf="!isLoading">
 
-  <!-- userId -->
+  <!-- uname -->
   <div class="form-group">
-    <label for="userId">User ID: </label>
-    <input type="email" formControlName="userId" class="form-control" [ngClass]="{ 'is-invalid': userForm.get('userId').invalid && userForm.get('userId').touched }"
-      name="userId" placeholder="user ID is your Newton email address" />
-    <div *ngIf="userForm.get('userId').touched && userForm.get('userId').invalid" class="invalid-feedback">
-      <div *ngIf="userForm.get('userId').errors">Email is required</div>
-      <div *ngIf="userForm.get('userId').errors">Email must be a valid email address</div>
+    <label for="uname">User ID: </label>
+    <input type="email" formControlName="uname" class="form-control" [ngClass]="{ 'is-invalid': userForm.get('uname').invalid && userForm.get('uname').touched }"
+      name="uname" placeholder="user ID is your Newton email address" />
+    <div *ngIf="userForm.get('uname').touched && userForm.get('uname').invalid" class="invalid-feedback">
+      <div *ngIf="userForm.get('uname').errors">Email is required</div>
+      <div *ngIf="userForm.get('uname').errors">Email must be a valid email address</div>
     </div>
   </div>
   <!-- PW1 -->

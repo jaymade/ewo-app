@@ -12,7 +12,7 @@ export class EwoService {
   private ewos: Ewo[] = [];
   private ewosUpdated = new Subject<Ewo[]>();
 
-  constructor(private http: HttpClient, private router: Router ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getEwoList() {
     this.http
@@ -85,10 +85,11 @@ export class EwoService {
         updatedEwos[oldEwosIndex] = ewo;
         this.ewos = updatedEwos;
         this.ewosUpdated.next([...this.ewos]);
-        this.router.navigate(['/']);
-
+        this.router.navigate(['/ewos']);
       });
   }
+
+  // delete EWO
   deleteEwo(ewoId: string) {
     this.http
       .delete('http://localhost:3000/api/ewos/' + ewoId)

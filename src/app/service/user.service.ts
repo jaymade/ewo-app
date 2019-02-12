@@ -39,7 +39,7 @@ export class UserService {
     // return { ...this.ewos.find(e => e._id === id) };
     return this.http.get<{
       _id: string;
-      userId: string;
+      uname: string;
       pw: string;
       eng: boolean;
       admin: boolean;
@@ -52,14 +52,14 @@ export class UserService {
   }
 
   addUser(
-    userId: string,
+    uname: string,
     pw: string,
     admin: boolean,
     eng: boolean,
     active: boolean
   ) {
     const user: User = {
-      userId: userId,
+      uname: uname,
       pw: pw,
       eng: eng,
       admin: admin,
@@ -78,13 +78,13 @@ export class UserService {
         user._id = id;
         this.users.push(user);
         this.usersUpdated.next([...this.users]);
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/users']);
       });
   }
 
   updateUser(
     _id: string,
-    userId: string,
+    uname: string,
     pw: string,
     eng: boolean,
     admin: boolean,
@@ -92,7 +92,7 @@ export class UserService {
   ) {
     const user: User = {
       _id: _id,
-      userId: userId,
+      uname: uname,
       pw: pw,
       eng: eng,
       admin: admin,
@@ -106,7 +106,7 @@ export class UserService {
         updatedUsers[oldUserIndex] = user;
         this.users = updatedUsers;
         this.usersUpdated.next([...this.users]);
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/users']);
       });
   }
   // delete user
