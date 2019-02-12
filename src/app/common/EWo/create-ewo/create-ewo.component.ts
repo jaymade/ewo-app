@@ -24,6 +24,10 @@ export class CreateEwoComponent implements OnInit {
 
   ngOnInit() {
     this.ewoForm = new FormGroup({
+      starter: new FormControl(null, {
+        validators: [Validators.required, Validators.minLength(3)]
+      }),
+      team: new FormControl(null),
       title: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
