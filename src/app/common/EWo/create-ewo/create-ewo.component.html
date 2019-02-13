@@ -12,17 +12,31 @@
   <!-- ewo starter -->
   <div class="form-group">
     <label for="input_starter">Your Name: </label>
-    <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?"
-    [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
-    <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a contact name
+    <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?" [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
+    <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a
+      contact name
     </div>
   </div>
-  <!-- ewo team -->
-  <div class="form-group">
-    <label for="input_team">Team / Department: </label>
-    <input class="form-control" type="text" formControlName="team" placeholder=" What department?" />
 
+  <!-- department -->
+  <div class="form-group">
+    <label for="status">Team / Department: </label>
+    <select class="form-control" formControlName="team">
+      <option selected>Choose One</option>
+      <option *ngFor="let dept of departments" value="{{dept.id}}">{{dept.name}}</option>
+    </select>
   </div>
+
+  <!-- Request Type -->
+  <div class="form-group">
+    <label for="status">Request Type: </label>
+    <select class="form-control" formControlName="type">
+      <option selected>Choose One</option>
+      <option *ngFor="let req of request" value="{{req.id}}">{{req.name}}</option>
+    </select>
+  </div>
+
+
   <!-- ewo title -->
   <div class="form-group">
     <label for="input_title">EWO Title: </label>

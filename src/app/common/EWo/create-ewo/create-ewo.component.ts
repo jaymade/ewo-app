@@ -4,6 +4,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { EwoService } from '../../../service/ewo.service';
 import { Ewo } from '../../../models/ewo.model';
+import { Departments } from './../../../models/departments.model';
+import { Request } from './../../../models/reqtype.model';
 
 @Component({
   selector: 'app-create-ewo',
@@ -11,6 +13,37 @@ import { Ewo } from '../../../models/ewo.model';
   styleUrls: ['./create-ewo.component.scss']
 })
 export class CreateEwoComponent implements OnInit {
+  departments: Departments[] = [
+    { id: 'Telcom -Sales', name: 'Telcom -Sales'},
+    { id: 'Contract - Sales', name: 'Contract - Sales'},
+    { id: 'Dimension Change', name: 'Dimension Change'},
+    { id: 'Development', name: 'Development'},
+    { id: 'Purchasing', name: 'Purchasing'},
+    { id: 'Quaility', name: 'Quaility'},
+    { id: 'Sr-MGR Team', name: 'Sr-MGR Team'},
+    { id: 'MNFT Engineer', name: 'MNFT Engineer'},
+    { id: 'Sheet Metal', name: 'Sheet Metal'},
+    { id: 'Heavy Metal', name: 'Heavy Metal'},
+    { id: 'Welding', name: 'Welding'},
+    { id: 'Finishing', name: 'Finishing'},
+    { id: 'Assembly', name: 'Assembly'},
+    { id: 'Kitting', name: 'Kitting'}
+  ];
+  request: Request[] = [
+    { id: 'Assembly', name: 'Assembly' },
+    { id: 'Color Change', name: 'Color Change' },
+    { id: 'Tolerance Change', name: 'Tolerance Change' },
+    { id: 'Fixture', name: 'Fixture' },
+    { id: 'Process Change Request', name: 'Process Change Request' },
+    { id: 'Machine Program', name: 'Machine Program' },
+    { id: 'New Design', name: 'New Design' },
+    { id: 'Part Modification', name: 'Part Modification' },
+    { id: 'New Color', name: 'New Color' },
+    { id: 'Miscellaneous', name: 'Miscellaneous' },
+    { id: 'Quote', name: 'Quote' },
+    { id: 'Part Number', name: 'Part Number' },
+    { id: 'Routing Change', name: 'Routing Change' }
+  ];
   ewoForm: FormGroup;
   enteredTitle = '';
   enteredDescript = '';
