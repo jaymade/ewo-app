@@ -4,8 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { EwoService } from '../../../service/ewo.service';
 import { Ewo } from '../../../models/ewo.model';
-import { Departments } from './../../../models/departments.model';
-import { Request } from './../../../models/reqtype.model';
+import { Select } from '../../../models/select.model';
 
 @Component({
   selector: 'app-create-ewo',
@@ -13,7 +12,8 @@ import { Request } from './../../../models/reqtype.model';
   styleUrls: ['./create-ewo.component.scss']
 })
 export class CreateEwoComponent implements OnInit {
-  departments: Departments[] = [
+  departments: Select[] = [
+    { id: 'choose', name: 'Choose One' },
     { id: 'Telcom -Sales', name: 'Telcom -Sales'},
     { id: 'Contract - Sales', name: 'Contract - Sales'},
     { id: 'Dimension Change', name: 'Dimension Change'},
@@ -29,7 +29,9 @@ export class CreateEwoComponent implements OnInit {
     { id: 'Assembly', name: 'Assembly'},
     { id: 'Kitting', name: 'Kitting'}
   ];
-  request: Request[] = [
+
+  requests: Select[] = [
+    { id: 'choose', name: 'Choose One' },
     { id: 'Assembly', name: 'Assembly' },
     { id: 'Color Change', name: 'Color Change' },
     { id: 'Tolerance Change', name: 'Tolerance Change' },
@@ -43,6 +45,22 @@ export class CreateEwoComponent implements OnInit {
     { id: 'Quote', name: 'Quote' },
     { id: 'Part Number', name: 'Part Number' },
     { id: 'Routing Change', name: 'Routing Change' }
+  ];
+  priorities: Select[] = [
+    { id: 'choose', name: 'Choose One' },
+    { id: '1', name: '1-When You Can' },
+    { id: '2', name: '2-ASAP' },
+    { id: '3', name: '3-Order Pending' },
+    { id: '4', name: '4-Urgent' },
+    { id: '5', name: '5-Hot Stuff' }
+  ];
+  statuses: Select[] = [
+    { id: 'choose', name: 'Choose One' },
+    { id: '1', name: '1-Unassigned' },
+    { id: '2', name: '2-Assigned' },
+    { id: '3', name: '3-Completed' },
+    { id: '4', name: '4-Canceled' },
+    { id: '5', name: '5-Hold' }
   ];
   ewoForm: FormGroup;
   enteredTitle = '';
@@ -62,14 +80,22 @@ export class CreateEwoComponent implements OnInit {
       starter: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
-      team: new FormControl(null),
+
+      team: new FormControl('choose', {
+        validators: [Validators.required]
+      }),
+      request: new FormControl('choose', {
+        validators: [Validators.required]
+      }),
+      priority: new FormControl('choose', {
+        validators: [Validators.required]
+      }),
       title: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
       descript: new FormControl(null, {
         validators: [Validators.required] }),
-      status: new FormControl('active', {
-        validators: [Validators.required] })
+      status: new FormControl('choose')
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('ewoId')) {

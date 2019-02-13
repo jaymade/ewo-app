@@ -22,7 +22,6 @@
   <div class="form-group">
     <label for="status">Team / Department: </label>
     <select class="form-control" formControlName="team">
-      <option selected>Choose One</option>
       <option *ngFor="let dept of departments" value="{{dept.id}}">{{dept.name}}</option>
     </select>
   </div>
@@ -30,9 +29,16 @@
   <!-- Request Type -->
   <div class="form-group">
     <label for="status">Request Type: </label>
-    <select class="form-control" formControlName="type">
-      <option selected>Choose One</option>
-      <option *ngFor="let req of request" value="{{req.id}}">{{req.name}}</option>
+    <select class="form-control" formControlName="request">
+      <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
+    </select>
+  </div>
+
+  <!-- Request Type -->
+  <div class="form-group">
+    <label for="status">Priority: <small class='orange'>( 1 is lowest, 5 is highest)</small></label>
+    <select class="form-control" formControlName="priority">
+      <option *ngFor="let priority of priorities" value="{{priority.id}}">{{priority.name}}</option>
     </select>
   </div>
 
@@ -57,10 +63,7 @@
   <div class="form-group">
     <label for="status">Status: </label>
     <select class="form-control" formControlName="status">
-      <option selected>Update Status</option>
-      <option value="active">Active</option>
-      <option value="closed">Closed</option>
-      <option value="hold">Hold</option>
+      <option *ngFor="let status of statuses" value="{{status.id}}">{{status.name}}</option>
     </select>
   </div>
 
