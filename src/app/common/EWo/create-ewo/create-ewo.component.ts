@@ -137,8 +137,9 @@ export class CreateEwoComponent implements OnInit {
     {
     }
   }
-  onSourceChange() {
-    this.sourced = !this.sourced;
+  onSourceChange(value: boolean) {
+    const toggle = value;
+    this.sourced = toggle;
   }
   currentDate() {
     const timeStamp = new Date();
