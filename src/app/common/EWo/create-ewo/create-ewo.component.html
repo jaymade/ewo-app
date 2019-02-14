@@ -9,47 +9,54 @@
 <form class="mt-5 mb-5" (submit)="onSaveEwo()" [formGroup]="ewoForm" *ngIf="!isLoading">
   <p>{{timeStamp | date}}</p>
 
-  <!-- ewo starter -->
-  <div class="form-group">
-    <label for="input_starter">Your Name: </label>
-    <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?" [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
-    <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a
-      contact name
+  <!-- row -->
+  <div class="row">
+    <!-- ewo starter -->
+    <div class="form-group col">
+      <label for="input_starter">Your Name: </label>
+      <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?" [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
+      <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a
+        contact name
+      </div>
+    </div>
+
+    <!-- department -->
+    <div class="form-group col">
+      <label for="status">Team / Department: </label>
+      <select class="form-control" formControlName="team">
+        <option *ngFor="let dept of departments" value="{{dept.id}}">{{dept.name}}</option>
+      </select>
+    </div>
+
+    <!-- Request Type -->
+    <div class="form-group col">
+      <label for="status">Request Type: </label>
+      <select class="form-control" formControlName="request">
+        <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
+      </select>
     </div>
   </div>
 
-  <!-- department -->
-  <div class="form-group">
-    <label for="status">Team / Department: </label>
-    <select class="form-control" formControlName="team">
-      <option *ngFor="let dept of departments" value="{{dept.id}}">{{dept.name}}</option>
-    </select>
-  </div>
-
-  <!-- Request Type -->
-  <div class="form-group">
-    <label for="status">Request Type: </label>
-    <select class="form-control" formControlName="request">
-      <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
-    </select>
-  </div>
-
-  <!-- Request Type -->
-  <div class="form-group">
-    <label for="status">Priority: <small class='orange'>( 1 is lowest, 5 is highest)</small></label>
-    <select class="form-control" formControlName="priority">
-      <option *ngFor="let priority of priorities" value="{{priority.id}}">{{priority.name}}</option>
-    </select>
-  </div>
-
-
-  <!-- ewo title -->
-  <div class="form-group">
-    <label for="input_title">EWO Title: </label>
-    <input class="form-control" type="text" formControlName="title" placeholder=" What we calling it?" [ngClass]="{ 'is-invalid': ewoForm.get('title').invalid && ewoForm.get('title').touched }" />
-    <div *ngIf="ewoForm.get('title').touched && ewoForm.get('title').errors" class="invalid-feedback"> Need a title
+  <!--  row -->
+  <div class="row">
+    <!-- Request Type -->
+    <div class="form-group col">
+      <label for="status">Priority: <small class='orange'>( 1 is lowest, 5 is highest)</small></label>
+      <select class="form-control" formControlName="priority">
+        <option *ngFor="let priority of priorities" value="{{priority.id}}">{{priority.name}}</option>
+      </select>
     </div>
+
+    <!-- ewo title -->
+    <div class="form-group col">
+      <label for="input_title">EWO Title: </label>
+      <input class="form-control" type="text" formControlName="title" placeholder=" What we calling it?" [ngClass]="{ 'is-invalid': ewoForm.get('title').invalid && ewoForm.get('title').touched }" />
+      <div *ngIf="ewoForm.get('title').touched && ewoForm.get('title').errors" class="invalid-feedback"> Need a title
+      </div>
+    </div>
+
   </div>
+  <!-- end of row -->
 
   <div class="form-group">
     <label for="input_descript">Description of Project: </label>
@@ -60,28 +67,99 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="status">Status: </label>
-    <select class="form-control" formControlName="status">
-      <option *ngFor="let status of statuses" value="{{status.id}}">{{status.name}}</option>
-    </select>
-  </div>
+  <!-- row -->
+  <div class="row">
+    <div class="form-group col">
+      <label for="status">Status: </label>
+      <select class="form-control" formControlName="status">
+        <option *ngFor="let status of statuses" value="{{status.id}}">{{status.name}}</option>
+      </select>
+    </div>
 
-  <div class="form-group">
-
-    <label for="fileUpload">Add File: <small class="orange">Optional</small> </label>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-      </div>
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" name="fileUpload" #fileUpload>
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+    <div class="form-group col">
+      <label for="fileUpload">Add File: <small class="orange">Optional</small> </label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" name="fileUpload" #fileUpload>
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
       </div>
     </div>
+
   </div>
 
-  <div class="form-group">
+  <!-- end of row -->
+  <div class="row">
+    <h6 for="">Sourcing</h6>
+    <!-- col-12 -->
+    <div class="col-12 mb-3">
+      <div class="form-check form-check-inline mr-3">
+        <input class="form-check-input" type="radio" [value]="false" formControlName="outsourced" (click)="onSourceChange()">
+        <label class="form-check-label" for="manf">
+          Manufactured
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" [value]="true" formControlName="outsourced" (click)="onSourceChange()">
+        <label class="form-check-label" for="purch">
+          Purchased
+        </label>
+      </div>
+    </div>
+
+    <!-- eoq  col-6-->
+    <div class="form-group col-6">
+      <label for="input_title">Economic Order Quantity: </label>
+      <input class="form-control" type="text" formControlName="eoq" placeholder=" Optimal mfg run rate?" />
+    </div>
+    <!-- asq -->
+    <div class="form-group col-6">
+      <label for="input_title">Anual Sales Quantity: </label>
+      <input class="form-control" type="text" formControlName="asq" placeholder=" How many in a year" />
+    </div>
+
+    <div class="col-12" *ngIf='sourced'>
+      <!-- nested row -->
+      <div class="row">
+        <!-- moq -->
+        <div class="form-group col-3">
+          <label for="input_moq">Min Order Quantity: </label>
+          <input class="form-control" type="text" formControlName="moq" placeholder="least that can be ordered " />
+        </div>
+        <!-- oqp -->
+        <div class="form-group col-3">
+          <label for="input_oqp">Order Quantity Purchased: </label>
+          <input class="form-control" type="text" formControlName="oqp" placeholder="how many purchased " />
+        </div>
+        <!-- vender number -->
+        <div class="form-group col-3">
+          <label for="input_vn">Vender Number: </label>
+          <input class="form-control" type="text" formControlName="vendnum" placeholder="####### " />
+        </div>
+        <!--lead time -->
+        <div class="form-group col-3">
+          <label for="input_vn">Lead Time: </label>
+          <input class="form-control" type="text" formControlName="leadtime" placeholder="####### " />
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="form-group mt-5">
     <button class="btn btn-primary" type="submit"> {{btnTxt}} </button>
   </div>
 </form>
+
+<pre>outsourced form field: {{ewoForm.get('outsourced').value}}</pre>
+<pre>outsourced form field: {{ewoForm.controls.outsourced.value}}</pre>
+<pre>sourced: {{sourced}}</pre>
+<pre>form value: {{ewoForm.value}}</pre>
+<pre>form valid: {{ewoForm.valid}}</pre>

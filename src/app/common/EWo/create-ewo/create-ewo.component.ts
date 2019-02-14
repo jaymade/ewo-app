@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { EwoService } from '../../../service/ewo.service';
 import { Ewo } from '../../../models/ewo.model';
 import { Select } from '../../../models/select.model';
+import { SourceNode } from 'source-list-map';
 
 @Component({
   selector: 'app-create-ewo',
@@ -14,20 +15,20 @@ import { Select } from '../../../models/select.model';
 export class CreateEwoComponent implements OnInit {
   departments: Select[] = [
     { id: 'choose', name: 'Choose One' },
-    { id: 'Telcom -Sales', name: 'Telcom -Sales'},
-    { id: 'Contract - Sales', name: 'Contract - Sales'},
-    { id: 'Dimension Change', name: 'Dimension Change'},
-    { id: 'Development', name: 'Development'},
-    { id: 'Purchasing', name: 'Purchasing'},
-    { id: 'Quaility', name: 'Quaility'},
-    { id: 'Sr-MGR Team', name: 'Sr-MGR Team'},
-    { id: 'MNFT Engineer', name: 'MNFT Engineer'},
-    { id: 'Sheet Metal', name: 'Sheet Metal'},
-    { id: 'Heavy Metal', name: 'Heavy Metal'},
-    { id: 'Welding', name: 'Welding'},
-    { id: 'Finishing', name: 'Finishing'},
-    { id: 'Assembly', name: 'Assembly'},
-    { id: 'Kitting', name: 'Kitting'}
+    { id: 'Telcom -Sales', name: 'Telcom -Sales' },
+    { id: 'Contract - Sales', name: 'Contract - Sales' },
+    { id: 'Dimension Change', name: 'Dimension Change' },
+    { id: 'Development', name: 'Development' },
+    { id: 'Purchasing', name: 'Purchasing' },
+    { id: 'Quaility', name: 'Quaility' },
+    { id: 'Sr-MGR Team', name: 'Sr-MGR Team' },
+    { id: 'MNFT Engineer', name: 'MNFT Engineer' },
+    { id: 'Sheet Metal', name: 'Sheet Metal' },
+    { id: 'Heavy Metal', name: 'Heavy Metal' },
+    { id: 'Welding', name: 'Welding' },
+    { id: 'Finishing', name: 'Finishing' },
+    { id: 'Assembly', name: 'Assembly' },
+    { id: 'Kitting', name: 'Kitting' }
   ];
 
   requests: Select[] = [
@@ -70,17 +71,19 @@ export class CreateEwoComponent implements OnInit {
   mode = 'create';
   btnTxt = 'Add Ewo';
   timeStamp = this.currentDate();
+  sourced = false;
 
   private ewoId: string;
 
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
   ngOnInit() {
+    const sourced = false;
+
     this.ewoForm = new FormGroup({
       starter: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
-
       team: new FormControl('choose', {
         validators: [Validators.required]
       }),
@@ -94,9 +97,18 @@ export class CreateEwoComponent implements OnInit {
         validators: [Validators.required, Validators.minLength(3)]
       }),
       descript: new FormControl(null, {
-        validators: [Validators.required] }),
-      status: new FormControl('choose')
+        validators: [Validators.required]
+      }),
+      status: new FormControl('choose'),
+      outsourced: new FormControl(false),
+      eoq: new FormControl(null),
+      asq: new FormControl(null),
+      moq: new FormControl(null),
+      oqp: new FormControl(null),
+      vendnum: new FormControl(null),
+      leadtime: new FormControl(null)
     });
+
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('ewoId')) {
         this.mode = 'edit';
@@ -114,8 +126,7 @@ export class CreateEwoComponent implements OnInit {
           this.ewoForm.setValue({
             title: this.ewo.title,
             descript: this.ewo.descript,
-            status: this.ewo.status,
-
+            status: this.ewo.status
           });
         });
       } else {
@@ -123,13 +134,17 @@ export class CreateEwoComponent implements OnInit {
         this.ewoId = null;
       }
     });
+    {
+    }
   }
-
+  onSourceChange() {
+    this.sourced = !this.sourced;
+  }
   currentDate() {
     const timeStamp = new Date();
     return timeStamp;
-
   }
+  onSetSourced() {}
   onSaveEwo() {
     if (this.ewoForm.invalid) {
       return;
@@ -138,7 +153,8 @@ export class CreateEwoComponent implements OnInit {
     if (this.mode === 'create') {
       this.ewoService.addEwo(
         this.ewoForm.value.title,
-        this.ewoForm.value.descript, ); // check to see if status needs adding
+        this.ewoForm.value.descript
+      ); // check to see if status needs adding
     } else {
       this.ewoService.updateEwo(
         this.ewoId,
