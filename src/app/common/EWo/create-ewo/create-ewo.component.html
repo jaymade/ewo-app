@@ -7,10 +7,20 @@
 
 
 <form class="mt-5 mb-5" (submit)="onSaveEwo()" [formGroup]="ewoForm" *ngIf="!isLoading">
-  <p>{{timeStamp | date}}</p>
+
+  <!-- date -->
+  <p><strong>Today: </strong>{{ startDate | date}}</p>
+
+  <!-- ewo starter -->
+  <div class="form-group">
+    <!-- <label for="input_starter">Start Date </label> -->
+    <input class="form-control" type="hidden" formControlName="starter" />
+
+  </div>
 
   <!-- row -->
   <div class="row">
+
     <!-- ewo starter -->
     <div class="form-group col">
       <label for="input_starter">Your Name: </label>
@@ -28,6 +38,7 @@
       </select>
     </div>
 
+
     <!-- Request Type -->
     <div class="form-group col">
       <label for="status">Request Type: </label>
@@ -39,6 +50,18 @@
 
   <!--  row -->
   <div class="row">
+
+    <!-- ewo part -->
+    <div class="form-group col">
+      <label for="input_part">Exsisting or New part: </label>
+      <input type="radio">
+      <span>Exsisting</span>
+      <input type="radio">
+      <span>New Part</span>
+
+    </div>
+
+
     <!-- Request Type -->
     <div class="form-group col">
       <label for="status">Priority: <small class='orange'>( 1 is lowest, 5 is highest)</small></label>
@@ -92,13 +115,13 @@
     <!-- col-12 -->
     <div class="col-12 mb-3">
       <div class="form-check form-check-inline mr-3">
-        <input class="form-check-input" type="radio" [value]="false" formControlName="outsourced" (click)="onSourceChange()">
+        <input class="form-check-input" type="radio" [value]="false" formControlName="outsourced" (click)="onSourceChange(false)">
         <label class="form-check-label" for="manf">
           Manufactured
         </label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" [value]="true" formControlName="outsourced" (click)="onSourceChange()">
+        <input class="form-check-input" type="radio" [value]="true" formControlName="outsourced" (click)="onSourceChange(true)">
         <label class="form-check-label" for="purch">
           Purchased
         </label>
@@ -149,12 +172,18 @@
 
 
   <div class="form-group mt-5">
-    <button class="btn btn-primary" type="submit"> {{btnTxt}} </button>
+    <button class="btn btn-success" type="submit" [ngClass]="{ 'disabled': ewoForm.invalid }"> {{btnTxt}} </button>
+    <!-- <div *ngIf="ewoForm.controls.submit.disabled" class="invalid-feedback"> Form invalid: complete required fields </div>
+    <div *ngIf="ewoForm.controls.submit.disabled" class="valid-feedback"> Good to go!
+    </div> -->
   </div>
 </form>
+<div class="row">
 
-<pre>outsourced form field: {{ewoForm.get('outsourced').value}}</pre>
-<pre>outsourced form field: {{ewoForm.controls.outsourced.value}}</pre>
-<pre>sourced: {{sourced}}</pre>
-<pre>form value: {{ewoForm.value}}</pre>
-<pre>form valid: {{ewoForm.valid}}</pre>
+  <code class="col">form value:
+    <pre>{{ewoForm.value | json}}</pre>
+  </code>
+  <code> form valid:
+    <pre> {{ewoForm.valid}}</pre>
+  </code>
+</div>

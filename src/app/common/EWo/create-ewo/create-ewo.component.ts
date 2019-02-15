@@ -70,17 +70,21 @@ export class CreateEwoComponent implements OnInit {
   ewo: Ewo;
   mode = 'create';
   btnTxt = 'Add Ewo';
-  timeStamp = this.currentDate();
+  // timeStamp = this.currentDate();
   sourced = false;
+  startDate = this.currentDate();
 
   private ewoId: string;
 
-  constructor(public ewoService: EwoService, public route: ActivatedRoute) { }
+  constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
   ngOnInit() {
     const sourced = false;
 
     this.ewoForm = new FormGroup({
+      startDate: new FormControl(null, {
+        validators: [Validators.required]
+      }),
       starter: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
@@ -108,6 +112,7 @@ export class CreateEwoComponent implements OnInit {
       vendnum: new FormControl(null),
       leadtime: new FormControl(null)
     });
+    this.ewoForm.controls['startDate'].setValue(this.currentDate());
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('ewoId')) {
@@ -137,14 +142,16 @@ export class CreateEwoComponent implements OnInit {
     {
     }
   }
-  onSourceChange() {
-    this.sourced = !this.sourced;
-  }
+
   currentDate() {
-    const timeStamp = new Date();
-    return timeStamp;
+    const currentDate = new Date();
+    return currentDate.toISOString().substring(0, 10);
   }
-  onSetSourced() { }
+  onSourceChange(value: boolean) {
+    const toggle = value;
+    this.sourced = toggle;
+  }
+
   onSaveEwo() {
     if (this.ewoForm.invalid) {
       return;
