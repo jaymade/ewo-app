@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
 
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { EwoService } from '../../../service/ewo.service';
 import { Ewo } from '../../../models/ewo.model';
 import { Select } from '../../../models/select.model';
-import { SourceNode } from 'source-list-map';
 
 @Component({
   selector: 'app-create-ewo',
@@ -14,7 +13,7 @@ import { SourceNode } from 'source-list-map';
 })
 export class CreateEwoComponent implements OnInit {
   departments: Select[] = [
-    { id: 'choose', name: 'Choose One' },
+    { id: '-1', name: 'Choose One' },
     { id: 'Telcom -Sales', name: 'Telcom -Sales' },
     { id: 'Contract - Sales', name: 'Contract - Sales' },
     { id: 'Dimension Change', name: 'Dimension Change' },
@@ -32,7 +31,7 @@ export class CreateEwoComponent implements OnInit {
   ];
 
   requests: Select[] = [
-    { id: 'choose', name: 'Choose One' },
+    { id: '-1', name: 'Choose One' },
     { id: 'Assembly', name: 'Assembly' },
     { id: 'Color Change', name: 'Color Change' },
     { id: 'Tolerance Change', name: 'Tolerance Change' },
@@ -48,7 +47,7 @@ export class CreateEwoComponent implements OnInit {
     { id: 'Routing Change', name: 'Routing Change' }
   ];
   priorities: Select[] = [
-    { id: 'choose', name: 'Choose One' },
+    { id: '-1', name: 'Choose One' },
     { id: '1', name: '1-When You Can' },
     { id: '2', name: '2-ASAP' },
     { id: '3', name: '3-Order Pending' },
@@ -56,7 +55,7 @@ export class CreateEwoComponent implements OnInit {
     { id: '5', name: '5-Hot Stuff' }
   ];
   statuses: Select[] = [
-    { id: 'choose', name: 'Choose One' },
+    { id: '-1', name: 'Choose One' },
     { id: '1', name: '1-Unassigned' },
     { id: '2', name: '2-Assigned' },
     { id: '3', name: '3-Completed' },
@@ -72,25 +71,26 @@ export class CreateEwoComponent implements OnInit {
   btnTxt = 'Add Ewo';
   timeStamp = this.currentDate();
   sourced = false;
+  startDate = 'mm/dd/yy';
+  lastUpdateDate = new Date(this.timeStamp);
+  lastUpdatePerson = 'person';
 
   private ewoId: string;
 
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
   ngOnInit() {
-    const sourced = false;
-
     this.ewoForm = new FormGroup({
       starter: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
-      team: new FormControl('choose', {
+      team: new FormControl('-1', {
         validators: [Validators.required]
       }),
-      request: new FormControl('choose', {
+      request: new FormControl('-1', {
         validators: [Validators.required]
       }),
-      priority: new FormControl('choose', {
+      priority: new FormControl('-1', {
         validators: [Validators.required]
       }),
       title: new FormControl(null, {
@@ -99,14 +99,17 @@ export class CreateEwoComponent implements OnInit {
       descript: new FormControl(null, {
         validators: [Validators.required]
       }),
-      status: new FormControl('choose'),
+
       outsourced: new FormControl(false),
       eoq: new FormControl(null),
       asq: new FormControl(null),
       moq: new FormControl(null),
       oqp: new FormControl(null),
       vendnum: new FormControl(null),
-      leadtime: new FormControl(null)
+      leadtime: new FormControl(null),
+
+      status: new FormControl('-1'),
+      lastUpdate: new FormControl(null)
     });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -134,8 +137,15 @@ export class CreateEwoComponent implements OnInit {
         this.ewoId = null;
       }
     });
-    {
-    }
+  }
+
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.ewoForm.controls;
+  }
+
+  revert() {
+    this.ewoForm.reset();
   }
   onSourceChange(value: boolean) {
     const toggle = value;

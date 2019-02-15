@@ -14,28 +14,27 @@
     <!-- ewo starter -->
     <div class="form-group col">
       <label for="input_starter">Your Name: </label>
-      <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?" [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
-      <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a
+      <!-- input -->
+      <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?" [ngClass]="{ 'is-invalid': f.starter.invalid && f.starter.touched }" />
+      <!-- if error -->
+      <!-- <div *ngIf="f.starter.touched && f.starter.errors" class="invalid-feedback"> Need a
         contact name
-      </div>
+      </div> -->
     </div>
 
     <!-- department -->
     <div class="form-group col">
-      <label for="status">Team / Department: </label>
-      <select class="form-control" formControlName="team">
+      <label for="team">Team / Department: </label>
+      <select class="form-control" formControlName="team" appSelectReqValid [ngClass]="{ 'is-invalid': f.team.submitted && f.team.errors }">
         <option *ngFor="let dept of departments" value="{{dept.id}}">{{dept.name}}</option>
       </select>
+      <!-- <div *ngIf="f.team.touched && f.team.errors?.defaultSelected" class="invalid-feedback"> Need a
+        Department
+      </div> -->
+
     </div>
 
-    <!-- Request Type -->
-    <div class="form-group col">
-      <label for="status">Request Type: </label>
-      <select class="form-control" formControlName="request">
-        <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
-      </select>
-    </div>
-  </div>
+
 
   <!--  row -->
   <div class="row">
@@ -54,14 +53,12 @@
       <div *ngIf="ewoForm.get('title').touched && ewoForm.get('title').errors" class="invalid-feedback"> Need a title
       </div>
     </div>
-
   </div>
   <!-- end of row -->
 
   <div class="form-group">
     <label for="input_descript">Description of Project: </label>
     <textarea class="form-control" rows="4" formControlName="descript" placeholder="What we doing?" [ngClass]="{ 'is-invalid': ewoForm.get('descript').invalid && ewoForm.get('descript').touched }"></textarea>
-
     <div *ngIf="ewoForm.get('descript').touched && ewoForm.get('descript').errors" class="invalid-feedback"> Give us an
       idea of what you need done.
     </div>
@@ -150,11 +147,27 @@
 
   </div>
 
+  <h5>Engineering</h5>
+<!-- Request Type -->
+<div class="form-group col">
+  <label for="status">Request Type: </label>
+  <select class="form-control" formControlName="request">
+    <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
+  </select>
+</div>
+</div>
+
+<h6><strong>EWO: </strong>{{ewo._id}}</h6>
+<label for=""> <strong>Last Updated:</strong> {{lastUpdateDate | date }} by <span class="orange">{{lastUpdatePerson}}</span></label>
 
 
 
   <div class="form-group mt-5">
+
     <button class="btn btn-primary" type="submit"> {{btnTxt}} </button>
+    <button class="btn btn-danger ml-5" type="button" (click)="revert()"> Reset </button>
+
+
   </div>
 </form>
 

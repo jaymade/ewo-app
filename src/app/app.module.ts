@@ -15,14 +15,18 @@ import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component
 import { LoginComponent } from './common/login/login.component';
 // pages
 import { EngineerComponent } from './pages/engineer/engineer.component';
+import { UpdateEwoComponent } from './common/EWo/update-ewo/update-ewo.component';
+import { CreateUserComponent } from './common/admin/create-user/create-user.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { UserListComponent } from './common/admin/user-list/user-list.component';
 // services
 import { EwoService } from './service/ewo.service';
 import { UserService } from './service/user.service';
-import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
 import { HttpClientModule } from '@angular/common/http';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { CreateUserComponent } from './common/admin/create-user/create-user.component';
-import { UserListComponent } from './common/admin/user-list/user-list.component';
+
+// custom validators
+import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
+import { SelectReqValidDirective } from './_helpers/select-req-valid.directive';
 
 @NgModule({
   declarations: [
@@ -35,9 +39,12 @@ import { UserListComponent } from './common/admin/user-list/user-list.component'
     CreateEwoComponent,
     EngineerComponent,
     ConfirmEqualDirective,
+    SelectReqValidDirective,
+
     NotFoundComponent,
     CreateUserComponent,
-    UserListComponent
+    UserListComponent,
+    UpdateEwoComponent
   ],
   imports: [
     BrowserModule,
