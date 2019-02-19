@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 // custom validators
 import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
 import { SelectReqValidDirective } from './_helpers/select-req-valid.directive';
+import { DetailEwoComponent } from './common/EWo/detail-ewo/detail-ewo.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SelectReqValidDirective } from './_helpers/select-req-valid.directive';
     NotFoundComponent,
     CreateUserComponent,
     UserListComponent,
-    UpdateEwoComponent
+    UpdateEwoComponent,
+    DetailEwoComponent
   ],
   imports: [
     BrowserModule,
