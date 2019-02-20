@@ -4,8 +4,16 @@ var ewoSchema = mongoose.Schema({
   // userId: {
   //   type: String
   // },
-  ewoId: {
-    type: Number
+  // ewoId: {
+  //   type: String
+  // },
+  startDate: {
+    type: String,
+    required: true
+  },
+  starter: {
+    type: String,
+    required: true
   },
   title: {
     type: String,

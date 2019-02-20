@@ -14,31 +14,12 @@ export class EwoService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getEwoList() {
-    this.http
-      .get<{ message: string; ewos: any }>('http://localhost:3000/api/ewos')
-      // .pipe(
-      //   map(ewoData => {
-      //     return ewoData.ewos.map(ewo => {
-      //       return {
-      //         title: ewo.title,
-      //         discript: ewo.descript,
-      //         id: ewo._id
-      //       };
-      //     });
-      //   })
-      // )
-      .subscribe(mapedEwos => {
-        this.ewos = mapedEwos.ewos;
-        this.ewosUpdated.next([...this.ewos]);
-      });
-  }
   getEwo(id: string) {
     console.log(id);
     // return { ...this.ewos.find(e => e._id === id) };
     return this.http.get<{
       _id: string;
-      startDate: string,
+      startDate: string;
       starter: string;
       title: string;
       descript: string;
@@ -65,16 +46,44 @@ export class EwoService {
         ewo
       )
       .subscribe(responseData => {
-        // console.log(responseData.message);
+        console.log(responseData.message);
         const id = responseData.ewoId;
         ewo._id = id;
         this.ewos.push(ewo);
+        // to refresh list
         this.ewosUpdated.next([...this.ewos]);
-        this.router.navigate(['/']);
+        console.log('EWOs return: ', this.ewos);
+        this.router.navigate(['/ewos']);
+      });
+  }
+  getEwoList() {
+    this.http
+      .get<{ message: string; ewos: any }>('http://localhost:3000/api/ewos')
+      // .pipe(
+      //   map(ewoData => {
+      //     return ewoData.ewos.map(ewo => {
+      //       return {
+      //         title: ewo.title,
+      //         discript: ewo.descript,
+      //         id: ewo._id
+      //       };
+      //     });
+      //   })
+      // )
+      .subscribe(mapedEwos => {
+        this.ewos = mapedEwos.ewos;
+        this.ewosUpdated.next([...this.ewos]);
       });
   }
 
-  updateEwo(_id: string, title: string, starter: string, startDate: string,  descript: string, status: string) {
+  updateEwo(
+    _id: string,
+    startDate: string,
+    starter: string,
+    title: string,
+    descript: string,
+    status: string
+  ) {
     const ewo: Ewo = {
       _id: _id,
       startDate: startDate,

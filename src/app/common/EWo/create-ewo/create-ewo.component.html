@@ -1,5 +1,4 @@
 <h4> Create an EWO </h4>
-
 <!-- loading spinner -->
 <div class="spinner-border text-info mx-auto" role="status" *ngIf="isLoading">
   <span class="sr-only">Loading...</span>
@@ -57,19 +56,17 @@
       <!-- group inline radios -->
       <div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" value='false' name="newPart" formControlName="newPart" type="radio"
-            (click)="onPartChange(false)">
+          <input class="form-check-input" value='false' name="newPart" formControlName="newPart" type="radio" (click)="onPartChange(false)">
           <span>Exsisting</span>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" value='true' name="newPart" formControlName="newPart" type="radio"
-            (click)="onPartChange(true)">
+          <input class="form-check-input" value='true' name="newPart" formControlName="newPart" type="radio" (click)="onPartChange(true)">
           <span>New Part</span>
         </div>
       </div>
       <div *ngIf="!newPart">
         <h5>Exsisting Part number</h5>
-         <input class="form-control" type="text" formControlName="partNum" placeholder=" xxxxxxxxxx "/>
+        <input class="form-control" type="text" formControlName="partNum" placeholder=" xxxxxxxxxx " />
       </div>
 
     </div>

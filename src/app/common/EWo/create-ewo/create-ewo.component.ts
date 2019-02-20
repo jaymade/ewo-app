@@ -71,7 +71,7 @@ export class CreateEwoComponent implements OnInit {
   isLoading = false;
   ewo: Ewo;
   sourced = false; // is part out sourced
-  newPart = true; //new part number toggle
+  newPart = true; // new part number toggle
   startDate = this.currentDate();
 
   private ewoId: string;
@@ -79,8 +79,6 @@ export class CreateEwoComponent implements OnInit {
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
   ngOnInit() {
-
-
     this.ewoForm = new FormGroup({
       startDate: new FormControl(null, {
         validators: [Validators.required]
@@ -94,7 +92,7 @@ export class CreateEwoComponent implements OnInit {
       request: new FormControl('choose', {
         validators: [Validators.required]
       }),
-      newPart: new FormControl(true),
+      newPart: new FormControl('true'),
       partNum: new FormControl(null),
       priority: new FormControl('choose', {
         validators: [Validators.required]
@@ -105,7 +103,7 @@ export class CreateEwoComponent implements OnInit {
       descript: new FormControl(null, {
         validators: [Validators.required]
       }),
-      status: new FormControl('active'),
+      status: new FormControl(null),
       outsourced: new FormControl(false),
       eoq: new FormControl(null),
       asq: new FormControl(null),
@@ -116,6 +114,9 @@ export class CreateEwoComponent implements OnInit {
     });
 
     this.ewoForm.controls['startDate'].setValue(this.currentDate());
+    this.ewoForm.controls['starter'].setValue('Jay Rich');
+    this.ewoForm.controls['title'].setValue('TEST 2');
+    this.ewoForm.controls['descript'].setValue('2 TEST tickles');
   }
 
   currentDate() {
@@ -136,12 +137,19 @@ export class CreateEwoComponent implements OnInit {
       return;
     }
     this.isLoading = true;
+
+    console.log('save EWO info: \n',  '\nWHEN: ' + this.ewoForm.value.startDate,
+      '\nWHO: ' + this.ewoForm.value.starter,
+      '\nWHAT: ' + this.ewoForm.value.title,
+      '\nHOW: ' + this.ewoForm.value.descript);
+
     this.ewoService.addEwo(
-      this.ewoForm.value.starter,
       this.ewoForm.value.startDate,
+      this.ewoForm.value.starter,
       this.ewoForm.value.title,
       this.ewoForm.value.descript
     );
+
 
     this.ewoForm.reset();
   }

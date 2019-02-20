@@ -1,41 +1,47 @@
-<h3>EWO <span class="orange">{{ewo._id}}</span> Details</h3>
+<h3>EWO Details</h3>
+<h5>EWO #: <span class="orange">{{ewo._id}}</span></h5>
 
 <div class="row mt-3">
 
   <div class="col">
     <h5>User Input</h5>
-    <p>Start Date: <span class="orange"> {{ewo.startDate}} </span></p>
-    <!-- <p>Initiator: <span class="orange"> {{ewo.starter}} </span></p>
-    <p>Department / Team: <span class="orange"> {{ewo.team}} </span></p>
-    <p>Request Type: <span class="orange"> {{ewo.request}} </span></p>
-    <p>Priority: <span class="orange"> {{ewo.priority}} </span></p>
-    <p>Request Type: <span class="orange"> {{ewo.request}} </span></p>
-    <p>Request Type: <span class="orange"> {{ewo.request}} </span></p>
-    <p>Request Type: <span class="orange"> {{ewo.request}} </span></p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Start Date: {{ewo.startDate}} </li>
+      <li class="list-group-item">Initiator: {{ewo.starter}} </li>
+    </ul>
+    <!--<li class="list-group-item" >Department / Team:  {{ewo.team}} </li>
+    <li class="list-group-item" >Request Type:  {{ewo.request}} </li>
+    <li class="list-group-item" >Priority:  {{ewo.priority}} </li>
+    <li class="list-group-item" >Request Type:  {{ewo.request}} </li>
+    <li class="list-group-item" >Request Type:  {{ewo.request}} </li>
+    <li class="list-group-item" >Request Type:  {{ewo.request}} </li>
   </div>
 
   <div class="col">
     <h5>Purchasing Info</h5>
-    <p>Outsourced (T/F): <span class="orange"> {{ewo.outsourced}} </span></p>
-    <p>conomic Order Quantity: <span class="orange"> {{ewo.eoq}} </span></p>
-    <p>Annual SSales Quantity: <span class="orange"> {{ewo.as}} </span></p>
-    <p>Min Order Quantity: <span class="orange"> {{ewo.moq}} </span></p>
-    <p>Order Quantity Purchased: <span class="orange"> {{ewo.oqp}} </span></p>
-    <p>Vender Number : <span class="orange"> {{ewo.vendnum}} </span></p>
-    <p>Lead Time: <span class="orange"> {{ewo.leadtime}} </span></p> -->
+    <p>Outsourced (T/F):  {{ewo.outsourced}} </p>
+    <p>conomic Order Quantity:  {{ewo.eoq}} </p>
+    <p>Annual SSales Quantity:  {{ewo.as}} </p>
+    <p>Min Order Quantity:  {{ewo.moq}} </p>
+    <p>Order Quantity Purchased:  {{ewo.oqp}} </p>
+    <p>Vender Number :  {{ewo.vendnum}} </p>
+    <p>Lead Time:  {{ewo.leadtime}} </p> -->
   </div>
 
   <div class="col">
     <h5>Engineering Info</h5>
-    <p>Status: <span class="orange"> {{ewo.status}} </span></p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Status: {{ewo.status}} </li>
+    </ul>
   </div>
 
   <div class="col-12 mt-5">
     <h5>EWO info</h5>
-    <h6> Title: {{ewo.title}}</h6>
-    <label>Description: </label>
-    <p>{{ewo.descript}}</p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Title: {{ewo.title}}</li>
+
+      <li class="list-group-item">Description: {{ewo.descript}}</li>
+    </ul>
   </div>
 
 </div>
-

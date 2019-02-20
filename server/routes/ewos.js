@@ -5,6 +5,8 @@ const router = express.Router();
 // post ewo
 router.post('', (req, res, next) => {
   const ewo = new Ewo({
+    startDate: req.body.startDate,
+    starter: req.body.starter,
     title: req.body.title,
     descript: req.body.descript,
     status: req.body.status
@@ -23,6 +25,8 @@ router.post('', (req, res, next) => {
 router.put("/:id", (req, res, next) => {
   const ewo = new Ewo({
     _id: req.body._id,
+    startDate: req.body.startDate,
+    starter: req.body.starter,
     title: req.body.title,
     descript: req.body.descript,
     status: req.body.status,
