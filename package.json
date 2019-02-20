@@ -30,6 +30,7 @@
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "http": "0.0.0",
+    "jshint": "^2.10.1",
     "mongoose": "^5.4.7",
     "morgan": "^1.9.1",
     "rxjs": "~6.4.0",

@@ -7,18 +7,19 @@ router.post('', (req, res, next) => {
   const ewo = new Ewo({
     startDate: req.body.startDate,
     starter: req.body.starter,
+    team: req.body.team,
     title: req.body.title,
     descript: req.body.descript,
     status: req.body.status
   });
   ewo.save().then(createdEWO => {
-    // console.log('EWO save info', createdEWO);
+    console.log('EWO save info', createdEWO);
     res.status(201).json({
       message: 'WOOT! The EWO was added succesfully!',
       ewoId: createdEWO._id
     });
   });
-  // console.log('EWO sent to server: ', ewo);
+  console.log('EWO sent to server: ', ewo);
 });
 
 // put an updated ewo
@@ -27,6 +28,7 @@ router.put("/:id", (req, res, next) => {
     _id: req.body._id,
     startDate: req.body.startDate,
     starter: req.body.starter,
+    team: req.body.team,
     title: req.body.title,
     descript: req.body.descript,
     status: req.body.status,

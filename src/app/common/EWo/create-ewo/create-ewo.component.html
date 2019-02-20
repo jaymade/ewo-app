@@ -10,10 +10,10 @@
   <!-- date -->
   <p><strong>Today: </strong>{{ startDate | date}}</p>
 
-  <!-- ewo starter -->
+  <!-- ewo staetDAte  -->
   <div class="form-group">
-    <!-- <label for="input_starter">Start Date </label> -->
-    <input class="form-control" type="hidden" formControlName="starter" />
+    <!-- <label for="startDate">Start Date </label> -->
+    <input class="form-control" type="hidden" formControlName="startDate" />
 
   </div>
 
@@ -22,7 +22,7 @@
 
     <!-- ewo starter -->
     <div class="form-group col">
-      <label for="input_starter">Your Name: </label>
+      <label for="starter">Your Name: </label>
       <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?" [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
       <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a
         contact name
