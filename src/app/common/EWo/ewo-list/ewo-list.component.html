@@ -6,42 +6,37 @@
 
 <!-- show if not loading and greater than 0 -->
 <div *ngIf="ewos.length > 0 && !isLoading">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <!-- <th scope="col">EWO #</th> -->
-          <!-- <th scope="col">Engineer</th> -->
-          <th scope="col">Title</th>
-          <th scope="col">Description</th>
-          <th scope="col">Status</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <!-- <th scope="col">EWO #</th> -->
+        <!-- <th scope="col">Engineer</th> -->
+        <th>Initiator</th>
+        <th>EWO Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Details</th>
 
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ewo of ewos">
-          <!-- <td>{{ewo.ewoId}}</td> -->
-          <!-- <td>{{ewo.userId}}</td> -->
-          <td>{{ewo.title}}</td>
-          <td>{{ewo.descript}}</td>
-          <td>{{ewo.status}}</td>
-          <td>
-            <a class="btn btn-primary" [routerLink]="['/detail', ewo._id]" >
-              <i class="far fa-edit"></i>
-            </a>
-          </td>
-          <td>
-            <button class="btn btn-danger" (click)="onDeleteEwo(ewo._id)">
-              <i class="far fa-trash-alt"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ewo of ewos">
+        <!-- <td>{{ewo.ewoId}}</td> -->
+        <!-- <td>{{ewo.userId}}</td> -->
+        <td>{{ewo.starter}}</td>
+        <td>{{ewo.title}}</td>
+        <td>{{ewo.descript}}</td>
+        <td>{{ewo.status}}</td>
+        <td>
+          <a class="btn btn-primary" [routerLink]="['/detail', ewo._id]">
+            <i class="far fa-edit"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div *ngIf="ewos.length <= 0">
   <p class="text-center"><strong class="text-danger">No Active EWOs</strong></p>
 </div>
-

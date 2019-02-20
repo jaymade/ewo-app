@@ -11,6 +11,7 @@ import { Ewo } from '../../../models/ewo.model';
   styleUrls: ['./detail-ewo.component.scss']
 })
 export class DetailEwoComponent implements OnInit {
+
   ewo: Ewo;
   private ewoId: string;
 
@@ -22,6 +23,8 @@ export class DetailEwoComponent implements OnInit {
       this.ewoService.getEwo(this.ewoId).subscribe(ewoData => {
         this.ewo = {
           _id: ewoData._id,
+          startDate: ewoData.startDate,
+          starter: ewoData.starter,
           title: ewoData.title,
           descript: ewoData.descript,
           status: ewoData.status
@@ -30,3 +33,4 @@ export class DetailEwoComponent implements OnInit {
     });
   }
 }
+

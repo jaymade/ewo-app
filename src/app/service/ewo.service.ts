@@ -34,10 +34,12 @@ export class EwoService {
       });
   }
   getEwo(id: string) {
-    // console.log(id);
+    console.log(id);
     // return { ...this.ewos.find(e => e._id === id) };
     return this.http.get<{
       _id: string;
+      startDate: string,
+      starter: string;
       title: string;
       descript: string;
       status: string;
@@ -48,8 +50,10 @@ export class EwoService {
     return this.ewosUpdated.asObservable();
   }
 
-  addEwo(title: string, descript: string) {
+  addEwo(startDate: string, starter: string, title: string, descript: string) {
     const ewo: Ewo = {
+      startDate: startDate,
+      starter: starter,
       title: title,
       descript: descript,
       status: 'active',
@@ -70,9 +74,11 @@ export class EwoService {
       });
   }
 
-  updateEwo(_id: string, title: string, descript: string, status: string) {
+  updateEwo(_id: string, title: string, starter: string, startDate: string,  descript: string, status: string) {
     const ewo: Ewo = {
       _id: _id,
+      startDate: startDate,
+      starter: starter,
       title: title,
       descript: descript,
       status: status
