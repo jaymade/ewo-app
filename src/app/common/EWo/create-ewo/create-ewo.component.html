@@ -1,4 +1,4 @@
-<h4> {{ mode | titlecase }} an EWO </h4>
+<h4> Create an EWO </h4>
 
 <!-- loading spinner -->
 <div class="spinner-border text-info mx-auto" role="status" *ngIf="isLoading">
@@ -54,10 +54,23 @@
     <!-- ewo part -->
     <div class="form-group col">
       <label for="input_part">Exsisting or New part: </label>
-      <input type="radio">
-      <span>Exsisting</span>
-      <input type="radio">
-      <span>New Part</span>
+      <!-- group inline radios -->
+      <div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" value='false' name="newPart" formControlName="newPart" type="radio"
+            (click)="onPartChange(false)">
+          <span>Exsisting</span>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" value='true' name="newPart" formControlName="newPart" type="radio"
+            (click)="onPartChange(true)">
+          <span>New Part</span>
+        </div>
+      </div>
+      <div *ngIf="!newPart">
+        <h5>Exsisting Part number</h5>
+         <input class="form-control" type="text" formControlName="partNum" placeholder=" xxxxxxxxxx "/>
+      </div>
 
     </div>
 
@@ -163,13 +176,8 @@
           <input class="form-control" type="text" formControlName="leadtime" placeholder="####### " />
         </div>
       </div>
-
     </div>
-
   </div>
-
-
-
 
   <div class="form-group mt-5">
     <button class="btn btn-success" type="submit" [ngClass]="{ 'disabled': ewoForm.invalid }"> Create EWO </button>

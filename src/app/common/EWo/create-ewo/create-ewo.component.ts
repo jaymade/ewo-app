@@ -70,8 +70,8 @@ export class CreateEwoComponent implements OnInit {
   // enteredDescript = '';
   isLoading = false;
   ewo: Ewo;
-  // timeStamp = this.currentDate();
-  sourced = false;
+  sourced = false; // is part out sourced
+  newPart = true; //new part number toggle
   startDate = this.currentDate();
 
   private ewoId: string;
@@ -79,7 +79,7 @@ export class CreateEwoComponent implements OnInit {
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
 
   ngOnInit() {
-    const sourced = false;
+
 
     this.ewoForm = new FormGroup({
       startDate: new FormControl(null, {
@@ -94,6 +94,8 @@ export class CreateEwoComponent implements OnInit {
       request: new FormControl('choose', {
         validators: [Validators.required]
       }),
+      newPart: new FormControl(true),
+      partNum: new FormControl(null),
       priority: new FormControl('choose', {
         validators: [Validators.required]
       }),
@@ -123,6 +125,10 @@ export class CreateEwoComponent implements OnInit {
   onSourceChange(value: boolean) {
     const toggle = value;
     this.sourced = toggle;
+  }
+  onPartChange(value: boolean) {
+    const toggle = value;
+    this.newPart = toggle;
   }
 
   onSaveEwo() {
