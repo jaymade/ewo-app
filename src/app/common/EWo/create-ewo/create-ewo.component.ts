@@ -89,7 +89,7 @@ export class CreateEwoComponent implements OnInit {
       team: new FormControl('choose', {
         validators: [Validators.required]
       }),
-      request: new FormControl('choose', {
+      reqtype: new FormControl('choose', {
         validators: [Validators.required]
       }),
       newPart: new FormControl('true'),
@@ -116,8 +116,9 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['startDate'].setValue(this.currentDate());
     this.ewoForm.controls['starter'].setValue('Jay Rich');
     this.ewoForm.controls['team'].setValue('Telcom -Sales');
-    this.ewoForm.controls['title'].setValue('TEST 2');
-    this.ewoForm.controls['descript'].setValue('2 TEST tickles');
+    this.ewoForm.controls['reqtype'].setValue('Color Change');
+    this.ewoForm.controls['title'].setValue('TEST 3');
+    this.ewoForm.controls['descript'].setValue('3 TEST tickles');
   }
 
   currentDate() {
@@ -139,9 +140,11 @@ export class CreateEwoComponent implements OnInit {
     }
     this.isLoading = true;
 
-    console.log('save EWO info: \n',  '\nWHEN: ' + this.ewoForm.value.startDate,
+    console.log('save EWO info: \n',
+      '\nWHEN: ' + this.ewoForm.value.startDate,
       '\nWHO: ' + this.ewoForm.value.starter,
       '\nTEAM: ' + this.ewoForm.value.team,
+      '\nTYPE: ' + this.ewoForm.value.reqtype,
       '\nWHAT: ' + this.ewoForm.value.title,
       '\nHOW: ' + this.ewoForm.value.descript);
 
@@ -149,6 +152,7 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.startDate,
       this.ewoForm.value.starter,
       this.ewoForm.value.team,
+      this.ewoForm.value.reqtype,
       this.ewoForm.value.title,
       this.ewoForm.value.descript
     );

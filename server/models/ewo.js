@@ -19,6 +19,10 @@ var ewoSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  reqtype: {
+    type: String,
+    required: true
+  },
   title: {
     type: String,
     required: true

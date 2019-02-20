@@ -26,6 +26,7 @@ export class DetailEwoComponent implements OnInit {
           startDate: ewoData.startDate,
           starter: ewoData.starter,
           team: ewoData.team,
+          reqtype: ewoData.reqtype,
           title: ewoData.title,
           descript: ewoData.descript,
           status: ewoData.status
