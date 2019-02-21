@@ -118,10 +118,14 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['team'].setValue('Telcom -Sales');
     this.ewoForm.controls['reqtype'].setValue('New Design');
     this.ewoForm.controls['priority'].setValue('4');
-    this.ewoForm.controls['title'].setValue('TEST 5');
-    this.ewoForm.controls['descript'].setValue('5 TEST tickles');
+    this.ewoForm.controls['title'].setValue('TEST 6');
+    this.ewoForm.controls['descript'].setValue('6 TEST tickles');
     this.ewoForm.controls['eoq'].setValue('22');
     this.ewoForm.controls['asq'].setValue('33');
+    this.ewoForm.controls['moq'].setValue('44');
+    this.ewoForm.controls['oqp'].setValue('55');
+    this.ewoForm.controls['vendnum'].setValue('VINMUMBER123');
+    this.ewoForm.controls['leadtime'].setValue('4 score & 7 years');
   }
 
   currentDate() {
@@ -152,7 +156,12 @@ export class CreateEwoComponent implements OnInit {
       '\nWHAT: ' + this.ewoForm.value.title,
       '\nHOW: ' + this.ewoForm.value.descript,
       '\nEOQ: ' + this.ewoForm.value.eoq,
-      '\nASQ: ' + this.ewoForm.value.asq);
+      '\nASQ: ' + this.ewoForm.value.asq,
+      '\nMOQ: ' + this.ewoForm.value.moq,
+      '\nOQP: ' + this.ewoForm.value.oqp,
+      '\nVENDER#: ' + this.ewoForm.value.vendnum,
+      '\nLEAD: ' + this.ewoForm.value.leadtime,
+      );
 
     this.ewoService.addEwo(
       this.ewoForm.value.startDate,
@@ -164,6 +173,10 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.descript,
       this.ewoForm.value.eoq,
       this.ewoForm.value.asq,
+      this.ewoForm.value.moq,
+      this.ewoForm.value.oqp,
+      this.ewoForm.value.vendnum,
+      this.ewoForm.value.leadtime,
     );
 
 

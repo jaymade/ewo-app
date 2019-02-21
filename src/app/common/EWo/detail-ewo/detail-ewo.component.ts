@@ -32,7 +32,11 @@ export class DetailEwoComponent implements OnInit {
           descript: ewoData.descript,
           status: ewoData.status,
           eoq: ewoData.eoq,
-          asq: ewoData.asq
+          asq: ewoData.asq,
+          moq: ewoData.moq,
+          oqp: ewoData.oqp,
+          vendnum: ewoData.vendnum,
+          leadtime: ewoData.leadtime,
         };
       });
     });

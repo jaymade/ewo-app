@@ -9,5 +9,9 @@ export interface Ewo {
   status: string;
   eoq: string;
   asq: string;
+  moq: string;
+  oqp: string;
+  vendnum: string;
+  leadtime: string;
   _id: string;
 }

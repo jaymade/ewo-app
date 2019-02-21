@@ -44,7 +44,19 @@ var ewoSchema = mongoose.Schema({
   },
   asq: {
     type: String
-  }
+  },
+  moq: {
+    type: String
+  },
+  oqp: {
+    type: String
+  },
+  vendnum: {
+    type: String
+  },
+  leadtime: {
+    type: String
+  },
 });
 
 // Compile model from schema

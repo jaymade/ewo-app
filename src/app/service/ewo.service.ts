@@ -29,6 +29,10 @@ export class EwoService {
       status: string;
       eoq: string;
       asq: string;
+      moq: string;
+      oqp: string;
+      vendnum: string;
+      leadtime: string;
     }>('http://localhost:3000/api/ewos/' + id);
   }
 
@@ -45,7 +49,11 @@ export class EwoService {
     title: string,
     descript: string,
     eoq: string,
-    asq: string
+    asq: string,
+    moq: string,
+    oqp: string,
+    vendnum: string,
+    leadtime: string,
   ) {
     const ewo: Ewo = {
       startDate: startDate,
@@ -56,6 +64,10 @@ export class EwoService {
       title: title,
       descript: descript,
       asq: asq,
+      moq: moq,
+      oqp: oqp,
+      vendnum: vendnum,
+      leadtime: leadtime,
       status: 'active',
       eoq: eoq,
       _id: null
@@ -108,7 +120,12 @@ export class EwoService {
     descript: string,
     status: string,
     eoq: string,
-    asq: string
+    asq: string,
+    moq: string,
+    oqp: string,
+    vendnum: string,
+    leadtime: string,
+
   ) {
     const ewo: Ewo = {
       _id: _id,
@@ -121,7 +138,11 @@ export class EwoService {
       descript: descript,
       status: status,
       eoq: eoq,
-      asq: asq
+      asq: asq,
+      moq: moq,
+      oqp: oqp,
+      vendnum: vendnum,
+      leadtime: leadtime,
     };
     this.http
       .put('http://localhost:3000/api/ewos/' + _id, ewo)
