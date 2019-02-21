@@ -8,6 +8,7 @@ router.post('', (req, res, next) => {
     startDate: req.body.startDate,
     starter: req.body.starter,
     team: req.body.team,
+    reqtype: req.body.reqtype,
     title: req.body.title,
     descript: req.body.descript,
     status: req.body.status
@@ -29,6 +30,7 @@ router.put("/:id", (req, res, next) => {
     startDate: req.body.startDate,
     starter: req.body.starter,
     team: req.body.team,
+    reqtype: req.body.reqtype,
     title: req.body.title,
     descript: req.body.descript,
     status: req.body.status,

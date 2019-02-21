@@ -22,6 +22,7 @@ export class EwoService {
       startDate: string;
       starter: string;
       team: string;
+      reqtype: string;
       title: string;
       descript: string;
       status: string;
@@ -32,11 +33,12 @@ export class EwoService {
     return this.ewosUpdated.asObservable();
   }
 
-  addEwo(startDate: string, starter: string, team: string, title: string, descript: string) {
+  addEwo(startDate: string, starter: string, team: string, reqtype: string, title: string, descript: string) {
     const ewo: Ewo = {
       startDate: startDate,
       starter: starter,
       team: team,
+      reqtype: team,
       title: title,
       descript: descript,
       status: 'active',
@@ -83,6 +85,7 @@ export class EwoService {
     startDate: string,
     starter: string,
     team: string,
+    reqtype: string,
     title: string,
     descript: string,
     status: string
@@ -92,6 +95,7 @@ export class EwoService {
       startDate: startDate,
       starter: starter,
       team: team,
+      reqtype: team,
       title: title,
       descript: descript,
       status: status

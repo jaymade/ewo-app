@@ -41,7 +41,7 @@
     <!-- Request Type -->
     <div class="form-group col">
       <label for="status">Request Type: </label>
-      <select class="form-control" formControlName="request">
+<select class="form-control" formControlName="reqtype">
         <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
       </select>
     </div>
