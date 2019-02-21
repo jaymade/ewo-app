@@ -23,6 +23,10 @@ var ewoSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  priority: {
+    type: String,
+    required: true
+  },
   title: {
     type: String,
     required: true

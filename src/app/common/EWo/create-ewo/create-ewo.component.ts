@@ -117,6 +117,7 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['starter'].setValue('Jay Rich');
     this.ewoForm.controls['team'].setValue('Telcom -Sales');
     this.ewoForm.controls['reqtype'].setValue('New Design');
+    this.ewoForm.controls['priority'].setValue('4');
     this.ewoForm.controls['title'].setValue('TEST 2');
     this.ewoForm.controls['descript'].setValue('2 TEST tickles');
   }
@@ -144,14 +145,16 @@ export class CreateEwoComponent implements OnInit {
       '\nWHO: ' + this.ewoForm.value.starter,
       '\nTEAM: ' + this.ewoForm.value.team,
       '\nREQ: ' + this.ewoForm.value.reqtype,
+      '\nPRI: ' + this.ewoForm.value.priority,
       '\nWHAT: ' + this.ewoForm.value.title,
       '\nHOW: ' + this.ewoForm.value.descript);
 
     this.ewoService.addEwo(
       this.ewoForm.value.startDate,
       this.ewoForm.value.starter,
-      this.ewoForm.value.reqtype,
       this.ewoForm.value.team,
+      this.ewoForm.value.reqtype,
+      this.ewoForm.value.priority,
       this.ewoForm.value.title,
       this.ewoForm.value.descript
     );

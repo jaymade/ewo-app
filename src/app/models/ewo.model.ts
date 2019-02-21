@@ -3,6 +3,7 @@ export interface Ewo {
   starter: string;
   team: string;
   reqtype: string;
+  priority: string;
   title: string;
   descript: string;
   status: string;
