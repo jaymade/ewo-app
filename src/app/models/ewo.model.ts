@@ -3,6 +3,8 @@ export interface Ewo {
   starter: string;
   team: string;
   reqtype: string;
+  newPart: boolean;
+  partNum: string;
   title: string;
   descript: string;
   status: string;

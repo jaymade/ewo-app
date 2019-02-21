@@ -1,12 +1,6 @@
 // Define schema
 var mongoose = require("mongoose");
 var ewoSchema = mongoose.Schema({
-  // userId: {
-  //   type: String
-  // },
-  // ewoId: {
-  //   type: String
-  // },
   startDate: {
     type: String,
     required: true
@@ -22,6 +16,13 @@ var ewoSchema = mongoose.Schema({
   reqtype: {
     type: String,
     required: true
+  },
+  newPart: {
+    type: Boolean,
+    required: true
+  },
+  partNum: {
+    type: String
   },
   title: {
     type: String,

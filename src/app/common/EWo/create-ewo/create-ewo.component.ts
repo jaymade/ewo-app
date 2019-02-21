@@ -71,7 +71,7 @@ export class CreateEwoComponent implements OnInit {
   isLoading = false;
   ewo: Ewo;
   sourced = false; // is part out sourced
-  newPart = true; // new part number toggle
+  newPart = false; // new part number toggle
   startDate = this.currentDate();
 
   private ewoId: string;
@@ -92,7 +92,7 @@ export class CreateEwoComponent implements OnInit {
       reqtype: new FormControl('choose', {
         validators: [Validators.required]
       }),
-      newPart: new FormControl('true'),
+      newPart: new FormControl(null),
       partNum: new FormControl(null),
       priority: new FormControl('choose', {
         validators: [Validators.required]
@@ -117,6 +117,8 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['starter'].setValue('Jay Rich');
     this.ewoForm.controls['team'].setValue('Telcom -Sales');
     this.ewoForm.controls['reqtype'].setValue('Color Change');
+    this.ewoForm.controls['newPart'].setValue('false');
+    this.ewoForm.controls['partNum'].setValue('0020030330');
     this.ewoForm.controls['title'].setValue('TEST 3');
     this.ewoForm.controls['descript'].setValue('3 TEST tickles');
   }
@@ -145,6 +147,8 @@ export class CreateEwoComponent implements OnInit {
       '\nWHO: ' + this.ewoForm.value.starter,
       '\nTEAM: ' + this.ewoForm.value.team,
       '\nTYPE: ' + this.ewoForm.value.reqtype,
+      '\nNEW PART: ' + this.ewoForm.value.newPart,
+      '\nPart #: ' + this.ewoForm.value.partNum,
       '\nWHAT: ' + this.ewoForm.value.title,
       '\nHOW: ' + this.ewoForm.value.descript);
 
@@ -152,6 +156,8 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.startDate,
       this.ewoForm.value.starter,
       this.ewoForm.value.team,
+      this.ewoForm.value.newPart,
+      this.ewoForm.value.partNum,
       this.ewoForm.value.reqtype,
       this.ewoForm.value.title,
       this.ewoForm.value.descript
