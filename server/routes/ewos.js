@@ -12,7 +12,9 @@ router.post('', (req, res, next) => {
     priority: req.body.priority,
     title: req.body.title,
     descript: req.body.descript,
-    status: req.body.status
+    status: req.body.status,
+    eoq: req.body.eoq,
+    asq: req.body.asq,
   });
   ewo.save().then(createdEWO => {
     console.log('EWO save info', createdEWO);
@@ -36,6 +38,8 @@ router.put("/:id", (req, res, next) => {
     title: req.body.title,
     descript: req.body.descript,
     status: req.body.status,
+    eoq: req.body.eoq,
+    asq: req.body.asq,
   });
   Ewo.updateOne({
     _id: req.params.id

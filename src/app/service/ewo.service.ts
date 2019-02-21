@@ -15,7 +15,7 @@ export class EwoService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getEwo(id: string) {
-    console.log(id);
+    console.log('This is from FE param ID: ', id);
     // return { ...this.ewos.find(e => e._id === id) };
     return this.http.get<{
       _id: string;
@@ -27,6 +27,8 @@ export class EwoService {
       title: string;
       descript: string;
       status: string;
+      eoq: string;
+      asq: string;
     }>('http://localhost:3000/api/ewos/' + id);
   }
 
@@ -34,7 +36,17 @@ export class EwoService {
     return this.ewosUpdated.asObservable();
   }
 
-  addEwo(startDate: string, starter: string, team: string, reqtype: string, priority: string,  title: string, descript: string) {
+  addEwo(
+    startDate: string,
+    starter: string,
+    team: string,
+    reqtype: string,
+    priority: string,
+    title: string,
+    descript: string,
+    eoq: string,
+    asq: string
+  ) {
     const ewo: Ewo = {
       startDate: startDate,
       starter: starter,
@@ -43,7 +55,9 @@ export class EwoService {
       priority: priority,
       title: title,
       descript: descript,
+      asq: asq,
       status: 'active',
+      eoq: eoq,
       _id: null
     };
     this.http
@@ -58,7 +72,7 @@ export class EwoService {
         this.ewos.push(ewo);
         // to refresh list
         this.ewosUpdated.next([...this.ewos]);
-        console.log('EWOs return: ', this.ewos);
+        console.log('sent from addEWO: ', this.ewos);
         this.router.navigate(['/ewos']);
       });
   }
@@ -78,6 +92,7 @@ export class EwoService {
       // )
       .subscribe(mapedEwos => {
         this.ewos = mapedEwos.ewos;
+        console.log('FE getEWO Sub', this.ewos);
         this.ewosUpdated.next([...this.ewos]);
       });
   }
@@ -91,7 +106,9 @@ export class EwoService {
     priority: string,
     title: string,
     descript: string,
-    status: string
+    status: string,
+    eoq: string,
+    asq: string
   ) {
     const ewo: Ewo = {
       _id: _id,
@@ -102,7 +119,9 @@ export class EwoService {
       priority: priority,
       title: title,
       descript: descript,
-      status: status
+      status: status,
+      eoq: eoq,
+      asq: asq
     };
     this.http
       .put('http://localhost:3000/api/ewos/' + _id, ewo)
@@ -111,6 +130,7 @@ export class EwoService {
         const oldEwosIndex = updatedEwos.findIndex(e => e._id === ewo._id);
         updatedEwos[oldEwosIndex] = ewo;
         this.ewos = updatedEwos;
+        console.log('updated FE updatedEWOS: ', this.ewos);
         this.ewosUpdated.next([...this.ewos]);
         this.router.navigate(['/ewos']);
       });
@@ -121,7 +141,7 @@ export class EwoService {
     this.http
       .delete('http://localhost:3000/api/ewos/' + ewoId)
       .subscribe(() => {
-        // console.log('Deleted EWO: ' + ewoId);
+        console.log('Deleted EWO: ' + ewoId);
         const updatedEwos = this.ewos.filter(ewo => ewo._id !== ewoId);
         this.ewos = updatedEwos;
         this.ewosUpdated.next([...this.ewos]);

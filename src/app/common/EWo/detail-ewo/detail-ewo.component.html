@@ -10,29 +10,26 @@
       <li class="list-group-item">Initiator: {{ewo.starter}} </li>
       <li class="list-group-item">Department / Team: {{ewo.team}} </li>
     </ul>
-    <!--
-      <li class="list-group-item" >Request Type:  {{ewo.request}} </li>
-      <li class="list-group-item" >Request Type:  {{ewo.request}} </li>
-      <li class="list-group-item" >Request Type:  {{ewo.request}} </li>
-    </div>
-
-    <div class="col">
-      <h5>Purchasing Info</h5>
-      <p>Outsourced (T/F):  {{ewo.outsourced}} </p>
-      <p>conomic Order Quantity:  {{ewo.eoq}} </p>
-      <p>Annual SSales Quantity:  {{ewo.as}} </p>
-      <p>Min Order Quantity:  {{ewo.moq}} </p>
-      <p>Order Quantity Purchased:  {{ewo.oqp}} </p>
-      <p>Vender Number :  {{ewo.vendnum}} </p>
-      <p>Lead Time:  {{ewo.leadtime}} </p> -->
   </div>
 
   <div class="col">
     <h5>Engineering Info</h5>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Request Type: {{ewo.reqtype}} </li>
-<li class="list-group-item">Priority <small class="orange">(1=low - 5=high)</small>: {{ewo.priority}} </li>
+      <li class="list-group-item">Priority <small class="orange">(1=low - 5=high)</small>: {{ewo.priority}} </li>
       <li class="list-group-item">Status: {{ewo.status}} </li>
+    </ul>
+  </div>
+
+  <div class="col">
+    <h5>Purchasing Info</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Economic Order Quantity <small class="orange">(EOQ)</small>: {{ewo.eoq}} </li>
+      <li class="list-group-item">Annual Sales Quantity <small class="orange">(ASQ)</small>: {{ewo.asq}} </li>
+<li class="list-group-item">Min Order Quantity <small class="orange">(MOQ)</small>: {{ewo.moq}}</li>
+<li class="list-group-item">Order Quantity Purchased <small class="orange">(OQP)</small>: {{ewo.oqp}}</li>
+<li class="list-group-item">Vender Number: {{ewo.vendnum}}</li>
+       <li class="list-group-item">Lead Time: {{ewo.leadtime}}</li>
     </ul>
   </div>
 
@@ -45,3 +42,4 @@
   </div>
 
 </div>
+<code>{{ewo | json}}</code>

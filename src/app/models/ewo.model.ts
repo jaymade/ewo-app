@@ -7,5 +7,7 @@ export interface Ewo {
   title: string;
   descript: string;
   status: string;
+  eoq: string;
+  asq: string;
   _id: string;
 }

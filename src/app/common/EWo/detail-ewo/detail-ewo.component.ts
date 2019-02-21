@@ -30,7 +30,9 @@ export class DetailEwoComponent implements OnInit {
           priority: ewoData.priority,
           title: ewoData.title,
           descript: ewoData.descript,
-          status: ewoData.status
+          status: ewoData.status,
+          eoq: ewoData.eoq,
+          asq: ewoData.asq
         };
       });
     });

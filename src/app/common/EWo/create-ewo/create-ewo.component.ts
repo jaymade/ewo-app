@@ -118,8 +118,10 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['team'].setValue('Telcom -Sales');
     this.ewoForm.controls['reqtype'].setValue('New Design');
     this.ewoForm.controls['priority'].setValue('4');
-    this.ewoForm.controls['title'].setValue('TEST 2');
-    this.ewoForm.controls['descript'].setValue('2 TEST tickles');
+    this.ewoForm.controls['title'].setValue('TEST 5');
+    this.ewoForm.controls['descript'].setValue('5 TEST tickles');
+    this.ewoForm.controls['eoq'].setValue('22');
+    this.ewoForm.controls['asq'].setValue('33');
   }
 
   currentDate() {
@@ -141,13 +143,16 @@ export class CreateEwoComponent implements OnInit {
     }
     this.isLoading = true;
 
-    console.log('save EWO info: \n',  '\nWHEN: ' + this.ewoForm.value.startDate,
+    console.log('Create Comp EWO info: \n',
+      '\nWHEN: ' + this.ewoForm.value.startDate,
       '\nWHO: ' + this.ewoForm.value.starter,
       '\nTEAM: ' + this.ewoForm.value.team,
       '\nREQ: ' + this.ewoForm.value.reqtype,
       '\nPRI: ' + this.ewoForm.value.priority,
       '\nWHAT: ' + this.ewoForm.value.title,
-      '\nHOW: ' + this.ewoForm.value.descript);
+      '\nHOW: ' + this.ewoForm.value.descript,
+      '\nEOQ: ' + this.ewoForm.value.eoq,
+      '\nASQ: ' + this.ewoForm.value.asq);
 
     this.ewoService.addEwo(
       this.ewoForm.value.startDate,
@@ -156,7 +161,9 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.reqtype,
       this.ewoForm.value.priority,
       this.ewoForm.value.title,
-      this.ewoForm.value.descript
+      this.ewoForm.value.descript,
+      this.ewoForm.value.eoq,
+      this.ewoForm.value.asq,
     );
 
 

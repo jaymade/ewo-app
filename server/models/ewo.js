@@ -38,6 +38,12 @@ var ewoSchema = mongoose.Schema({
   status: {
     type: String,
     required: true
+  },
+  eoq: {
+    type: String
+  },
+  asq: {
+    type: String
   }
 });
 
