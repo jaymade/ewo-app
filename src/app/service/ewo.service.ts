@@ -83,10 +83,10 @@ export class EwoService {
       _id: null,
       status: 'Active',
       assigment: 'No One',
-      lastupdated: null,
-      timestamp: null,
-      completed: null,
-      hours: null,
+      lastupdated: 'TBD',
+      timestamp: 'TBD',
+      completed: 'TBD',
+      hours: 'TBD',
 
     };
     this.http

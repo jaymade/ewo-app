@@ -1,43 +1,101 @@
 <h3>EWO Details</h3>
-  <h5>EWO #: <span class="orange">{{ewo?._id}}</span></h5>
+<h5>EWO #: <span class="orange">{{ewo?._id}}</span></h5>
 
 <div class="row mt-3">
 
   <div class="col">
     <h5>User Input</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Start Date: {{ewo?.startDate}} </li>
-      <li class="list-group-item">Initiator: {{ewo?.starter}} </li>
-      <li class="list-group-item">Department / Team: {{ewo?.team}} </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Start Date: </strong>
+        <span class="data float-right">{{ewo?.startDate}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Initiator: </strong>
+        <span class="data float-right"> {{ewo?.starter}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Department / Team: </strong>
+        <span class="data float-right"> {{ewo?.team}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Last Updated: </strong>
+        <span class="data float-right"> {{ewo?.lastupdated}} </span>
+      </li>
     </ul>
   </div>
 
   <div class="col">
     <h5>Engineering Info</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Request Type: {{ewo?.reqtype}} </li>
-      <li class="list-group-item">Priority <small class="orange">(1=low - 5=high)</small>: {{ewo?.priority}} </li>
-      <li class="list-group-item">Status: {{ewo?.status}} </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Request Type: </strong>
+        <span class="data float-right"> {{ewo?.reqtype}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Priority <small class="blue">(1=low - 5=high)</small>: </strong>
+        <span class="data float-right">  {{ewo?.priority}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Status: </strong>
+        <span class="data float-right"> {{ewo?.status}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Assigment: </strong>
+        <span class="data float-right"> {{ewo?.assigment}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Status: </strong>
+        <span class="data float-right"> {{ewo?.status}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Hours: </strong>
+        <span class="data float-right">{{ewo?.hours}} </span>
+      </li>
     </ul>
   </div>
 
   <div class="col">
     <h5>Purchasing Info</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Economic Order Quantity <small class="orange">(EOQ)</small>: {{ewo?.eoq}} </li>
-      <li class="list-group-item">Annual Sales Quantity <small class="orange">(ASQ)</small>: {{ewo?.asq}} </li>
-      <li class="list-group-item">Min Order Quantity <small class="orange">(MOQ)</small>: {{ewo?.moq}}</li>
-      <li class="list-group-item">Order Quantity Purchased <small class="orange">(OQP)</small>: {{ewo?.oqp}}</li>
-      <li class="list-group-item">Vender Number: {{ewo?.vendnum}}</li>
-      <li class="list-group-item">Lead Time: {{ewo?.leadtime}}</li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Economic Order Quantity <small class="blue">(EOQ)</small>: </strong>
+        <span class="data float-right"> {{ewo?.eoq}}</span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Annual Sales Quantity <small class="blue">(ASQ)</small>: </strong>
+        <span class="data float-right"> {{ewo?.asq}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Min Order Quantity <small class="blue">(MOQ)</small>: </strong>
+        <span class="data float-right">{{ewo?.moq}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Order Quantity Purchased <small class="blue">(OQP)</small>: </strong>
+        <span class="data float-right">{{ewo?.oqp}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Vender Number: </strong>
+        <span class="data float-right">{{ewo?.vendnum}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Lead Time: </strong>
+        <span class="data float-right">{{ewo?.leadtime}} </span>
+      </li>
     </ul>
   </div>
 
   <div class="col-12 mt-5">
     <h5>EWO info</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Title: {{ewo?.title}}</li>
-      <li class="list-group-item">Description: {{ewo?.descript}}</li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Title: </strong>
+        <span class="">{{ewo?.title}} </span>
+      </li>
+      <li class="list-group-item">
+        <strong class="mr-3"> Description: </strong>
+        <span class="">{{ewo?.descript}} </span>
+      </li>
     </ul>
   </div>
 
@@ -45,38 +103,37 @@
 
 <form class="mt-5 mb-5" (submit)="onUpdateEwo()" [formGroup]="ewoUpdateForm">
   <div class="row bg border p-3 rounded">
-  <h6>Engineering Update Section</h6>
+    <h6>Engineering Update Section</h6>
 
-  <!-- timestamp -->
-  <div class="col-12">
-    <p>Timestamp: {{timestamp | date}}</p>
+    <!-- timestamp -->
+    <div class="col-12">
+      <p>Timestamp: {{timestamp | date}}</p>
+    </div>
+
+    <!-- Assigment -->
+    <div class="form-group col">
+      <label for="status">Assignment: </label>
+      <select class="form-control" formControlName="assignment">
+        <option *ngFor="let ass of assigments" value="{{ass.id}}">{{ass.name}}</option>
+      </select>
+    </div>
+
+    <!-- Request type change -->
+    <div class="form-group col">
+      <label for="status">Request Type Change </label>
+      <select class="form-control" formControlName="reqtype">
+        <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
+      </select>
+    </div>
+
+    <!-- Status change -->
+    <div class="form-group col">
+      <label for="status">Status Change </label>
+      <select class="form-control" formControlName="status">
+        <option *ngFor="let status of statuses" value="{{status.id}}">{{status.name}}</option>
+      </select>
+    </div>
+
   </div>
-
-  <!-- Assigment -->
-  <div class="form-group col">
-    <label for="status">Assignment: </label>
-    <select class="form-control" formControlName="assignment">
-      <option *ngFor="let ass of assigments" value="{{ass.id}}">{{ass.name}}</option>
-    </select>
-  </div>
-
-  <!-- Request type change -->
-  <div class="form-group col">
-    <label for="status">Request Type Change </label>
-    <select class="form-control" formControlName="reqtype">
-      <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
-    </select>
-  </div>
-
-  <!-- Status change -->
-  <div class="form-group col">
-    <label for="status">Status Change </label>
-    <select class="form-control" formControlName="status">
-      <option *ngFor="let status of statuses" value="{{status.id}}">{{status.name}}</option>
-    </select>
-  </div>
-
-</div>
 </form>
 <code>{{ewo | json}}</code>
-
