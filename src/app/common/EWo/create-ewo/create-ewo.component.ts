@@ -58,11 +58,11 @@ export class CreateEwoComponent implements OnInit {
 
   statuses: Select[] = [
     { id: 'choose', name: 'Choose One' },
-    { id: '1', name: '1-Unassigned' },
-    { id: '2', name: '2-Assigned' },
-    { id: '3', name: '3-Completed' },
-    { id: '4', name: '4-Canceled' },
-    { id: '5', name: '5-Hold' }
+    { id: 'Unassigned', name: 'Unassigned' },
+    { id: 'Assigned', name: 'Assigned' },
+    { id: 'Completed', name: 'Completed' },
+    { id: 'Canceled', name: 'Canceled' },
+    { id: 'Hold', name: 'Hold' }
   ];
 
   ewoForm: FormGroup;
@@ -177,6 +177,11 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.oqp,
       this.ewoForm.value.vendnum,
       this.ewoForm.value.leadtime,
+      this.ewoForm.value.assigment,
+      this.ewoForm.value.lastupdated,
+      this.ewoForm.value.timestamp,
+      this.ewoForm.value.completed,
+      this.ewoForm.value.hours,
     );
 
 

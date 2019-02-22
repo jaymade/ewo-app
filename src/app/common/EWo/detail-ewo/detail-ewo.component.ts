@@ -13,7 +13,7 @@ import { Ewo } from '../../../models/ewo.model';
 })
 export class DetailEwoComponent implements OnInit {
   ewo: Ewo;
-  stat: string;
+
   ewoUpdateForm: FormGroup;
   timestamp = this.currentDate();
 
@@ -26,12 +26,11 @@ export class DetailEwoComponent implements OnInit {
   ];
 
   statuses: Select[] = [
-    { id: 'choose', name: 'Choose One' },
-    { id: '1', name: '1-Unassigned' },
-    { id: '2', name: '2-Assigned' },
-    { id: '3', name: '3-Completed' },
-    { id: '4', name: '4-Canceled' },
-    { id: '5', name: '5-Hold' }
+    { id: 'Unassigned', name: 'Unassigned' },
+    { id: 'Assigned', name: 'Assigned' },
+    { id: 'Completed', name: 'Completed' },
+    { id: 'Canceled', name: 'Canceled' },
+    { id: 'Hold', name: 'Hold' }
   ];
 
   requests: Select[] = [
@@ -81,25 +80,29 @@ export class DetailEwoComponent implements OnInit {
           timestamp: ewoData.timestamp,
           hours: ewoData.hours,
         };
+        const stat = this.ewo.status;
+        const req = this.ewo.reqtype;
+        // form
+        this.ewoUpdateForm = new FormGroup({
+          assignment: new FormControl(null, {
+            validators: [Validators.required]
+          }),
+          status: new FormControl(null, {
+            validators: [Validators.required]
+          }),
+          reqtype: new FormControl(null, {
+            validators: [Validators.required]
+          })
+        });
+        // console.log('%c STAT: ', 'color:red', this.stat);
+        this.ewoUpdateForm.controls['assignment'].setValue('No One');
+        this.ewoUpdateForm.controls['status'].setValue(stat);
+        this.ewoUpdateForm.controls['reqtype'].setValue(req);
       });
     });
 
-    // form
-    this.ewoUpdateForm = new FormGroup({
-      assignment: new FormControl(null, {
-        validators: [Validators.required]
-      }),
-      status: new FormControl(null, {
-        validators: [Validators.required]
-      }),
-      reqtype: new FormControl(null, {
-        validators: [Validators.required]
-      })
-    });
-    // console.log('%c STAT: ', 'color:red', this.stat);
-    this.ewoUpdateForm.controls['assignment'].setValue('No One');
-    this.ewoUpdateForm.controls['status'].setValue(this.stat);
-    // this.ewoUpdateForm.controls['requests'].setValue('Color Change');
+
+
   }
 
   currentDate() {

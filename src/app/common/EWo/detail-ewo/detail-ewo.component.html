@@ -34,7 +34,7 @@
       </li>
       <li class="list-group-item">
         <strong class="mr-3"> Priority <small class="blue">(1=low - 5=high)</small>: </strong>
-        <span class="data float-right">  {{ewo?.priority}} </span>
+        <span class="data float-right"> {{ewo?.priority}} </span>
       </li>
       <li class="list-group-item">
         <strong class="mr-3"> Status: </strong>
@@ -136,4 +136,13 @@
 
   </div>
 </form>
-<code>{{ewo | json}}</code>
+<div class="row">
+
+  <code class="col">From DB: <br>
+    <pre>{{ewo | json}}</pre>
+  </code>
+  <code class="col"> Updated info: <br>
+    <pre>{{ewoUpdateForm.value | json }}</pre>
+  </code>
+  <code class="col">Valid Form: {{ewoUpdateForm.valid}} </code>
+</div>

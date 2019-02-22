@@ -81,7 +81,7 @@ export class EwoService {
       vendnum: vendnum,
       leadtime: leadtime,
       _id: null,
-      status: 'Active',
+      status: 'Unassigned',
       assigment: 'No One',
       lastupdated: 'TBD',
       timestamp: 'TBD',
