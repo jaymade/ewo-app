@@ -1,12 +1,6 @@
 // Define schema
 var mongoose = require("mongoose");
 var ewoSchema = mongoose.Schema({
-  // userId: {
-  //   type: String
-  // },
-  // ewoId: {
-  //   type: String
-  // },
   startDate: {
     type: String,
     required: true
@@ -55,6 +49,21 @@ var ewoSchema = mongoose.Schema({
     type: String
   },
   leadtime: {
+    type: String
+  },
+  assigment: {
+    type: String
+  },
+  lastupdated: {
+    type: String
+  },
+  timestamp: {
+    type: String
+  },
+  completed: {
+    type: String
+  },
+  hours: {
     type: String
   },
 });

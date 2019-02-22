@@ -147,21 +147,21 @@ export class CreateEwoComponent implements OnInit {
     }
     this.isLoading = true;
 
-    console.log('Create Comp EWO info: \n',
-      '\nWHEN: ' + this.ewoForm.value.startDate,
-      '\nWHO: ' + this.ewoForm.value.starter,
-      '\nTEAM: ' + this.ewoForm.value.team,
-      '\nREQ: ' + this.ewoForm.value.reqtype,
-      '\nPRI: ' + this.ewoForm.value.priority,
-      '\nWHAT: ' + this.ewoForm.value.title,
-      '\nHOW: ' + this.ewoForm.value.descript,
-      '\nEOQ: ' + this.ewoForm.value.eoq,
-      '\nASQ: ' + this.ewoForm.value.asq,
-      '\nMOQ: ' + this.ewoForm.value.moq,
-      '\nOQP: ' + this.ewoForm.value.oqp,
-      '\nVENDER#: ' + this.ewoForm.value.vendnum,
-      '\nLEAD: ' + this.ewoForm.value.leadtime,
-      );
+    // console.log('Create Comp EWO info: \n',
+    //   '\nWHEN: ' + this.ewoForm.value.startDate,
+    //   '\nWHO: ' + this.ewoForm.value.starter,
+    //   '\nTEAM: ' + this.ewoForm.value.team,
+    //   '\nREQ: ' + this.ewoForm.value.reqtype,
+    //   '\nPRI: ' + this.ewoForm.value.priority,
+    //   '\nWHAT: ' + this.ewoForm.value.title,
+    //   '\nHOW: ' + this.ewoForm.value.descript,
+    //   '\nEOQ: ' + this.ewoForm.value.eoq,
+    //   '\nASQ: ' + this.ewoForm.value.asq,
+    //   '\nMOQ: ' + this.ewoForm.value.moq,
+    //   '\nOQP: ' + this.ewoForm.value.oqp,
+    //   '\nVENDER#: ' + this.ewoForm.value.vendnum,
+    //   '\nLEAD: ' + this.ewoForm.value.leadtime,
+    //   );
 
     this.ewoService.addEwo(
       this.ewoForm.value.startDate,

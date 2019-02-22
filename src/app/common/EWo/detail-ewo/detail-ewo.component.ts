@@ -1,3 +1,4 @@
+import { Select } from './../../../models/select.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -11,8 +12,45 @@ import { Ewo } from '../../../models/ewo.model';
   styleUrls: ['./detail-ewo.component.scss']
 })
 export class DetailEwoComponent implements OnInit {
-
   ewo: Ewo;
+  stat: string;
+  ewoUpdateForm: FormGroup;
+  timestamp = this.currentDate();
+
+  assigments: Select[] = [
+    { id: 'No One', name: 'No One' },
+    { id: 'Billy Unger', name: 'Billy Unger' },
+    { id: 'Greg Barbee', name: 'Greg Barbee' },
+    { id: 'Joe Dunagin', name: 'Joe Dunagin' },
+    { id: 'Robert Hyde', name: 'Robert Hyde' }
+  ];
+
+  statuses: Select[] = [
+    { id: 'choose', name: 'Choose One' },
+    { id: '1', name: '1-Unassigned' },
+    { id: '2', name: '2-Assigned' },
+    { id: '3', name: '3-Completed' },
+    { id: '4', name: '4-Canceled' },
+    { id: '5', name: '5-Hold' }
+  ];
+
+  requests: Select[] = [
+    { id: 'choose', name: 'Choose One' },
+    { id: 'Assembly', name: 'Assembly' },
+    { id: 'Color Change', name: 'Color Change' },
+    { id: 'Tolerance Change', name: 'Tolerance Change' },
+    { id: 'Fixture', name: 'Fixture' },
+    { id: 'Process Change Request', name: 'Process Change Request' },
+    { id: 'Machine Program', name: 'Machine Program' },
+    { id: 'New Design', name: 'New Design' },
+    { id: 'Part Modification', name: 'Part Modification' },
+    { id: 'New Color', name: 'New Color' },
+    { id: 'Miscellaneous', name: 'Miscellaneous' },
+    { id: 'Quote', name: 'Quote' },
+    { id: 'Part Number', name: 'Part Number' },
+    { id: 'Routing Change', name: 'Routing Change' }
+  ];
+
   private ewoId: string;
 
   constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
@@ -37,9 +75,63 @@ export class DetailEwoComponent implements OnInit {
           oqp: ewoData.oqp,
           vendnum: ewoData.vendnum,
           leadtime: ewoData.leadtime,
+          assigment: ewoData.assigment,
+          lastupdated: ewoData.lastupdated,
+          completed: ewoData.completed,
+          timestamp: ewoData.timestamp,
+          hours: ewoData.hours,
         };
       });
     });
+
+    // form
+    this.ewoUpdateForm = new FormGroup({
+      assignment: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      status: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      reqtype: new FormControl(null, {
+        validators: [Validators.required]
+      })
+    });
+    // console.log('%c STAT: ', 'color:red', this.stat);
+    this.ewoUpdateForm.controls['assignment'].setValue('No One');
+    this.ewoUpdateForm.controls['status'].setValue(this.stat);
+    // this.ewoUpdateForm.controls['requests'].setValue('Color Change');
+  }
+
+  currentDate() {
+    const currentDate = new Date();
+    return currentDate.toISOString().substring(0, 10);
+  }
+  onUpdateEwo() {
+    if (this.ewoUpdateForm.invalid) {
+      return;
+    }
+    // this.isLoading = true;
+    this.ewoService.addEwo(
+      this.ewo.startDate,
+      this.ewo.starter,
+      this.ewo.team,
+      this.ewo.priority,
+      this.ewo.title,
+      this.ewo.descript,
+      this.ewo.eoq,
+      this.ewo.asq,
+      this.ewo.moq,
+      this.ewo.oqp,
+      this.ewo.vendnum,
+      this.ewo.leadtime,
+      this.ewoUpdateForm.value.reqtype,
+      this.ewoUpdateForm.value.status,
+      this.ewoUpdateForm.value.assignment,
+      this.ewoUpdateForm.value.completed,
+      this.ewoUpdateForm.value.timestamp,
+      this.ewoUpdateForm.value.hours
+    );
+
+    this.ewoUpdateForm.reset();
   }
 }
-

@@ -15,7 +15,7 @@ export class EwoService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getEwo(id: string) {
-    console.log('This is from FE param ID: ', id);
+    console.log('%c F.E. ewo.service.getEwo()  param ID: ', 'color:green;', id);
     // return { ...this.ewos.find(e => e._id === id) };
     return this.http.get<{
       _id: string;
@@ -33,6 +33,12 @@ export class EwoService {
       oqp: string;
       vendnum: string;
       leadtime: string;
+      assigment: string;
+      lastupdated: string;
+      timestamp: string;
+      completed: string;
+      hours: string;
+
     }>('http://localhost:3000/api/ewos/' + id);
   }
 
@@ -54,6 +60,11 @@ export class EwoService {
     oqp: string,
     vendnum: string,
     leadtime: string,
+    assigment: string,
+    lastupdated: string,
+    timestamp: string,
+    completed: string,
+    hours: string,
   ) {
     const ewo: Ewo = {
       startDate: startDate,
@@ -63,14 +74,20 @@ export class EwoService {
       priority: priority,
       title: title,
       descript: descript,
+      eoq: eoq,
       asq: asq,
       moq: moq,
       oqp: oqp,
       vendnum: vendnum,
       leadtime: leadtime,
-      status: 'active',
-      eoq: eoq,
-      _id: null
+      _id: null,
+      status: 'Active',
+      assigment: 'No One',
+      lastupdated: null,
+      timestamp: null,
+      completed: null,
+      hours: null,
+
     };
     this.http
       .post<{ message: string; ewoId: string }>(
@@ -125,6 +142,11 @@ export class EwoService {
     oqp: string,
     vendnum: string,
     leadtime: string,
+    assigment: string,
+    lastupdated: string,
+    timestamp: string,
+    completed: string,
+    hours: string,
 
   ) {
     const ewo: Ewo = {
@@ -143,6 +165,11 @@ export class EwoService {
       oqp: oqp,
       vendnum: vendnum,
       leadtime: leadtime,
+      assigment: assigment,
+      lastupdated: lastupdated,
+      timestamp: timestamp,
+      completed: completed,
+      hours: hours,
     };
     this.http
       .put('http://localhost:3000/api/ewos/' + _id, ewo)
