@@ -118,19 +118,19 @@
       </select>
     </div>
 
-    <!-- Request type change -->
-    <div class="form-group col">
-      <label for="status">Request Type Change </label>
-      <select class="form-control" formControlName="reqtype">
-        <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
-      </select>
-    </div>
 
     <!-- Status change -->
     <div class="form-group col">
       <label for="status">Status Change </label>
       <select class="form-control" formControlName="status">
         <option *ngFor="let status of statuses" value="{{status.id}}">{{status.name}}</option>
+      </select>
+    </div>
+    <!-- Request type change -->
+    <div class="form-group col">
+      <label for="status">Request Type Change </label>
+      <select class="form-control" formControlName="reqtype">
+        <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
       </select>
     </div>
 
