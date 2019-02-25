@@ -85,6 +85,7 @@ export class DetailEwoComponent implements OnInit {
         const stat = this.ewo.status;
         const req = this.ewo.reqtype;
         const eng = this.ewo.assigment;
+        const hours = this.ewo.hours;
         // form
         this.ewoUpdateForm = new FormGroup({
           assignment: new FormControl(null, {
@@ -108,6 +109,7 @@ export class DetailEwoComponent implements OnInit {
         this.ewoUpdateForm.controls['status'].setValue(stat);
         this.ewoUpdateForm.controls['reqtype'].setValue(req);
         this.ewoUpdateForm.controls['lastupdated'].setValue(this.timestamp);
+        this.ewoUpdateForm.controls['hours'].setValue(hours);
       });
     });
   }

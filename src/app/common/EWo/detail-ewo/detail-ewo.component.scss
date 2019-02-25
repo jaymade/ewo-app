@@ -2,9 +2,10 @@
 
 li {
   strong {
-     color:$gray;
+    color: $gray;
 
   }
+
   span.data {
     color: $gray !important;
 
@@ -13,4 +14,7 @@ li {
     }
   }
 
+}
+.bg {
+  background-color: #f2f2f2;
 }
