@@ -102,45 +102,51 @@
 </div>
 
 <div *ngIf="engineer">
-<form class="mt-5 mb-5" *ngIf="ewo" (submit)="onUpdateEwo()" [formGroup]="ewoUpdateForm">
-  <div class="row bg border p-3 rounded">
-    <h6>Engineering Update Section</h6>
+  <form class="mt-5 mb-5" *ngIf="ewo" (submit)="onUpdateEwo()" [formGroup]="ewoUpdateForm">
+    <div class="row bg border p-3 rounded">
+      <h6>Engineering Update Section</h6>
 
-    <!-- timestamp -->
-    <div class="col-12">
-      <p>Timestamp: {{timestamp | date}}</p>
+      <!-- timestamp -->
+      <div class="col-12">
+        <p>Timestamp: {{timestamp | date}}</p>
+        <input type="hidden" formControlName="lastupdated" />
+      </div>
+
+      <!-- Assigment -->
+      <div class="form-group col">
+        <label for="status">Assignment: </label>
+        <select class="form-control" formControlName="assignment">
+          <option *ngFor="let ass of assigments" value="{{ass.id}}">{{ass.name}}</option>
+        </select>
+      </div>
+
+
+      <!-- Status change -->
+      <div class="form-group col">
+        <label for="status">Status Change </label>
+        <select class="form-control" formControlName="status">
+          <option *ngFor="let status of statuses" value="{{status.id}}">{{status.name}}</option>
+        </select>
+      </div>
+      <!-- Request type change -->
+      <div class="form-group col">
+        <label for="status">Request Type Change </label>
+        <select class="form-control" formControlName="reqtype">
+          <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
+        </select>
+      </div>
+      <!-- hours -->
+      <div class="form-group col">
+        <label for="status">Hours </label>
+        <input class="form-control" type="text" formControlName="hours" />
+      </div>
+      <!-- submit btn -->
+      <div class="form-group col-12">
+        <button class="btn btn-primary" type="submit">Update EWO</button>
+      </div>
+
     </div>
-
-    <!-- Assigment -->
-    <div class="form-group col">
-      <label for="status">Assignment: </label>
-      <select class="form-control" formControlName="assignment">
-        <option *ngFor="let ass of assigments" value="{{ass.id}}">{{ass.name}}</option>
-      </select>
-    </div>
-
-
-    <!-- Status change -->
-    <div class="form-group col">
-      <label for="status">Status Change </label>
-      <select class="form-control" formControlName="status">
-        <option *ngFor="let status of statuses" value="{{status.id}}">{{status.name}}</option>
-      </select>
-    </div>
-    <!-- Request type change -->
-    <div class="form-group col">
-      <label for="status">Request Type Change </label>
-      <select class="form-control" formControlName="reqtype">
-        <option *ngFor="let req of requests" value="{{req.id}}">{{req.name}}</option>
-      </select>
-    </div>
-
-    <div class="form-group col-12">
-      <button class="btn btn-primary" type="submit">Update EWO</button>
-    </div>
-
-  </div>
-</form>
+  </form>
 </div>
 
 <div class="row">

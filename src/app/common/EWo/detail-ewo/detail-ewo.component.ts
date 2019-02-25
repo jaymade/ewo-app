@@ -12,7 +12,7 @@ import { Ewo } from '../../../models/ewo.model';
   styleUrls: ['./detail-ewo.component.scss']
 })
 export class DetailEwoComponent implements OnInit {
-  engineer = false;
+  engineer = true;
   ewo: Ewo;
 
   ewoUpdateForm: FormGroup;
@@ -93,6 +93,12 @@ export class DetailEwoComponent implements OnInit {
           status: new FormControl(null, {
             validators: [Validators.required]
           }),
+          lastupdated: new FormControl(null, {
+            validators: [Validators.required]
+          }),
+          hours: new FormControl(null, {
+            validators: [Validators.required]
+          }),
           reqtype: new FormControl(null, {
             validators: [Validators.required]
           })
@@ -101,6 +107,7 @@ export class DetailEwoComponent implements OnInit {
         this.ewoUpdateForm.controls['assignment'].setValue(eng);
         this.ewoUpdateForm.controls['status'].setValue(stat);
         this.ewoUpdateForm.controls['reqtype'].setValue(req);
+        this.ewoUpdateForm.controls['lastupdated'].setValue(this.timestamp);
       });
     });
   }
