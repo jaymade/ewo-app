@@ -101,7 +101,7 @@
 
 </div>
 
-<form class="mt-5 mb-5" (submit)="onUpdateEwo()" [formGroup]="ewoUpdateForm">
+<form class="mt-5 mb-5" *ngIf="ewo" (submit)="onUpdateEwo()" [formGroup]="ewoUpdateForm">
   <div class="row bg border p-3 rounded">
     <h6>Engineering Update Section</h6>
 
@@ -135,8 +135,8 @@
     </div>
 
     <div class="form-group col-12">
-<button class="btn btn-primary" type="submit" [ngClass]="{ 'disabled': ewoUpdateForm.invalid }">Update EWO</button>
-      </div>
+      <button class="btn btn-primary" type="submit" >Update EWO</button>
+    </div>
 
   </div>
 </form>
@@ -146,7 +146,7 @@
     <pre>{{ewo | json}}</pre>
   </code>
   <code class="col"> Updated info: <br>
-    <pre>{{ewoUpdateForm.value | json }}</pre>
+    <!-- <pre>{{ewoUpdateForm.value | json }}</pre> -->
   </code>
-  <code class="col">Valid Form: {{ewoUpdateForm.valid}} </code>
+  <!-- <code class="col">Valid Form: {{ewoUpdateForm.valid}} </code> -->
 </div>

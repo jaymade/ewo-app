@@ -80,6 +80,7 @@ export class DetailEwoComponent implements OnInit {
           timestamp: ewoData.timestamp,
           hours: ewoData.hours,
         };
+
         const stat = this.ewo.status;
         const req = this.ewo.reqtype;
         // form
@@ -100,21 +101,20 @@ export class DetailEwoComponent implements OnInit {
         this.ewoUpdateForm.controls['reqtype'].setValue(req);
       });
     });
-
-
-
   }
 
   currentDate() {
     const currentDate = new Date();
     return currentDate.toISOString().substring(0, 10);
   }
+
   onUpdateEwo() {
     if (this.ewoUpdateForm.invalid) {
       return;
     }
     // this.isLoading = true;
     this.ewoService.updateEwo(
+      this.ewo._id,
       this.ewo.startDate,
       this.ewo.starter,
       this.ewo.team,
@@ -134,7 +134,6 @@ export class DetailEwoComponent implements OnInit {
       this.ewoUpdateForm.value.timestamp,
       this.ewoUpdateForm.value.completed,
       this.ewoUpdateForm.value.hours,
-      this.ewo._id,
     );
 
     this.ewoUpdateForm.reset();
