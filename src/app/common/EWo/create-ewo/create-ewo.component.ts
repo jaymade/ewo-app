@@ -128,6 +128,7 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['oqp'].setValue('55');
     this.ewoForm.controls['vendnum'].setValue('VINMUMBER123');
     this.ewoForm.controls['leadtime'].setValue('4 score & 7 years');
+    // this.ewoForm.controls['assignment'].setValue('No One');
   }
 
   currentDate() {
