@@ -114,25 +114,27 @@ export class DetailEwoComponent implements OnInit {
       return;
     }
     // this.isLoading = true;
-    this.ewoService.addEwo(
+    this.ewoService.updateEwo(
       this.ewo.startDate,
       this.ewo.starter,
       this.ewo.team,
+      this.ewoUpdateForm.value.reqtype,
       this.ewo.priority,
       this.ewo.title,
       this.ewo.descript,
+      this.ewoUpdateForm.value.status,
       this.ewo.eoq,
       this.ewo.asq,
       this.ewo.moq,
       this.ewo.oqp,
       this.ewo.vendnum,
       this.ewo.leadtime,
-      this.ewoUpdateForm.value.reqtype,
-      this.ewoUpdateForm.value.status,
       this.ewoUpdateForm.value.assignment,
-      this.ewoUpdateForm.value.completed,
+      this.ewoUpdateForm.value.lastupdated,
       this.ewoUpdateForm.value.timestamp,
-      this.ewoUpdateForm.value.hours
+      this.ewoUpdateForm.value.completed,
+      this.ewoUpdateForm.value.hours,
+      this.ewo._id,
     );
 
     this.ewoUpdateForm.reset();
