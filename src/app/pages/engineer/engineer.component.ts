@@ -8,14 +8,16 @@ import { Ewo } from './../../models/ewo.model';
   templateUrl: './engineer.component.html',
   styleUrls: ['./engineer.component.scss']
 })
+
 export class EngineerComponent implements OnInit {
   isLoading = false;
+  engineer = true;
   ewos: Ewo[] = [];
   ewo: Ewo;
   private ewoId: string;
   private ewosSub: Subscription;
 
-  constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
+  constructor( public ewoService: EwoService, public route: ActivatedRoute ) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -26,21 +28,6 @@ export class EngineerComponent implements OnInit {
         this.isLoading = false;
         this.ewos = ewos;
       });
-
-    // get individual ewo
-    //   this.route.paramMap.subscribe((paramMap: ParamMap) => {
-    //     this.ewoId = paramMap.get('ewoId');
-    //     this.ewoService.getEwo(this.ewoId).subscribe(ewoData => {
-    //       this.ewo = {
-    //         _id: ewoData._id,
-    //         startDate: ewoData.startDate,
-    //         starter: ewoData.starter,
-    //         title: ewoData.title,
-    //         descript: ewoData.descript,
-    //         status: ewoData.status
-    //       };
-    //     });
-    //   });
   }
 
   onDeleteEwo(ewoId: string) {

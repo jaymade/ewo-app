@@ -12,6 +12,7 @@ import { Ewo } from '../../../models/ewo.model';
   styleUrls: ['./detail-ewo.component.scss']
 })
 export class DetailEwoComponent implements OnInit {
+  engineer = false;
   ewo: Ewo;
 
   ewoUpdateForm: FormGroup;
@@ -83,6 +84,7 @@ export class DetailEwoComponent implements OnInit {
 
         const stat = this.ewo.status;
         const req = this.ewo.reqtype;
+        const eng = this.ewo.assigment;
         // form
         this.ewoUpdateForm = new FormGroup({
           assignment: new FormControl(null, {
@@ -96,7 +98,7 @@ export class DetailEwoComponent implements OnInit {
           })
         });
         // console.log('%c STAT: ', 'color:red', this.stat);
-        this.ewoUpdateForm.controls['assignment'].setValue('No One');
+        this.ewoUpdateForm.controls['assignment'].setValue(eng);
         this.ewoUpdateForm.controls['status'].setValue(stat);
         this.ewoUpdateForm.controls['reqtype'].setValue(req);
       });
