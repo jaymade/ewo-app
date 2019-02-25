@@ -18,7 +18,7 @@ export class DetailEwoComponent implements OnInit {
   ewoUpdateForm: FormGroup;
   timestamp = this.currentDate();
 
-  assigments: Select[] = [
+  assignments: Select[] = [
     { id: 'No One', name: 'No One' },
     { id: 'Billy Unger', name: 'Billy Unger' },
     { id: 'Greg Barbee', name: 'Greg Barbee' },
@@ -76,7 +76,7 @@ export class DetailEwoComponent implements OnInit {
           oqp: ewoData.oqp,
           vendnum: ewoData.vendnum,
           leadtime: ewoData.leadtime,
-          assigment: ewoData.assigment,
+          assignment: ewoData.assignment,
           lastupdated: ewoData.lastupdated,
           completed: ewoData.completed,
           timestamp: ewoData.timestamp,
@@ -85,7 +85,7 @@ export class DetailEwoComponent implements OnInit {
 
         const stat = this.ewo.status;
         const req = this.ewo.reqtype;
-        const eng = this.ewo.assigment;
+        const eng = this.ewo.assignment;
         const hours = this.ewo.hours;
         // form
         this.ewoUpdateForm = new FormGroup({

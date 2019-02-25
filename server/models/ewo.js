@@ -54,7 +54,7 @@ var ewoSchema = mongoose.Schema({
   leadtime: {
     type: String
   },
-  assigment: {
+  assignment: {
     type: String
   },
   lastupdated: {

@@ -164,7 +164,7 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.oqp,
       this.ewoForm.value.vendnum,
       this.ewoForm.value.leadtime,
-      this.ewoForm.value.assigment,
+      this.ewoForm.value.assignment,
       this.ewoForm.value.lastupdated,
       this.ewoForm.value.timestamp,
       this.ewoForm.value.completed,

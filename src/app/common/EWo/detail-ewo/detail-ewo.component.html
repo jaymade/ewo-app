@@ -45,8 +45,8 @@
         <span class="data float-right"> {{ewo?.priority}} </span>
       </li>
       <li class="list-group-item">
-        <strong class="mr-3"> Assigment: </strong>
-        <span class="data float-right"> {{ewo?.assigment}} </span>
+        <strong class="mr-3"> assignment: </strong>
+        <span class="data float-right"> {{ewo?.assignment}} </span>
       </li>
 
       <li class="list-group-item">
@@ -119,11 +119,11 @@
         <input type="hidden" formControlName="lastupdated" />
       </div>
 
-      <!-- Assigment -->
+      <!-- assignment -->
       <div class="form-group col">
         <label for="status">Assignment: </label>
         <select class="form-control" formControlName="assignment">
-          <option *ngFor="let ass of assigments" value="{{ass.id}}">{{ass.name}}</option>
+          <option *ngFor="let ass of assignments" value="{{ass.id}}">{{ass.name}}</option>
         </select>
       </div>
 

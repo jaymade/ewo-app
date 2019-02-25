@@ -47,7 +47,7 @@ export class UpdateEwoComponent implements OnInit {
       this.ewoUpdateForm.value.oqp,
       this.ewoUpdateForm.value.vendnum,
       this.ewoUpdateForm.value.leadtime,
-      this.ewoUpdateForm.value.assigment,
+      this.ewoUpdateForm.value.assignment,
       this.ewoUpdateForm.value.lastupdated,
       this.ewoUpdateForm.value.timestamp,
       this.ewoUpdateForm.value.completed,

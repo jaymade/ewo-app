@@ -16,7 +16,7 @@ export interface Ewo {
   vendnum: string;
   leadtime: string;
   _id: string;
-  assigment: string;
+  assignment: string;
   lastupdated: string;
   timestamp: string;
   completed: string;

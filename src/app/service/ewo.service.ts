@@ -34,7 +34,7 @@ export class EwoService {
       oqp: string;
       vendnum: string;
       leadtime: string;
-      assigment: string;
+      assignment: string;
       lastupdated: string;
       timestamp: string;
       completed: string;
@@ -62,7 +62,7 @@ export class EwoService {
     oqp: string,
     vendnum: string,
     leadtime: string,
-    assigment: string,
+    assignment: string,
     lastupdated: string,
     timestamp: string,
     completed: string,
@@ -85,7 +85,7 @@ export class EwoService {
       leadtime: leadtime,
       _id: null,
       status: 'Unassigned',
-      assigment: 'No One',
+      assignment: 'No One',
       lastupdated: 'TBD',
       timestamp: 'TBD',
       completed: 'TBD',
@@ -146,7 +146,7 @@ export class EwoService {
     oqp: string,
     vendnum: string,
     leadtime: string,
-    assigment: string,
+    assignment: string,
     lastupdated: string,
     timestamp: string,
     completed: string,
@@ -170,7 +170,7 @@ export class EwoService {
       oqp: oqp,
       vendnum: vendnum,
       leadtime: leadtime,
-      assigment: assigment,
+      assignment: assignment,
       lastupdated: lastupdated,
       timestamp: timestamp,
       completed: completed,
