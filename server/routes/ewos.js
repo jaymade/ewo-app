@@ -9,6 +9,7 @@ router.post('', (req, res, next) => {
     starter: req.body.starter,
     team: req.body.team,
     reqtype: req.body.reqtype,
+    partNum: req.body.partNum,
     newPart: req.body.newPart,
     priority: req.body.priority,
     title: req.body.title,
