@@ -17,12 +17,9 @@ var ewoSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  newPart: {
-    type: Boolean,
+  priority: {
+    type: String,
     required: true
-  },
-  partNum: {
-    type: String
   },
   title: {
     type: String,
@@ -35,7 +32,40 @@ var ewoSchema = mongoose.Schema({
   status: {
     type: String,
     required: true
-  }
+  },
+  eoq: {
+    type: String
+  },
+  asq: {
+    type: String
+  },
+  moq: {
+    type: String
+  },
+  oqp: {
+    type: String
+  },
+  vendnum: {
+    type: String
+  },
+  leadtime: {
+    type: String
+  },
+  assigment: {
+    type: String
+  },
+  lastupdated: {
+    type: String
+  },
+  timestamp: {
+    type: String
+  },
+  completed: {
+    type: String
+  },
+  hours: {
+    type: String
+  },
 });
 
 // Compile model from schema

@@ -17,7 +17,7 @@
         <th scope="col">Title</th>
         <th scope="col">Description</th>
         <th scope="col">Status</th>
-        <th scope="col">Edit</th>
+        <th scope="col">Update</th>
         <th scope="col">Delete</th>
 
       </tr>
@@ -30,7 +30,7 @@
         <td>{{ewo.descript}}</td>
         <td>{{ewo.status}}</td>
         <td>
-          <a class="btn btn-primary" [routerLink]="['/detail', ewo._id]">
+          <a class="btn btn-primary" [routerLink]="['/update', ewo._id]">
             <i class="far fa-edit"></i>
           </a>
         </td>

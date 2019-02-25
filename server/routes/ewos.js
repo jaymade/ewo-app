@@ -9,11 +9,21 @@ router.post('', (req, res, next) => {
     starter: req.body.starter,
     team: req.body.team,
     reqtype: req.body.reqtype,
-    newPart: req.body.newPart,
-    partNum: req.body.partNum,
+    priority: req.body.priority,
     title: req.body.title,
     descript: req.body.descript,
-    status: req.body.status
+    status: req.body.status,
+    eoq: req.body.eoq,
+    asq: req.body.asq,
+    moq: req.body.moq,
+    oqp: req.body.oqp,
+    vendnum: req.body.vendnum,
+    leadtime: req.body.leadtime,
+    assigment: req.body.assigment,
+    lastupdated: req.body.lastupdated,
+    timestamp: req.body.timestamp,
+    completed: req.body.completed,
+    hours: req.body.hours,
   });
   ewo.save().then(createdEWO => {
     console.log('EWO save info', createdEWO);
@@ -33,11 +43,21 @@ router.put("/:id", (req, res, next) => {
     starter: req.body.starter,
     team: req.body.team,
     reqtype: req.body.reqtype,
-    newPart: req.body.newPart,
-    partNum: req.body.partNum,
+    priority: req.body.priority,
     title: req.body.title,
     descript: req.body.descript,
     status: req.body.status,
+    eoq: req.body.eoq,
+    asq: req.body.asq,
+    moq: req.body.moq,
+    oqp: req.body.oqp,
+    vendnum: req.body.vendnum,
+    leadtime: req.body.leadtime,
+    assigment: req.body.assigment,
+    lastupdated: req.body.lastupdated,
+    timestamp: req.body.timestamp,
+    completed: req.body.completed,
+    hours: req.body.hours,
   });
   Ewo.updateOne({
     _id: req.params.id

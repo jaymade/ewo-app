@@ -81,7 +81,17 @@ footer {
   }
 }
 
+li {
+  span {
+    .data {
+      color: green !important;
 
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
 
 // forms
 .system {

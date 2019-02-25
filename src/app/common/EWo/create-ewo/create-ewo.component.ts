@@ -58,11 +58,11 @@ export class CreateEwoComponent implements OnInit {
 
   statuses: Select[] = [
     { id: 'choose', name: 'Choose One' },
-    { id: '1', name: '1-Unassigned' },
-    { id: '2', name: '2-Assigned' },
-    { id: '3', name: '3-Completed' },
-    { id: '4', name: '4-Canceled' },
-    { id: '5', name: '5-Hold' }
+    { id: 'Unassigned', name: 'Unassigned' },
+    { id: 'Assigned', name: 'Assigned' },
+    { id: 'Completed', name: 'Completed' },
+    { id: 'Canceled', name: 'Canceled' },
+    { id: 'Hold', name: 'Hold' }
   ];
 
   ewoForm: FormGroup;
@@ -116,11 +116,16 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['startDate'].setValue(this.currentDate());
     this.ewoForm.controls['starter'].setValue('Jay Rich');
     this.ewoForm.controls['team'].setValue('Telcom -Sales');
-    this.ewoForm.controls['reqtype'].setValue('Color Change');
-    this.ewoForm.controls['newPart'].setValue('false');
-    this.ewoForm.controls['partNum'].setValue('0020030330');
-    this.ewoForm.controls['title'].setValue('TEST 3');
-    this.ewoForm.controls['descript'].setValue('3 TEST tickles');
+    this.ewoForm.controls['reqtype'].setValue('New Design');
+    this.ewoForm.controls['priority'].setValue('4');
+    this.ewoForm.controls['title'].setValue('TEST 6');
+    this.ewoForm.controls['descript'].setValue('6 TEST tickles');
+    this.ewoForm.controls['eoq'].setValue('22');
+    this.ewoForm.controls['asq'].setValue('33');
+    this.ewoForm.controls['moq'].setValue('44');
+    this.ewoForm.controls['oqp'].setValue('55');
+    this.ewoForm.controls['vendnum'].setValue('VINMUMBER123');
+    this.ewoForm.controls['leadtime'].setValue('4 score & 7 years');
   }
 
   currentDate() {
@@ -142,25 +147,41 @@ export class CreateEwoComponent implements OnInit {
     }
     this.isLoading = true;
 
-    console.log('save EWO info: \n',
-      '\nWHEN: ' + this.ewoForm.value.startDate,
-      '\nWHO: ' + this.ewoForm.value.starter,
-      '\nTEAM: ' + this.ewoForm.value.team,
-      '\nTYPE: ' + this.ewoForm.value.reqtype,
-      '\nNEW PART: ' + this.ewoForm.value.newPart,
-      '\nPart #: ' + this.ewoForm.value.partNum,
-      '\nWHAT: ' + this.ewoForm.value.title,
-      '\nHOW: ' + this.ewoForm.value.descript);
+    // console.log('Create Comp EWO info: \n',
+    //   '\nWHEN: ' + this.ewoForm.value.startDate,
+    //   '\nWHO: ' + this.ewoForm.value.starter,
+    //   '\nTEAM: ' + this.ewoForm.value.team,
+    //   '\nREQ: ' + this.ewoForm.value.reqtype,
+    //   '\nPRI: ' + this.ewoForm.value.priority,
+    //   '\nWHAT: ' + this.ewoForm.value.title,
+    //   '\nHOW: ' + this.ewoForm.value.descript,
+    //   '\nEOQ: ' + this.ewoForm.value.eoq,
+    //   '\nASQ: ' + this.ewoForm.value.asq,
+    //   '\nMOQ: ' + this.ewoForm.value.moq,
+    //   '\nOQP: ' + this.ewoForm.value.oqp,
+    //   '\nVENDER#: ' + this.ewoForm.value.vendnum,
+    //   '\nLEAD: ' + this.ewoForm.value.leadtime,
+    //   );
 
     this.ewoService.addEwo(
       this.ewoForm.value.startDate,
       this.ewoForm.value.starter,
       this.ewoForm.value.team,
-      this.ewoForm.value.newPart,
-      this.ewoForm.value.partNum,
       this.ewoForm.value.reqtype,
+      this.ewoForm.value.priority,
       this.ewoForm.value.title,
-      this.ewoForm.value.descript
+      this.ewoForm.value.descript,
+      this.ewoForm.value.eoq,
+      this.ewoForm.value.asq,
+      this.ewoForm.value.moq,
+      this.ewoForm.value.oqp,
+      this.ewoForm.value.vendnum,
+      this.ewoForm.value.leadtime,
+      this.ewoForm.value.assigment,
+      this.ewoForm.value.lastupdated,
+      this.ewoForm.value.timestamp,
+      this.ewoForm.value.completed,
+      this.ewoForm.value.hours,
     );
 
 

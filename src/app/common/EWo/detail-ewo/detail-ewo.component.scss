@@ -1,0 +1,16 @@
+@import '../../../../styles.scss';
+
+li {
+  strong {
+     color:$gray;
+
+  }
+  span.data {
+    color: $gray !important;
+
+    &:hover {
+      color: $orange !important;
+    }
+  }
+
+}
