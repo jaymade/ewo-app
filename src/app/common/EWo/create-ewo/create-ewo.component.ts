@@ -71,7 +71,7 @@ export class CreateEwoComponent implements OnInit {
   isLoading = false;
   ewo: Ewo;
   sourced = false; // is part out sourced
-  newPart = false; // new part number toggle
+  newPart = true; // new part number toggle
   startDate = this.currentDate();
 
   private ewoId: string;
@@ -117,6 +117,8 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['starter'].setValue('Jay Rich');
     this.ewoForm.controls['team'].setValue('Telcom -Sales');
     this.ewoForm.controls['reqtype'].setValue('New Design');
+    this.ewoForm.controls['newPart'].setValue('true');
+    this.ewoForm.controls['partNum'].setValue('xxxxxxxxxx');
     this.ewoForm.controls['priority'].setValue('4');
     this.ewoForm.controls['title'].setValue('TEST 6');
     this.ewoForm.controls['descript'].setValue('6 TEST tickles');
@@ -136,9 +138,9 @@ export class CreateEwoComponent implements OnInit {
     const toggle = value;
     this.sourced = toggle;
   }
-  onPartChange(value: boolean) {
-    const toggle = value;
-    this.newPart = toggle;
+  onPartChange() {
+    // const toggle = value;
+    this.newPart = !this.newPart;
   }
 
   onSaveEwo() {
@@ -147,27 +149,12 @@ export class CreateEwoComponent implements OnInit {
     }
     this.isLoading = true;
 
-    // console.log('Create Comp EWO info: \n',
-    //   '\nWHEN: ' + this.ewoForm.value.startDate,
-    //   '\nWHO: ' + this.ewoForm.value.starter,
-    //   '\nTEAM: ' + this.ewoForm.value.team,
-    //   '\nREQ: ' + this.ewoForm.value.reqtype,
-    //   '\nPRI: ' + this.ewoForm.value.priority,
-    //   '\nWHAT: ' + this.ewoForm.value.title,
-    //   '\nHOW: ' + this.ewoForm.value.descript,
-    //   '\nEOQ: ' + this.ewoForm.value.eoq,
-    //   '\nASQ: ' + this.ewoForm.value.asq,
-    //   '\nMOQ: ' + this.ewoForm.value.moq,
-    //   '\nOQP: ' + this.ewoForm.value.oqp,
-    //   '\nVENDER#: ' + this.ewoForm.value.vendnum,
-    //   '\nLEAD: ' + this.ewoForm.value.leadtime,
-    //   );
-
     this.ewoService.addEwo(
       this.ewoForm.value.startDate,
       this.ewoForm.value.starter,
       this.ewoForm.value.team,
       this.ewoForm.value.reqtype,
+      this.ewoForm.value.partNum,
       this.ewoForm.value.priority,
       this.ewoForm.value.title,
       this.ewoForm.value.descript,

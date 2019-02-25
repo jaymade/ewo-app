@@ -23,6 +23,7 @@ export class EwoService {
       starter: string;
       team: string;
       reqtype: string;
+      partNum: string;
       priority: string;
       title: string;
       descript: string;
@@ -51,6 +52,7 @@ export class EwoService {
     starter: string,
     team: string,
     reqtype: string,
+    partNum: string,
     priority: string,
     title: string,
     descript: string,
@@ -71,6 +73,7 @@ export class EwoService {
       starter: starter,
       team: team,
       reqtype: reqtype,
+      partNum: partNum,
       priority: priority,
       title: title,
       descript: descript,
@@ -132,6 +135,7 @@ export class EwoService {
     starter: string,
     team: string,
     reqtype: string,
+    partNum: string,
     priority: string,
     title: string,
     descript: string,
@@ -155,6 +159,7 @@ export class EwoService {
       starter: starter,
       team: team,
       reqtype: reqtype,
+      partNum: partNum,
       priority: priority,
       title: title,
       descript: descript,

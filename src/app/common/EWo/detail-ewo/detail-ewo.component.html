@@ -32,6 +32,14 @@
         <strong class="mr-3"> Request Type: </strong>
         <span class="data float-right"> {{ewo?.reqtype}} </span>
       </li>
+      <!-- <li class="list-group-item">
+        <strong class="mr-3"> New Part: </strong>
+        <span class="data float-right"> {{ewo?.newPart}} </span>
+      </li> -->
+      <li class="list-group-item">
+        <strong class="mr-3"> Part Number: </strong>
+        <span class="data float-right"> {{ewo?.partNum}} </span>
+      </li>
       <li class="list-group-item">
         <strong class="mr-3"> Priority <small class="blue">(1=low - 5=high)</small>: </strong>
         <span class="data float-right"> {{ewo?.priority}} </span>
@@ -98,6 +106,8 @@
 
 </div>
 
+
+<!-- eng update form -->
 <div *ngIf="engineer">
   <form class="mt-5 mb-5" *ngIf="ewo" (submit)="onUpdateEwo()" [formGroup]="ewoUpdateForm">
     <div class="row bg border p-3 rounded">

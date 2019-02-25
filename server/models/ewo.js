@@ -17,6 +17,9 @@ var ewoSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  partNum: {
+    type: String
+  },
   priority: {
     type: String,
     required: true
