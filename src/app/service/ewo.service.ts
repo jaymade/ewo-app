@@ -39,7 +39,7 @@ export class EwoService {
       timestamp: string;
       completed: string;
       hours: string;
-
+      imagePath: string;
     }>('http://localhost:3000/api/ewos/' + id);
   }
 
@@ -67,40 +67,90 @@ export class EwoService {
     timestamp: string,
     completed: string,
     hours: string,
+    image: File
   ) {
-    const ewo: Ewo = {
-      startDate: startDate,
-      starter: starter,
-      team: team,
-      reqtype: reqtype,
-      partNum: partNum,
-      priority: priority,
-      title: title,
-      descript: descript,
-      eoq: eoq,
-      asq: asq,
-      moq: moq,
-      oqp: oqp,
-      vendnum: vendnum,
-      leadtime: leadtime,
-      _id: null,
-      status: 'Unassigned',
-      assignment: 'No One',
-      lastupdated: 'TBD',
-      timestamp: 'TBD',
-      completed: 'TBD',
-      hours: 'TBD',
+    // const ewo: Ewo = {
+    //   startDate: startDate,
+    //   starter: starter,
+    //   team: team,
+    //   reqtype: reqtype,
+    //   partNum: partNum,
+    //   priority: priority,
+    //   title: title,
+    //   descript: descript,
+    //   eoq: eoq,
+    //   asq: asq,
+    //   moq: moq,
+    //   oqp: oqp,
+    //   vendnum: vendnum,
+    //   leadtime: leadtime,
+    //   _id: null,
+    //   status: 'Unassigned',
+    //   assignment: 'No One',
+    //   lastupdated: 'TBD',
+    //   timestamp: 'TBD',
+    //   completed: 'TBD',
+    //   hours: 'TBD',
 
-    };
+    // };
+
+    const ewoFormData = new FormData();
+
+    ewoFormData.append('startDate', startDate);
+    ewoFormData.append('starter', starter);
+    ewoFormData.append('team', team);
+    ewoFormData.append('reqtype', reqtype);
+    ewoFormData.append('partNum', partNum);
+    ewoFormData.append('priority', priority);
+    ewoFormData.append('title', title);
+    ewoFormData.append('descript', descript);
+    ewoFormData.append('eoq', eoq);
+    ewoFormData.append('asq', asq);
+    ewoFormData.append('moq', moq);
+    ewoFormData.append('oqp', oqp);
+    ewoFormData.append('vendnum', vendnum);
+    ewoFormData.append('leadtime', leadtime);
+    ewoFormData.append('status', 'Unassigned');
+    ewoFormData.append('assignment', 'No One');
+    ewoFormData.append('lastupdated', 'TBD');
+    ewoFormData.append('timestamp', 'TBD');
+    ewoFormData.append('completed', 'TBD');
+    ewoFormData.append('hours', 'TBD');
+    ewoFormData.append('image', image, title);
+
     this.http
-      .post<{ message: string; ewoId: string }>(
+      .post<{ message: string; ewo: Ewo }>(
         'http://localhost:3000/api/ewos',
-        ewo
+        ewoFormData
       )
       .subscribe(responseData => {
-        console.log(responseData.message);
-        const id = responseData.ewoId;
-        ewo._id = id;
+        // console.log(responseData.message);
+        const ewo: Ewo = {
+          _id: responseData.ewo._id,
+          startDate: startDate,
+          starter: starter,
+          team: team,
+          reqtype: reqtype,
+          partNum: partNum,
+          priority: priority,
+          title: title,
+          descript: descript,
+          eoq: eoq,
+          asq: asq,
+          moq: moq,
+          oqp: oqp,
+          vendnum: vendnum,
+          leadtime: leadtime,
+          status: status,
+          assignment: assignment,
+          lastupdated: lastupdated,
+          timestamp: timestamp,
+          completed: completed,
+          hours: hours,
+          imagePath: responseData.ewo.imagePath
+        };
+        // const id = responseData.ewoId;
+        // ewo._id = id;
         this.ewos.push(ewo);
         // to refresh list
         this.ewosUpdated.next([...this.ewos]);
@@ -175,6 +225,7 @@ export class EwoService {
       timestamp: timestamp,
       completed: completed,
       hours: hours,
+      imagePath: null
     };
     this.http
       .put('http://localhost:3000/api/ewos/' + _id, ewo)

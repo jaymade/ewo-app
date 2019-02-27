@@ -7,7 +7,6 @@ import { Ewo } from '../../../models/ewo.model';
 import { Select } from '../../../models/select.model';
 import { mimeType } from '../../../_helpers/mime-type.validator';
 
-
 @Component({
   selector: 'app-create-ewo',
   templateUrl: './create-ewo.component.html',
@@ -112,9 +111,7 @@ export class CreateEwoComponent implements OnInit {
       oqp: new FormControl(null),
       vendnum: new FormControl(null),
       leadtime: new FormControl(null),
-      image: new FormControl(null,
-         { asyncValidators: [mimeType]}
-      )
+      image: new FormControl(null, { asyncValidators: [mimeType] })
     });
 
     this.ewoForm.controls['startDate'].setValue(this.currentDate());
@@ -158,12 +155,11 @@ export class CreateEwoComponent implements OnInit {
       this.imagePreview = <string>reader.result; // website reference to patch error
     };
     reader.readAsDataURL(file);
-
   }
   onSaveEwo() {
-    if (this.ewoForm.invalid) {
-      return;
-    }
+    // if (this.ewoForm.invalid) {
+    //   return;
+    // }
     this.isLoading = true;
 
     this.ewoService.addEwo(
@@ -185,11 +181,10 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.lastupdated,
       this.ewoForm.value.timestamp,
       this.ewoForm.value.completed,
-      this.ewoForm.value.hours
+      this.ewoForm.value.hours,
+      this.ewoForm.value.image
     );
 
     this.ewoForm.reset();
   }
-
-
 }

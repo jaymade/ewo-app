@@ -81,6 +81,7 @@ export class DetailEwoComponent implements OnInit {
           completed: ewoData.completed,
           timestamp: ewoData.timestamp,
           hours: ewoData.hours,
+          imagePath: null
         };
 
         const stat = this.ewo.status;

@@ -69,6 +69,10 @@ var ewoSchema = mongoose.Schema({
   hours: {
     type: String
   },
+  imagePath: {
+    type: String,
+    required: true
+  },
 });
 
 // Compile model from schema

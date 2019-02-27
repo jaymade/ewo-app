@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     if (isValid) {
       error = null;
     }
-    cb(null, '/uploads');
+    cb(null, 'server/uploads');
 
   },
   filename: (rew, file, cb) => {
@@ -28,7 +28,11 @@ const storage = multer.diskStorage({
 });
 
 // post ewo
-router.post('', multer(storage).single('image'), (req, res, next) => {
+router.post('', multer({
+  storage: storage
+}).single('image'), (req, res, next) => {
+  const url = req.protocol + '://' + req.get('host');
+
   const ewo = new Ewo({
     startDate: req.body.startDate,
     starter: req.body.starter,
@@ -51,12 +55,37 @@ router.post('', multer(storage).single('image'), (req, res, next) => {
     timestamp: req.body.timestamp,
     completed: req.body.completed,
     hours: req.body.hours,
+    imagePath: url + '/uploads' + req.file.filename
   });
   ewo.save().then(createdEWO => {
     console.log('EWO save info', createdEWO);
     res.status(201).json({
       message: 'WOOT! The EWO was added succesfully!',
-      ewoId: createdEWO._id
+      ewo: {
+        ...createdEWO,
+        id: createdEWO._id,
+        // statedate: createdEWO.statedate,
+        // starter: createdEWO.starter,
+        // team: createdEWO.team,
+        // reqtype: createdEWO.reqtype,
+        // partNum: createdEWO.partNum,
+        // priority: createdEWO.priority,
+        // title: createdEWO.title,
+        // descript: createdEWO.descript,
+        // status: createdEWO.status,
+        // eoq: createdEWO.eoq,
+        // asq: createdEWO.asq,
+        // moq: createdEWO.moq,
+        // oqp: req.body.oqp,
+        // vendnum: createdEWO.vendnum,
+        // leadtime: createdEWO.leadtime,
+        // assignment: createdEWO.assignment,
+        // lastupdated: createdEWO.lastupdated,
+        // timestamp: createdEWO.timestamp,
+        // completed: createdEWO.completed,
+        // hours: createdEWO.hours,
+        // imagePath: createdEWO.imagePath,
+      }
     });
   });
   console.log('EWO sent to server: ', ewo);
