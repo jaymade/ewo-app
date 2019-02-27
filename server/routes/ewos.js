@@ -1,9 +1,34 @@
 const express = require("express");
+const multer = require("multer");
+
 const Ewo = require("../models/ewo");
 const router = express.Router();
+const MIME_TYPE_MAP = {
+  'image/png': 'png',
+  'image/jpg': 'jpg',
+  'image/jpeg': 'jpeg',
+  'image/pdf': 'pdf'
+};
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const isValid = MIME_TYPE_MAP[file.mimetype];
+    let error = new Error('Invalid MiMeTyPe');
+    if (isValid) {
+      error = null;
+    }
+    cb(null, '/uploads');
+
+  },
+  filename: (rew, file, cb) => {
+    const name = file.originalname.toLowerCase().split(' ').join('-');
+    const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, name + '-' + Date.now() + '.' + ext);
+  }
+});
 
 // post ewo
-router.post('', (req, res, next) => {
+router.post('', multer(storage).single('image'), (req, res, next) => {
   const ewo = new Ewo({
     startDate: req.body.startDate,
     starter: req.body.starter,
