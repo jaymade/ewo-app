@@ -73,7 +73,7 @@ export class CreateEwoComponent implements OnInit {
   sourced = false; // is part out sourced
   newPart = true; // new part number toggle
   startDate = this.currentDate();
-  imagePreview: any;
+  imagePreview: string;
 
   private ewoId: string;
 
