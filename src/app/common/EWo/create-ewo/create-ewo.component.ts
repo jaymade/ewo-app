@@ -5,6 +5,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { EwoService } from '../../../service/ewo.service';
 import { Ewo } from '../../../models/ewo.model';
 import { Select } from '../../../models/select.model';
+import { mimeType } from '../../../_helpers/mime-type.validator';
+
 
 @Component({
   selector: 'app-create-ewo',
@@ -66,13 +68,12 @@ export class CreateEwoComponent implements OnInit {
   ];
 
   ewoForm: FormGroup;
-  // enteredTitle = '';
-  // enteredDescript = '';
   isLoading = false;
   ewo: Ewo;
   sourced = false; // is part out sourced
   newPart = true; // new part number toggle
   startDate = this.currentDate();
+  imagePreview: any;
 
   private ewoId: string;
 
@@ -110,7 +111,10 @@ export class CreateEwoComponent implements OnInit {
       moq: new FormControl(null),
       oqp: new FormControl(null),
       vendnum: new FormControl(null),
-      leadtime: new FormControl(null)
+      leadtime: new FormControl(null),
+      image: new FormControl(null,
+         { asyncValidators: [mimeType]}
+      )
     });
 
     this.ewoForm.controls['startDate'].setValue(this.currentDate());
@@ -143,7 +147,19 @@ export class CreateEwoComponent implements OnInit {
     // const toggle = value;
     this.newPart = !this.newPart;
   }
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.ewoForm.patchValue({ image: file });
+    this.ewoForm.get('image').updateValueAndValidity();
+    // console.log('FILE: ', file);
+    // console.log('FORM: ', this.ewoForm);
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = <string>reader.result; // website reference to patch error
+    };
+    reader.readAsDataURL(file);
 
+  }
   onSaveEwo() {
     if (this.ewoForm.invalid) {
       return;
@@ -169,10 +185,11 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.lastupdated,
       this.ewoForm.value.timestamp,
       this.ewoForm.value.completed,
-      this.ewoForm.value.hours,
+      this.ewoForm.value.hours
     );
-
 
     this.ewoForm.reset();
   }
+
+
 }

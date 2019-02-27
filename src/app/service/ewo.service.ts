@@ -124,7 +124,7 @@ export class EwoService {
       // )
       .subscribe(mapedEwos => {
         this.ewos = mapedEwos.ewos;
-        console.log('FE getEWO Sub', this.ewos);
+        // console.log('FE getEWO Sub', this.ewos);
         this.ewosUpdated.next([...this.ewos]);
       });
   }
