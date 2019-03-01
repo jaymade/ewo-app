@@ -27,9 +27,9 @@ export const mimeType = (
           case 'ffd8ffe8':
             isValid = true;
             break;
-          // case '25504446':
-          //   isValid = true; // pdf
-          //   break;
+          case '25504446':
+            isValid = true; // pdf
+            break;
           default:
             isValid = false; // Or you can use the blob.type as fallback
             break;

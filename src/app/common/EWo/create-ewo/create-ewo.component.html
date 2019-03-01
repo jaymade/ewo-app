@@ -24,8 +24,7 @@
     <div class="form-group col">
       <label for="starter">Your Name: </label>
       <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?" [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
-      <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a
-        contact name
+      <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a contact name
       </div>
     </div>
 
