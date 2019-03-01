@@ -6,6 +6,7 @@ const router = express.Router();
 const MIME_TYPE_MAP = {
   'image/png': 'png',
   'image/jpg': 'jpg',
+  'image/jpeg': 'jpeg',
   'application/pdf': 'pdf'
 };
 
