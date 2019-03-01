@@ -21,5 +21,5 @@ export interface Ewo {
   timestamp: string;
   completed: string;
   hours: string;
-  imagePath: string;
+  imagePath?: string;
 }

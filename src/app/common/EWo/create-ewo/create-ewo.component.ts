@@ -122,15 +122,15 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['newPart'].setValue('true');
     this.ewoForm.controls['partNum'].setValue('xxxxxxxxxx');
     this.ewoForm.controls['priority'].setValue('4');
-    this.ewoForm.controls['title'].setValue('TEST 1');
-    this.ewoForm.controls['descript'].setValue('1 TEST tickles');
+    this.ewoForm.controls['title'].setValue('TEST 3');
+    this.ewoForm.controls['descript'].setValue('3 TEST tickles');
     this.ewoForm.controls['eoq'].setValue('22');
     this.ewoForm.controls['asq'].setValue('33');
     this.ewoForm.controls['moq'].setValue('44');
     this.ewoForm.controls['oqp'].setValue('55');
     this.ewoForm.controls['vendnum'].setValue('VINMUMBER123');
     this.ewoForm.controls['leadtime'].setValue('4 score & 7 years');
-    this.ewoForm.controls['image'].setValue('');
+    // this.ewoForm.controls['image'].setValue('');
   }
 
   currentDate() {
