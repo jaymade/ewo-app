@@ -70,8 +70,7 @@ var ewoSchema = mongoose.Schema({
     type: String
   },
   imagePath: {
-    type: String,
-    required: true
+    type: String
   },
 });
 

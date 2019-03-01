@@ -53,7 +53,7 @@ router.post('', multer({storage: storage}).single('image'), (req, res, next) => 
     timestamp: req.body.timestamp,
     completed: req.body.completed,
     hours: req.body.hours,
-    imagePath: url + '/uploads/' + req.file.filename
+    imagePath: req.file ? (url + '/uploads/' + req.file.filename) : ''
   });
   ewo.save().then(createdEWO => {
     console.log('EWO save info', createdEWO);
