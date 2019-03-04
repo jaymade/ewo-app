@@ -1,9 +1,12 @@
 // Define schema
-var mongoose = require("mongoose");
-var userSchema = mongoose.Schema({
+const mongoose = require("mongoose");
+const uniq = require("mongoose-unique-validator");
+
+const userSchema = mongoose.Schema({
   uname: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   pw: {
     type: String,
@@ -20,6 +23,9 @@ var userSchema = mongoose.Schema({
   }
 
 });
+
+// use unique validator
+userSchema.plugin(uniq);
 
 // Compile model from schema
 module.exports = mongoose.model('User', userSchema);

@@ -12,7 +12,7 @@ import { NavComponent } from './common/nav/nav.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { EwoListComponent } from './common/EWo/ewo-list/ewo-list.component';
 import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component';
-import { LoginComponent } from './common/login/login.component';
+import { LoginComponent } from './common/admin/login/login.component';
 // pages
 import { EngineerComponent } from './pages/engineer/engineer.component';
 import { UpdateEwoComponent } from './common/EWo/update-ewo/update-ewo.component';
@@ -51,7 +51,7 @@ import { DetailEwoComponent } from './common/EWo/detail-ewo/detail-ewo.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule

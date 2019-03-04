@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // pages
 import { EwoListComponent } from './common/EWo/ewo-list/ewo-list.component';
+import { LoginComponent } from './common/admin/login/login.component';
 import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component';
 import { DetailEwoComponent } from './common/EWo/detail-ewo/detail-ewo.component';
 import { UpdateEwoComponent } from './common/EWo/update-ewo/update-ewo.component';
@@ -14,6 +15,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 const routes: Routes = [
   { path: '', redirectTo: 'ewos', pathMatch: 'full' },
   { path: 'ewos', component: EwoListComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'create', component: CreateEwoComponent },
   { path: 'detail/:ewoId', component: DetailEwoComponent },
   { path: 'update/:ewoId', component: UpdateEwoComponent },

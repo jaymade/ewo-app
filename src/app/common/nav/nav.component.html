@@ -1,17 +1,27 @@
-<ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" [routerLink]="['ewos']" routerLinkActive="router-link-active">EWOs</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" [routerLink]="['create']" routerLinkActive="router-link-active">New EWOs</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['eng']" routerLinkActive="router-link-active">Engineering View</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['users']" routerLinkActive="router-link-active" >Users List</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['usercreate']" routerLinkActive="router-link-active" >New User</a>
-  </li>
-</ul>
+<div class="d-flex mt-3 bg">
+  <div class="flex-fill">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active" [routerLink]="['ewos']" routerLinkActive="router-link-active">EWOs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" [routerLink]="['create']" routerLinkActive="router-link-active">New EWOs</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" [routerLink]="['eng']" routerLinkActive="router-link-active">Engineering View</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['users']" routerLinkActive="router-link-active">Users List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['usercreate']" routerLinkActive="router-link-active">New User</a>
+      </li> -->
+    </ul>
+  </div>
+  <div class="flex">
+    <div class="">
+      <button type="button" class="btn btn-outline-dark btn-sm float-right" >Engineering Log In</button>
+    </div>
+  </div>
+
+</div>

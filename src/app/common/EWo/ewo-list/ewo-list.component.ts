@@ -31,8 +31,6 @@ export class EwoListComponent implements OnInit, OnDestroy {
         this.activeEWOs = this.ewos.filter(ewo => ewo.status !== 'Completed').length;
         // console.log('C: ', this.closedEWOs, 'A:', this.activeEWOs);
       });
-
-
   }
 
   onDeleteEwo(ewoId: string) {
