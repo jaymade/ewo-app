@@ -107,6 +107,11 @@ router.post('/login', (req, res, nect) => {
           expiresIn: '1h'
         }
       );
+      res.status(200).json({
+        token: token,
+        message: 'Attaboy, Token Made!'
+
+      })
     })
     .catch(err => {
       return res.status(401).json({

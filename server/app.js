@@ -5,13 +5,14 @@ const mongoose = require('mongoose');
 
 const ewosRoutes = require("./routes/ewos");
 const userRoutes = require("./routes/users");
+const loginRoutes = require("./routes/login");
 
 const app = express();
 
 
 mongoose
 .connect('mongodb://topelf:rpw4NIC@ds213255.mlab.com:13255/ewo_db', {
-    useNewUrlParser: true
+    useNewUrlParser: true, useCreateIndex: true
   })
   .then(() => {
     console.log("Boom goes the dynomite!");
@@ -40,5 +41,6 @@ app.use((req, res, next) => {
 
 app.use("/api/ewos/", ewosRoutes);
 app.use("/api/users/", userRoutes);
+app.use("/api/login/", loginRoutes);
 
 module.exports = app;

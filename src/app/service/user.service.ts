@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 // import { map } from 'rxjs/operators';
 
 import { User } from '../models/user.model';
+import { unwrapResolvedMetadata } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
@@ -118,6 +119,14 @@ export class UserService {
         const updatedUsers = this.users.filter(user => user._id !== userId);
         this.users = updatedUsers;
         this.usersUpdated.next([...this.users]);
+      });
+  }
+  login(uname: string, pw: string) {
+    const userData = { uname: uname, pw: pw };
+    this.http
+      .post('http://localhost:3000/api/login/', userData)
+      .subscribe(response => {
+        console.log(response);
       });
   }
 }
