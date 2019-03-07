@@ -66,6 +66,7 @@ export class CreateUserComponent implements OnInit {
         });
       } else {
         this.mode = 'create';
+        this.btnTxt = 'Add User';
         this.userId = null;
       }
     });
@@ -77,6 +78,7 @@ export class CreateUserComponent implements OnInit {
     }
     this.isLoading = true;
     if (this.mode === 'create') {
+      this.btnTxt = 'Create User';
       this.userService.addUser(
         this.userForm.value.uname,
         this.userForm.value.pw,
