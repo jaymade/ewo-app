@@ -1,4 +1,5 @@
 const express = require("express");
+const jwt = require('jsonwebtoken');
 const User = require("../models/user");
 const router = express.Router();
 
@@ -77,5 +78,42 @@ router.delete('/:_id', (req, res, next) => {
       });
     });
 });
+router.post('/login', (req, res, nect) => {
+  User.findOne({
+      uname: req.body.uname
+    })
+    // check form pw to user pw in DB
+    .then(user => {
+      if (!user) {
+        return res.status(401).json({
+          message: "Auth FAILED!"
+        });
+      }
+      console.log('Auth Login T/F: ', res.body.pw === user.pw);
+      return checkPW(res.body.pw === user.pw);
+    })
+    // know you have a valid pw from user
+    .then(result => {
+      if (!result) {
+        return res.status(401).json({
+          message: "Auth FAILED!"
+        });
+      }
+      const token = jwt.sign({
+          uname: user.uname,
+          userId: user._id
+        },
+        'averylongsecretformakingjsonwebtoken', {
+          expiresIn: '1h'
+        }
+      );
+    })
+    .catch(err => {
+      return res.status(401).json({
+        message: "Auth FAILED!"
+      });
+    });
+});
+
 
 module.exports = router;
