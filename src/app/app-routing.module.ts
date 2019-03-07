@@ -7,6 +7,7 @@ import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component
 import { DetailEwoComponent } from './common/EWo/detail-ewo/detail-ewo.component';
 import { UpdateEwoComponent } from './common/EWo/update-ewo/update-ewo.component';
 import { EngineerComponent } from './pages/engineer/engineer.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { UserListComponent } from './common/admin/user-list/user-list.component';
 import { CreateUserComponent } from './common/admin/create-user/create-user.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'usercreate', component: CreateUserComponent },
   { path: 'useredit/:userId', component: CreateUserComponent },
   { path: 'eng', component: EngineerComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'oops', component: NotFoundComponent },
 
   { path: '**', redirectTo: 'oops', pathMatch: 'full' }

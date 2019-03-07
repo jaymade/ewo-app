@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
 import { SelectReqValidDirective } from './_helpers/select-req-valid.directive';
 import { DetailEwoComponent } from './common/EWo/detail-ewo/detail-ewo.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DetailEwoComponent } from './common/EWo/detail-ewo/detail-ewo.component
     CreateUserComponent,
     UserListComponent,
     UpdateEwoComponent,
-    DetailEwoComponent
+    DetailEwoComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
