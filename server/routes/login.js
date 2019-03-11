@@ -38,9 +38,10 @@ router.post('', (req, res, nect) => {
       }
       const token = jwt.sign({
           uname: fetchedUser.uname,
-          userId: fetchedUser._id
+          userId: fetchedUser._id,
+
         },
-        'averylongsecretformakingjsonwebtoken', {
+        'a_very_long_Secret_for_making_A_json_Webtoken', {
           expiresIn: '1h'
         }
 
@@ -48,7 +49,9 @@ router.post('', (req, res, nect) => {
       console.log('TOKEN', token);
       res.status(200).json({
         token: token,
-        message: 'Attaboy, Token Made!'
+        eng: fetchedUser.eng,
+        admin: fetchedUser.admin,
+        message: 'Attaboy, a Token was Made!',
       });
     })
     .catch(err => {
