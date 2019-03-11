@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';          // template drive forms
+import { FormsModule } from '@angular/forms'; // template drive forms
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,13 +22,15 @@ import { UserListComponent } from './common/admin/user-list/user-list.component'
 // services
 import { EwoService } from './service/ewo.service';
 import { UserService } from './service/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // custom validators
 import { ConfirmEqualDirective } from './_helpers/confirm-equal.directive';
 import { SelectReqValidDirective } from './_helpers/select-req-valid.directive';
 import { DetailEwoComponent } from './common/EWo/detail-ewo/detail-ewo.component';
 import { AdminComponent } from './pages/admin/admin.component';
+
+import { AuthInterceptor } from './common/admin/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { AdminComponent } from './pages/admin/admin.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

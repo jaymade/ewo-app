@@ -12,8 +12,20 @@ import { unwrapResolvedMetadata } from '@angular/compiler';
 export class UserService {
   private users: User[] = [];
   private usersUpdated = new Subject<User[]>();
+  private token: string;
+  // private eng: boolean;
+  // private admin: boolean;
 
   constructor(private http: HttpClient, private router: Router) {}
+  getToken() {
+    return this.token;
+  }
+  // getEng() {
+  //   return this.eng;
+  // }
+  // getAdmin() {
+  //   return this.admin;
+  // }
 
   getUserList() {
     this.http
@@ -124,9 +136,23 @@ export class UserService {
   login(uname: string, pw: string) {
     const userData = { uname: uname, pw: pw };
     this.http
-      .post('http://localhost:3000/api/login/', userData)
+      .post<{ token: string; eng: boolean; admin: boolean }>(
+        'http://localhost:3000/api/login/',
+        userData
+      )
       .subscribe(response => {
-        console.log(response);
+        // console.log('RESP:', response);
+        const token = response.token;
+        // console.log('ENG:', response.eng);
+        const eng = response.eng;
+        // console.log('ADMIN:', response.admin);
+        const admin = response.admin;
+        console.log('TOKEN:', this.token);
+        this.token = token;
+        // console.log('ENG:', eng);
+        // this.eng = eng;
+        // console.log('ADMIN:', admin);
+        // this.admin = admin;
       });
   }
 }
