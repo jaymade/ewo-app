@@ -46,7 +46,7 @@ router.post('', (req, res, nect) => {
         }
 
       );
-      console.log('TOKEN', token);
+      // console.log('TOKEN', token);
       res.status(200).json({
         token: token,
         eng: fetchedUser.eng,

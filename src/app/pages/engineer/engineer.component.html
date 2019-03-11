@@ -1,9 +1,14 @@
 <h4 class="mb-5"> Engineering View</h4>
-<div *ngIf="!engineer">
+<!-- <div>
+  token: {{token}}
+  ENG: {{eng}}
+  ADMIN: {{admin}}
+</div> -->
+<div *ngIf="!eng">
 <app-login></app-login>
 </div>
 
-<div *ngIf="engineer">
+<div *ngIf="eng">
   <h5>Active EWO List</h5>
   <!-- loading spinner -->
   <div class="spinner-border text-info mx-auto" role="status" *ngIf="isLoading">
