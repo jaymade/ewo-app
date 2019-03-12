@@ -22,15 +22,22 @@ router.post('', (req, res, nect) => {
         });
       }
       fetchedUser = user;
-      // console.log('FE', req.body.pw);
-      // console.log('BE', user.pw);
-      // console.log("TEST: ", test(req.body.pw, user.pw));
       return test(req.body.pw, user.pw);
     })
     // know you have a valid pw from user
+    // .then(result => {
+    //   // check to see if active
+    //   if (!result.active) {
+    //     return res.status(409).json({
+    //       message: " USER Not active"
+    //     });
+    //   }
+    // })
     .then(result => {
       // check result
       // console.log('RESULT: ', result);
+      // check if active
+
       if (!result) {
         return res.status(401).json({
           message: "Auth FAILED!"
@@ -39,18 +46,17 @@ router.post('', (req, res, nect) => {
       const token = jwt.sign({
           uname: fetchedUser.uname,
           userId: fetchedUser._id,
-
         },
         'a_very_long_Secret_for_making_A_json_Webtoken', {
           expiresIn: '1h'
         }
-
       );
       // console.log('TOKEN', token);
       res.status(200).json({
         token: token,
         eng: fetchedUser.eng,
         admin: fetchedUser.admin,
+        active: fetchedUser.active,
         message: 'Attaboy, a Token was Made!',
       });
     })

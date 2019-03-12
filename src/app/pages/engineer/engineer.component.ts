@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Ewo } from './../../models/ewo.model';
 
-
 @Component({
   selector: 'app-engineer',
   templateUrl: './engineer.component.html',
@@ -13,12 +12,17 @@ import { Ewo } from './../../models/ewo.model';
 })
 export class EngineerComponent implements OnInit {
   isLoading = false;
-  eng = false;
   ewos: Ewo[] = [];
   ewo: Ewo;
+  token;
+  eng;
+  admin;
+  active;
+  userIsAuthenticated = false;
   private ewoId: string;
   private ewosSub: Subscription;
-  private userSub: Subscription;
+  // private userSub: Subscription;
+  private authListenerSubs: Subscription;
 
   constructor(
     public ewoService: EwoService,
@@ -27,16 +31,22 @@ export class EngineerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.authListenerSubs = this.userService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
     this.isLoading = true;
     this.ewoService.getEwoList();
-
-
     this.ewosSub = this.ewoService
       .getEwoUpdatedListener()
       .subscribe((ewos: Ewo[]) => {
         this.isLoading = false;
         this.ewos = ewos;
       });
+  }
+  ngOnDestroy() {
+    this.authListenerSubs.unsubscribe();
   }
 
   onDeleteEwo(ewoId: string) {

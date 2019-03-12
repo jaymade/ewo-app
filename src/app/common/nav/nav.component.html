@@ -7,20 +7,16 @@
       <li class="nav-item">
         <a class="nav-link active" [routerLink]="['create']" routerLinkActive="router-link-active">New EWOs</a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" [routerLink]="['eng']" routerLinkActive="router-link-active">Engineering View</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['users']" routerLinkActive="router-link-active">Users List</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['usercreate']" routerLinkActive="router-link-active">New User</a>
-      </li> -->
     </ul>
   </div>
   <div class="flex">
-    <div class="">
-      <a  class="btn btn-outline-dark btn-sm float-right" [routerLink]="['/eng']"   >Engineering Log In</a>
+    <!-- if logged out -->
+<div *ngIf="!userIsAuthenticated">
+      <a class="btn btn-outline-dark btn-sm float-right" [routerLink]="['/eng']">Engineering Log In</a>
+    </div>
+    <!-- if logged in -->
+    <div *ngIf="userIsAuthenticated">
+      <button class="btn btn-outline-dark btn-sm float-right" (click)="onLogout()">Engineering Log Out</button>
     </div>
   </div>
 

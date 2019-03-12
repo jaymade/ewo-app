@@ -30,7 +30,7 @@ import { SelectReqValidDirective } from './_helpers/select-req-valid.directive';
 import { DetailEwoComponent } from './common/EWo/detail-ewo/detail-ewo.component';
 import { AdminComponent } from './pages/admin/admin.component';
 
-import { AuthInterceptor } from './common/admin/auth-interceptor';
+// import { AuthInterceptor } from './common/admin/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,7 @@ import { AuthInterceptor } from './common/admin/auth-interceptor';
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

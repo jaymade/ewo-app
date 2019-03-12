@@ -5,42 +5,28 @@ import { Subject } from 'rxjs';
 // import { map } from 'rxjs/operators';
 
 import { User } from '../models/user.model';
-import { unwrapResolvedMetadata } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  private isAuthenticated = false;
   private users: User[] = [];
-  private usersUpdated = new Subject<User[]>();
   private token: string;
-  // private eng: boolean;
-  // private admin: boolean;
+  private authStatusListener = new Subject<boolean>();
+  private usersUpdated = new Subject<User[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
   getToken() {
     return this.token;
   }
-  // getEng() {
-  //   return this.eng;
-  // }
-  // getAdmin() {
-  //   return this.admin;
-  // }
 
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
   getUserList() {
     this.http
       .get<{ message: string; users: any }>('http://localhost:3000/api/users')
-      // .pipe(
-      //   map(ewoData => {
-      //     return ewoData.ewos.map(ewo => {
-      //       return {
-      //         title: ewo.title,
-      //         discript: ewo.descript,
-      //         id: ewo._id
-      //       };
-      //     });
-      //   })
-      // )
       .subscribe(mapedUsers => {
         this.users = mapedUsers.users;
         this.usersUpdated.next([...this.users]);
@@ -136,23 +122,20 @@ export class UserService {
   login(uname: string, pw: string) {
     const userData = { uname: uname, pw: pw };
     this.http
-      .post<{ token: string; eng: boolean; admin: boolean }>(
+      .post<{ token: string; eng: boolean; admin: boolean; active: boolean }>(
         'http://localhost:3000/api/login/',
         userData
       )
       .subscribe(response => {
-        // console.log('RESP:', response);
         const token = response.token;
-        // console.log('ENG:', response.eng);
-        const eng = response.eng;
-        // console.log('ADMIN:', response.admin);
-        const admin = response.admin;
-        console.log('TOKEN:', this.token);
         this.token = token;
-        // console.log('ENG:', eng);
-        // this.eng = eng;
-        // console.log('ADMIN:', admin);
-        // this.admin = admin;
+        this.isAuthenticated = true;
+        this.authStatusListener.next(true);
       });
+  }
+  logout() {
+    this.token = null;
+    this.isAuthenticated = false;
+    this.authStatusListener.next(false);
   }
 }
