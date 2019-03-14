@@ -1,11 +1,13 @@
-import { Select } from './../../models/select.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { EwoService } from '../../service/ewo.service';
+import { UserService } from '../../service/user.service';
 import { Ewo } from '../../models/ewo.model';
+import { Select } from './../../models/select.model';
 
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-detail-ewo',
   templateUrl: './detail-ewo.component.html',
@@ -14,7 +16,7 @@ import { Ewo } from '../../models/ewo.model';
 export class DetailEwoComponent implements OnInit {
   engineer = true;
   ewo: Ewo;
-
+  userIsAuthenticated = false;
   ewoUpdateForm: FormGroup;
   timestamp = this.currentDate();
 
@@ -52,8 +54,14 @@ export class DetailEwoComponent implements OnInit {
   ];
 
   private ewoId: string;
+  private authListenerSubs: Subscription;
+  private authStatusSub: Subscription;
 
-  constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
+  constructor(
+    public ewoService: EwoService,
+    public userService: UserService,
+    public route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -114,6 +122,12 @@ export class DetailEwoComponent implements OnInit {
         this.ewoUpdateForm.controls['hours'].setValue(hours);
       });
     });
+    this.userIsAuthenticated = this.userService.getIsAuth();
+    this.authStatusSub = this.userService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
   }
 
   currentDate() {
@@ -147,9 +161,12 @@ export class DetailEwoComponent implements OnInit {
       this.ewoUpdateForm.value.lastupdated,
       this.ewoUpdateForm.value.timestamp,
       this.ewoUpdateForm.value.completed,
-      this.ewoUpdateForm.value.hours,
+      this.ewoUpdateForm.value.hours
     );
 
     this.ewoUpdateForm.reset();
+  }
+  ngOnDestroy(): void {
+    this.authStatusSub.unsubscribe();
   }
 }

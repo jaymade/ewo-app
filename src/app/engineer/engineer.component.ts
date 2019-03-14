@@ -1,9 +1,9 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { EwoService } from './../service/ewo.service';
 import { UserService } from 'src/app/service/user.service';
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { Ewo } from './../models/ewo.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-engineer',
@@ -19,10 +19,9 @@ export class EngineerComponent implements OnInit {
   admin;
   active;
   userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
   private ewoId: string;
   private ewosSub: Subscription;
-  // private userSub: Subscription;
-  private authListenerSubs: Subscription;
 
   constructor(
     public ewoService: EwoService,
@@ -36,6 +35,7 @@ export class EngineerComponent implements OnInit {
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
       });
+
     this.isLoading = true;
     this.ewoService.getEwoList();
     this.ewosSub = this.ewoService
@@ -45,7 +45,7 @@ export class EngineerComponent implements OnInit {
         this.ewos = ewos;
       });
   }
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.authListenerSubs.unsubscribe();
   }
 

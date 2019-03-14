@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/service/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -9,6 +9,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class NavComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
+
   private authListenerSubs: Subscription;
 
   constructor(private userService: UserService) {}
@@ -18,8 +19,7 @@ export class NavComponent implements OnInit, OnDestroy {
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
-       }
-      );
+      });
   }
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();

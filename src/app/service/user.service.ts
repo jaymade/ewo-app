@@ -9,7 +9,6 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-
   private isAuthenticated = false;
   private users: User[] = [];
   private token: string;
@@ -20,10 +19,13 @@ export class UserService {
   getToken() {
     return this.token;
   }
-
+  getIsAuth() {
+    return this.isAuthenticated;
+  }
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
   }
+
   getUserList() {
     this.http
       .get<{ message: string; users: any }>('http://localhost:3000/api/users')
@@ -129,8 +131,10 @@ export class UserService {
       .subscribe(response => {
         const token = response.token;
         this.token = token;
-        this.isAuthenticated = true;
-        this.authStatusListener.next(true);
+        if (token) {
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
+        }
       });
   }
   logout() {

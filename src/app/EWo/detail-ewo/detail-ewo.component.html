@@ -116,7 +116,7 @@
 
 
 <!-- eng update form -->
-<div *ngIf="engineer">
+<div *ngIf="userIsAuthenticated">
   <form class="mt-5 mb-5" *ngIf="ewo" (submit)="onUpdateEwo()" [formGroup]="ewoUpdateForm">
     <div class="row bg border p-3 rounded">
       <h6>Engineering Update Section</h6>
@@ -164,13 +164,13 @@
   </form>
 </div>
 
-<div class="row">
+<!-- <div class="row">
 
   <code class="col">From DB: <br>
     <pre>{{ewo | json}}</pre>
   </code>
   <code class="col"> Updated info: <br>
-    <!-- <pre>{{ewoUpdateForm.value | json }}</pre> -->
+    <pre>{{ewoUpdateForm.value | json }}</pre>
   </code>
-  <!-- <code class="col">Valid Form: {{ewoUpdateForm.valid}} </code> -->
-</div>
+  <code class="col">Valid Form: {{ewoUpdateForm.valid}} </code>
+</div> -->
