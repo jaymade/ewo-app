@@ -30,6 +30,7 @@ export class EngineerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userIsAuthenticated = this.userService.getIsAuth();
     this.authListenerSubs = this.userService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {

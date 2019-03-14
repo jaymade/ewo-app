@@ -12,7 +12,7 @@ export class UserService {
   private isAuthenticated = false;
   private users: User[] = [];
   private token: string;
-  private tokenTimer: any ;
+  private tokenTimer: any;
   private authStatusListener = new Subject<boolean>();
   private usersUpdated = new Subject<User[]>();
 
@@ -137,11 +137,13 @@ export class UserService {
         if (token) {
           const expiresInDuration = response.expiresIn;
           // console.log('XP:', expiresInDuration);
-          this.tokenTimer = setTimeout(() => {
-            this.logout();
-          }, expiresInDuration * 1000);
+          this.setAuthTime(expiresInDuration);
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
+          const now = new Date();
+          const xpireDate = new Date(now.getTime() + expiresInDuration * 1000);
+          console.log('XPIRE:', xpireDate);
+          this.saveAuthData(token, xpireDate);
           this.router.navigate(['/eng']);
         }
       });
@@ -151,6 +153,51 @@ export class UserService {
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
+    this.clearAuthData();
     this.router.navigate(['/']);
+  }
+  autoAuthUser() {
+    const authInfo = this.getAuthData();
+    if (!authInfo) {
+      return;
+    }
+    const now = new Date();
+    const expiresIn = authInfo.xpire.getTime() - now.getTime();
+    // console.log('AUTHINFO ', authInfo, 'XP: ', expiresIn);
+    if (expiresIn > 0) {
+      this.token = authInfo.token;
+      this.isAuthenticated = true;
+      this.setAuthTime(expiresIn / 1000);
+      this.authStatusListener.next(true);
+    }
+  }
+  private setAuthTime(duration: number) {
+    console.log('Seting Timer: ' + duration);
+    this.tokenTimer = setTimeout(() => {
+      this.logout();
+    }, duration * 1000);
+  }
+  private saveAuthData(token: string, experationDate: Date) {
+    localStorage.setItem('token', token);
+    // localStorage.setItem('admin', admin);
+    // localStorage.setItem('active', active);
+    localStorage.setItem('xpire', experationDate.toISOString());
+  }
+  private clearAuthData() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('xpire');
+    // localStorage.setItem('admin', admin);
+    // localStorage.setItem('active', active);
+  }
+  private getAuthData() {
+    const token = localStorage.getItem('token');
+    const xpire = localStorage.getItem('xpire');
+    if (!token || !xpire) {
+      return;
+    }
+    return {
+      token: token,
+      xpire: new Date(xpire)
+    };
   }
 }
