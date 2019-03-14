@@ -1,9 +1,9 @@
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { EwoService } from './../../service/ewo.service';
+import { EwoService } from './../service/ewo.service';
 import { UserService } from 'src/app/service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Ewo } from './../../models/ewo.model';
+import { Ewo } from './../models/ewo.model';
 
 @Component({
   selector: 'app-engineer',

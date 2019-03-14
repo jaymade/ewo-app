@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Ewo } from '../../../models/ewo.model';
-import { EwoService } from '../../../service/ewo.service';
+import { Ewo } from '../../models/ewo.model';
+import { EwoService } from '../../service/ewo.service';
 import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({

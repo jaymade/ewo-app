@@ -1,10 +1,10 @@
-import { Select } from './../../../models/select.model';
+import { Select } from './../../models/select.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { EwoService } from '../../../service/ewo.service';
-import { Ewo } from '../../../models/ewo.model';
+import { EwoService } from '../../service/ewo.service';
+import { Ewo } from '../../models/ewo.model';
 
 @Component({
   selector: 'app-detail-ewo',

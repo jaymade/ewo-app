@@ -4,8 +4,8 @@ import { EwoService } from 'src/app/service/ewo.service';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { Ewo } from '../../../models/ewo.model';
-import { Select } from '../../../models/select.model';
+import { Ewo } from '../../models/ewo.model';
+import { Select } from '../../models/select.model';
 import { SourceNode } from 'source-list-map';
 
 @Component({

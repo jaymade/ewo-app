@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { EwoService } from '../../../service/ewo.service';
-import { Ewo } from '../../../models/ewo.model';
-import { Select } from '../../../models/select.model';
-import { mimeType } from '../../../_helpers/mime-type.validator';
+import { EwoService } from '../../service/ewo.service';
+import { Ewo } from '../../models/ewo.model';
+import { Select } from '../../models/select.model';
+import { mimeType } from '../../_helpers/mime-type.validator';
 
 @Component({
   selector: 'app-create-ewo',

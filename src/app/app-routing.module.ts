@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// pages
-import { EwoListComponent } from './common/EWo/ewo-list/ewo-list.component';
-import { LoginComponent } from './common/admin/login/login.component';
-import { CreateEwoComponent } from './common/EWo/create-ewo/create-ewo.component';
-import { DetailEwoComponent } from './common/EWo/detail-ewo/detail-ewo.component';
-import { UpdateEwoComponent } from './common/EWo/update-ewo/update-ewo.component';
-import { EngineerComponent } from './pages/engineer/engineer.component';
-import { AdminComponent } from './pages/admin/admin.component';
-import { UserListComponent } from './common/admin/user-list/user-list.component';
-import { CreateUserComponent } from './common/admin/create-user/create-user.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
+//
+import { EwoListComponent } from './EWo/ewo-list/ewo-list.component';
+import { LoginComponent } from './login/login.component';
+import { CreateEwoComponent } from './EWo/create-ewo/create-ewo.component';
+import { DetailEwoComponent } from './EWo/detail-ewo/detail-ewo.component';
+import { UpdateEwoComponent } from './EWo/update-ewo/update-ewo.component';
+import { EngineerComponent } from './engineer/engineer.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const routes: Routes = [
