@@ -54,7 +54,7 @@ router.post('', (req, res, nect) => {
       // console.log('TOKEN', token);
       res.status(200).json({
         token: token,
-        eng: fetchedUser.eng,
+        expiresIn: 3600,
         admin: fetchedUser.admin,
         active: fetchedUser.active,
         message: 'Attaboy, a Token was Made!',

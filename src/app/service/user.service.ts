@@ -12,6 +12,7 @@ export class UserService {
   private isAuthenticated = false;
   private users: User[] = [];
   private token: string;
+  private tokenTimer: any ;
   private authStatusListener = new Subject<boolean>();
   private usersUpdated = new Subject<User[]>();
 
@@ -124,14 +125,21 @@ export class UserService {
   login(uname: string, pw: string) {
     const userData = { uname: uname, pw: pw };
     this.http
-      .post<{ token: string; eng: boolean; admin: boolean; active: boolean }>(
-        'http://localhost:3000/api/login/',
-        userData
-      )
+      .post<{
+        token: string;
+        admin: boolean;
+        active: boolean;
+        expiresIn: number;
+      }>('http://localhost:3000/api/login/', userData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
         if (token) {
+          const expiresInDuration = response.expiresIn;
+          // console.log('XP:', expiresInDuration);
+          this.tokenTimer = setTimeout(() => {
+            this.logout();
+          }, expiresInDuration * 1000);
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
           this.router.navigate(['/eng']);
@@ -142,6 +150,7 @@ export class UserService {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
+    clearTimeout(this.tokenTimer);
     this.router.navigate(['/']);
   }
 }
