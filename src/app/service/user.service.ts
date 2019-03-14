@@ -134,6 +134,7 @@ export class UserService {
         if (token) {
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
+          this.router.navigate(['/eng']);
         }
       });
   }
@@ -141,5 +142,6 @@ export class UserService {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
+    this.router.navigate(['/']);
   }
 }

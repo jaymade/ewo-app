@@ -11,8 +11,6 @@ module.exports = (req, res, next) => {
   } catch (error) {
     res.status(401).json({
       message: "Auth Failed"
-
     });
-
   }
 };

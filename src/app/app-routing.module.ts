@@ -1,3 +1,4 @@
+import { AuthGuard } from './service/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //
@@ -12,19 +13,22 @@ import { UserListComponent } from './user-list/user-list.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: 'ewos', pathMatch: 'full' },
   { path: 'ewos', component: EwoListComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'create', component: CreateEwoComponent },
+  // { path: 'login', component: LoginComponent },
   { path: 'detail/:ewoId', component: DetailEwoComponent },
   { path: 'update/:ewoId', component: UpdateEwoComponent },
-  { path: 'users', component: UserListComponent },
-  { path: 'usercreate', component: CreateUserComponent },
+  { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
+  {
+    path: 'usercreate',
+    component: CreateUserComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'useredit/:userId', component: CreateUserComponent },
   { path: 'eng', component: EngineerComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'oops', component: NotFoundComponent },
 
   { path: '**', redirectTo: 'oops', pathMatch: 'full' }
@@ -32,6 +36,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

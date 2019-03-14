@@ -71,7 +71,7 @@ router.post('', multer({storage: storage}).single('image'), (req, res, next) => 
 });
 
 // put an updated ewo
-router.put("/:id", checkAuth, (req, res, next) => {
+router.put("/:id", (req, res, next) => {
   const ewo = new Ewo({
     _id: req.body._id,
     startDate: req.body.startDate,
@@ -128,7 +128,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 // delete ewo by ID
-router.delete('/:_id', checkAuth, (req, res, next) => {
+router.delete('/:_id', (req, res, next) => {
   // console.log('Check _id', req.params);
   Ewo.deleteOne({
       _id: req.params._id
