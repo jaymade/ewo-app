@@ -1,4 +1,4 @@
-const app = require('./server/app');
+const app = require('./app');
 const debug = require('debug')("node-angular");
 const http = require('http');
 
@@ -46,4 +46,5 @@ app.set('port', port);
 const server = http.createServer(app);
 server.on("error: ", onError);
 server.on("listening: ", onListening);
+console.log("Port", port);
 server.listen(port);
