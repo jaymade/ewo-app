@@ -1,4 +1,4 @@
-import { AuthGuard } from './service/auth.guard';
+// import { AuthGuard } from './service/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //
@@ -20,15 +20,15 @@ const routes: Routes = [
   // { path: 'login', component: LoginComponent },
   { path: 'detail/:ewoId', component: DetailEwoComponent },
   { path: 'update/:ewoId', component: UpdateEwoComponent },
-  { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
+  { path: 'users', component: UserListComponent },
   {
     path: 'usercreate',
     component: CreateUserComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   { path: 'useredit/:userId', component: CreateUserComponent },
   { path: 'eng', component: EngineerComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent },
   { path: 'oops', component: NotFoundComponent },
 
   { path: '**', redirectTo: 'oops', pathMatch: 'full' }
@@ -37,6 +37,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  // providers: [AuthGuard]
 })
 export class AppRoutingModule {}

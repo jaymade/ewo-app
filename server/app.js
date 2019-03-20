@@ -11,7 +11,7 @@ const app = express();
 
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/test", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/ewo_db", {
     useNewUrlParser: true,
     useCreateIndex: true
   })
