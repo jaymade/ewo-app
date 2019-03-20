@@ -11,8 +11,9 @@ const app = express();
 
 
 mongoose
-.connect('mongodb://topelf:rpw4NIC@ds213255.mlab.com:13255/ewo_db', {
-    useNewUrlParser: true, useCreateIndex: true
+  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/test", {
+    useNewUrlParser: true,
+    useCreateIndex: true
   })
   .then(() => {
     console.log("Boom goes the dynomite!");
@@ -24,8 +25,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use('/uploads', express.static(path.join(__dirname,'server/uploads')));
-app.use('/', express.static(path.join(__dirname,'angular')));
+app.use('/uploads', express.static(path.join(__dirname, 'server/uploads')));
+app.use('/', express.static(path.join(__dirname, 'angular')));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
