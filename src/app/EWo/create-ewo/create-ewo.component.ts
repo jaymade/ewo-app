@@ -116,21 +116,21 @@ export class CreateEwoComponent implements OnInit {
     });
 
     this.ewoForm.controls['startDate'].setValue(this.currentDate());
-    this.ewoForm.controls['starter'].setValue('Jay Rich');
-    this.ewoForm.controls['team'].setValue('Telcom -Sales');
-    this.ewoForm.controls['reqtype'].setValue('New Design');
+    this.ewoForm.controls['starter'].setValue('');
+    this.ewoForm.controls['team'].setValue('choose');
+    this.ewoForm.controls['reqtype'].setValue('choose');
     this.ewoForm.controls['newPart'].setValue('true');
     this.ewoForm.controls['partNum'].setValue('xxxxxxxxxx');
-    this.ewoForm.controls['priority'].setValue('4');
-    this.ewoForm.controls['title'].setValue('TEST 11');
-    this.ewoForm.controls['descript'].setValue('11 TEST tickles');
-    this.ewoForm.controls['eoq'].setValue('22');
-    this.ewoForm.controls['asq'].setValue('33');
-    this.ewoForm.controls['moq'].setValue('44');
-    this.ewoForm.controls['oqp'].setValue('55');
-    this.ewoForm.controls['vendnum'].setValue('VINMUMBER123');
-    this.ewoForm.controls['leadtime'].setValue('4 score & 7 years');
-    // this.ewoForm.controls['image'].setValue('');
+    this.ewoForm.controls['priority'].setValue('choose');
+    this.ewoForm.controls['title'].setValue('');
+    this.ewoForm.controls['descript'].setValue('');
+    this.ewoForm.controls['eoq'].setValue('');
+    this.ewoForm.controls['asq'].setValue('');
+    this.ewoForm.controls['moq'].setValue('');
+    this.ewoForm.controls['oqp'].setValue('');
+    this.ewoForm.controls['vendnum'].setValue('');
+    this.ewoForm.controls['leadtime'].setValue('');
+    this.ewoForm.controls['image'].setValue('');
   }
 
   currentDate() {
