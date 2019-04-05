@@ -120,7 +120,7 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['team'].setValue('choose');
     this.ewoForm.controls['reqtype'].setValue('choose');
     this.ewoForm.controls['newPart'].setValue('true');
-    this.ewoForm.controls['partNum'].setValue('xxxxxxxxxx');
+    this.ewoForm.controls['partNum'].setValue('');
     this.ewoForm.controls['priority'].setValue('choose');
     this.ewoForm.controls['title'].setValue('');
     this.ewoForm.controls['descript'].setValue('');
