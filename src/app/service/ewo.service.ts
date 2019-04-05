@@ -12,7 +12,7 @@ export class EwoService {
   private ewos: Ewo[] = [];
   private ewosUpdated = new Subject<Ewo[]>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   getEwo(id: string) {
     console.log('%c F.E. ewo.service.getEwo()  param ID: ', 'color:green;', id);
@@ -40,7 +40,7 @@ export class EwoService {
       completed: string;
       hours: string;
       imagePath: string;
-    }>('/api/ewos/' + id);
+    }>('http://localhost:3000/api/ewos/' + id);
   }
 
   getEwoUpdatedListener() {
@@ -120,7 +120,7 @@ export class EwoService {
 
     this.http
       .post<{ message: string; ewo: Ewo }>(
-        '/api/ewos',
+        'http://localhost:3000/api/ewos',
         ewoFormData
       )
       .subscribe(responseData => {
@@ -160,7 +160,7 @@ export class EwoService {
   }
   getEwoList() {
     this.http
-      .get<{ message: string; ewos: any }>('/api/ewos')
+      .get<{ message: string; ewos: any }>('http://localhost:3000/api/ewos')
       // .pipe(
       //   map(ewoData => {
       //     return ewoData.ewos.map(ewo => {
@@ -228,7 +228,7 @@ export class EwoService {
       imagePath: null
     };
     this.http
-      .put('/api/ewos/' + _id, ewo)
+      .put('http://localhost:3000/api/ewos/' + _id, ewo)
       .subscribe(response => {
         const updatedEwos = [...this.ewos];
         const oldEwosIndex = updatedEwos.findIndex(e => e._id === ewo._id);
@@ -243,7 +243,7 @@ export class EwoService {
   // delete EWO
   deleteEwo(ewoId: string) {
     this.http
-      .delete('/api/ewos/' + ewoId)
+      .delete('http://localhost:3000/api/ewos/' + ewoId)
       .subscribe(() => {
         console.log('Deleted EWO: ' + ewoId);
         const updatedEwos = this.ewos.filter(ewo => ewo._id !== ewoId);

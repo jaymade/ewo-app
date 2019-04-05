@@ -2,7 +2,7 @@
 <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
   <div class="form-group">
     <label for="uname">email address:</label>
-    <input type="email" class="form-control" name="uname" ngModel #unameInput="ngModel" required email placeholder="Enter uname">
+    <input type="email" class="form-control" name="uname" ngModel #unameInput="ngModel" required email placeholder="HINT: your enewton email address">
     <!-- validation -->
     <div class="red pl-5" *ngIf="unameInput.invalid && unameInput.touched">
       a valid email must be entered

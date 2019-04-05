@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
@@ -12,7 +13,7 @@ const app = express();
 
 mongoose
   // .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/ewo_db", {
-    .connect("mongodb://ewoAdmin:rpw4nic@ds213255.mlab.com:13255/ewo_db", {
+  .connect('mongodb://topelf:rpw4NIC@ds213255.mlab.com:13255/ewo_db', {
     useNewUrlParser: true,
     useCreateIndex: true
   })

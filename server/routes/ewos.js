@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 
 const Ewo = require("../models/ewo");
-const checkAuth = require("../middleware/check-auth");
+// const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 const MIME_TYPE_MAP = {
@@ -31,6 +31,7 @@ const storage = multer.diskStorage({
 
 // post ewo
 router.post('', multer({storage: storage}).single('image'), (req, res, next) => {
+  console.log('URL: ', req.protocol + '://' + req.get('host'));
   const url = req.protocol + '://' + req.get('host');
 
   const ewo = new Ewo({
@@ -56,6 +57,7 @@ router.post('', multer({storage: storage}).single('image'), (req, res, next) => 
     completed: req.body.completed,
     hours: req.body.hours,
     imagePath: req.file ? (url + '/uploads/' + req.file.filename) : ''
+
   });
   ewo.save().then(createdEWO => {
     console.log('EWO save info', createdEWO);
