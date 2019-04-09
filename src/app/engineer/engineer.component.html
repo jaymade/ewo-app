@@ -23,6 +23,7 @@
           <th scope="col">Title</th>
           <th scope="col">Description</th>
           <th scope="col">Status</th>
+          <th scope="col">Assigned</th>
           <th scope="col">Update</th>
           <th scope="col">Delete</th>
 
@@ -33,8 +34,9 @@
           <td>{{ewo.startDate}}</td>
           <td>{{ewo.starter}}</td>
           <td>{{ewo.title}}</td>
-          <td>{{ewo.descript}}</td>
-          <td>{{ewo.status}}</td>
+          <td>{{ewo.descript | slice:0:30}}...</td>
+          <td>{{ewo.assignment}}</td>
+           <td>{{ewo.status}}</td>
           <td>
             <a class="btn btn-primary" [routerLink]="['/update', ewo._id]">
               <i class="far fa-edit"></i>

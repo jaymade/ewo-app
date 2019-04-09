@@ -93,11 +93,11 @@ export class CreateEwoComponent implements OnInit {
       reqtype: new FormControl('choose', {
         validators: [Validators.required]
       }),
-
+      // new stuf
       custName: new FormControl(''),
       custContact: new FormControl(''),
       needDate: new FormControl(''),
-
+      // newstuff
       newPart: new FormControl(null),
       partNum: new FormControl(null),
       priority: new FormControl('choose', {
@@ -125,6 +125,9 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.controls['starter'].setValue('');
     this.ewoForm.controls['team'].setValue('choose');
     this.ewoForm.controls['reqtype'].setValue('choose');
+    this.ewoForm.controls['custName'].setValue('');
+    this.ewoForm.controls['custContact'].setValue('');
+    this.ewoForm.controls['needDate'].setValue('');
     this.ewoForm.controls['newPart'].setValue('true');
     this.ewoForm.controls['partNum'].setValue('');
     this.ewoForm.controls['priority'].setValue('choose');
