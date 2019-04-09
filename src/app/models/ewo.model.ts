@@ -4,6 +4,9 @@ export interface Ewo {
   team: string;
   reqtype: string;
   // newPart: boolean;
+  custName: string;
+  custContact: string;
+  needDate: string;
   partNum: string;
   priority: string;
   title: string;

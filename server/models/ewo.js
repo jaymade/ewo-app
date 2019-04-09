@@ -17,6 +17,15 @@ var ewoSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  custName: {
+    type: String
+  },
+  custContact: {
+    type: String
+  },
+  needDate: {
+    type: String
+  },
   partNum: {
     type: String
   },

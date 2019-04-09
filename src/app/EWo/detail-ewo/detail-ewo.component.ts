@@ -25,7 +25,10 @@ export class DetailEwoComponent implements OnInit {
     { id: 'Billy Unger', name: 'Billy Unger' },
     { id: 'Greg Barbee', name: 'Greg Barbee' },
     { id: 'Joe Dunagin', name: 'Joe Dunagin' },
-    { id: 'Robert Hyde', name: 'Robert Hyde' }
+    { id: 'Robert Hyde', name: 'Robert Hyde' },
+    { id: 'Donald Talley', name: 'Donald Talley' },
+    { id: 'Steve Jenkins', name: 'Steve Jenkins' },
+    { id: 'Jay Rich', name: 'Jay Rich' }
   ];
 
   statuses: Select[] = [
@@ -73,6 +76,9 @@ export class DetailEwoComponent implements OnInit {
           starter: ewoData.starter,
           team: ewoData.team,
           reqtype: ewoData.reqtype,
+          custName: ewoData.custName,
+          custContact: ewoData.custContact,
+          needDate: ewoData.needDate,
           partNum: ewoData.partNum,
           priority: ewoData.priority,
           title: ewoData.title,
@@ -146,6 +152,9 @@ export class DetailEwoComponent implements OnInit {
       this.ewo.starter,
       this.ewo.team,
       this.ewoUpdateForm.value.reqtype,
+      this.ewoUpdateForm.value.custName,
+      this.ewoUpdateForm.value.custContact,
+      this.ewoUpdateForm.value.needDate,
       this.ewoUpdateForm.value.partNum,
       this.ewo.priority,
       this.ewo.title,

@@ -35,17 +35,18 @@ export class CreateEwoComponent implements OnInit {
     { id: 'choose', name: 'Choose One' },
     { id: 'Assembly', name: 'Assembly' },
     { id: 'Color Change', name: 'Color Change' },
-    { id: 'Tolerance Change', name: 'Tolerance Change' },
+    { id: 'Enter into Baan', name: 'Enter into Baan' },
     { id: 'Fixture', name: 'Fixture' },
-    { id: 'Process Change Request', name: 'Process Change Request' },
     { id: 'Machine Program', name: 'Machine Program' },
+    { id: 'Miscellaneous', name: 'Miscellaneous' },
+    { id: 'New Color', name: 'New Color' },
     { id: 'New Design', name: 'New Design' },
     { id: 'Part Modification', name: 'Part Modification' },
-    { id: 'New Color', name: 'New Color' },
-    { id: 'Miscellaneous', name: 'Miscellaneous' },
-    { id: 'Quote', name: 'Quote' },
+    { id: 'Process Change Request', name: 'Process Change Request' },
     { id: 'Part Number', name: 'Part Number' },
-    { id: 'Routing Change', name: 'Routing Change' }
+    { id: 'Quote', name: 'Quote' },
+    { id: 'Routing Change', name: 'Routing Change' },
+    { id: 'Tolerance Change', name: 'Tolerance Change' }
   ];
 
   priorities: Select[] = [
@@ -92,6 +93,11 @@ export class CreateEwoComponent implements OnInit {
       reqtype: new FormControl('choose', {
         validators: [Validators.required]
       }),
+
+      custName: new FormControl(''),
+      custContact: new FormControl(''),
+      needDate: new FormControl(''),
+
       newPart: new FormControl(null),
       partNum: new FormControl(null),
       priority: new FormControl('choose', {
@@ -168,6 +174,9 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.starter,
       this.ewoForm.value.team,
       this.ewoForm.value.reqtype,
+      this.ewoForm.value.custName,
+      this.ewoForm.value.custContact,
+      this.ewoForm.value.needDate,
       this.ewoForm.value.partNum,
       this.ewoForm.value.priority,
       this.ewoForm.value.title,

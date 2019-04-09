@@ -12,7 +12,7 @@ export class EwoService {
   private ewos: Ewo[] = [];
   private ewosUpdated = new Subject<Ewo[]>();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   getEwo(id: string) {
     console.log('%c F.E. ewo.service.getEwo()  param ID: ', 'color:green;', id);
@@ -23,6 +23,9 @@ export class EwoService {
       starter: string;
       team: string;
       reqtype: string;
+      custName: string;
+      custContact: string;
+      needDate: string;
       partNum: string;
       priority: string;
       title: string;
@@ -52,6 +55,9 @@ export class EwoService {
     starter: string,
     team: string,
     reqtype: string,
+    custName: string,
+    custContact: string,
+    needDate: string,
     partNum: string,
     priority: string,
     title: string,
@@ -100,6 +106,9 @@ export class EwoService {
     ewoFormData.append('starter', starter);
     ewoFormData.append('team', team);
     ewoFormData.append('reqtype', reqtype);
+    ewoFormData.append('custName', custName);
+    ewoFormData.append('custContact', custContact);
+    ewoFormData.append('needDate', needDate);
     ewoFormData.append('partNum', partNum);
     ewoFormData.append('priority', priority);
     ewoFormData.append('title', title);
@@ -131,6 +140,9 @@ export class EwoService {
           starter: starter,
           team: team,
           reqtype: reqtype,
+          custName: custName,
+          custContact: custContact,
+          needDate: needDate,
           partNum: partNum,
           priority: priority,
           title: title,
@@ -160,9 +172,7 @@ export class EwoService {
   }
   getEwoList() {
     this.http
-      .get<{ message: string; ewos: any }>(
-        'http://172.16.1.50:3000/api/ewos'
-      )
+      .get<{ message: string; ewos: any }>('http://172.16.1.50:3000/api/ewos')
       // .pipe(
       //   map(ewoData => {
       //     return ewoData.ewos.map(ewo => {
@@ -187,6 +197,9 @@ export class EwoService {
     starter: string,
     team: string,
     reqtype: string,
+    custName: string,
+    custContact: string,
+    needDate: string,
     partNum: string,
     priority: string,
     title: string,
@@ -202,8 +215,7 @@ export class EwoService {
     lastupdated: string,
     timestamp: string,
     completed: string,
-    hours: string,
-
+    hours: string
   ) {
     const ewo: Ewo = {
       _id: _id,
@@ -211,6 +223,9 @@ export class EwoService {
       starter: starter,
       team: team,
       reqtype: reqtype,
+      custName: custName,
+      custContact: custContact,
+      needDate: needDate,
       partNum: partNum,
       priority: priority,
       title: title,

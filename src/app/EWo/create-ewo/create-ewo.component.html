@@ -23,8 +23,10 @@
     <!-- ewo starter -->
     <div class="form-group col">
       <label for="starter">Your Name: </label>
-      <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?" [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
-      <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a contact name
+      <input class="form-control" type="text" formControlName="starter" placeholder=" Who started this EWO?"
+        [ngClass]="{ 'is-invalid': ewoForm.get('starter').invalid && ewoForm.get('starter').touched }" />
+      <div *ngIf="ewoForm.get('starter').touched && ewoForm.get('starter').errors" class="invalid-feedback"> Need a
+        contact name
       </div>
     </div>
 
@@ -48,6 +50,27 @@
 
   <!--  row -->
   <div class="row">
+    <!-- Customer Name-->
+    <div class="form-group col">
+      <label for="input_custName">Customer Name: </label>
+      <input class="form-control" type="text" formControlName="custName" placeholder=" Who is it for?"
+        />
+    </div>
+    <!-- Customer contact-->
+    <div class="form-group col">
+      <label for="input_custContact">Customer Contact: </label>
+      <input class="form-control" type="text" formControlName="custContact" placeholder=" Customer Contact?" />
+    </div>
+    <!-- Customer Name-->
+    <div class="form-group col">
+      <label for="input_needDate">Need by date: </label>
+      <input class="form-control" type="date" formControlName="needDate" placeholder=" Customer needs it when?" />
+    </div>
+
+  </div>
+
+  <!--  row -->
+  <div class="row">
 
     <!-- ewo part -->
     <div class="form-group col">
@@ -55,11 +78,13 @@
       <!-- group inline radios -->
       <div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" value='false' name="newPart" formControlName="newPart" type="radio" (click)="onPartChange()">
+          <input class="form-check-input" value='false' name="newPart" formControlName="newPart" type="radio"
+            (click)="onPartChange()">
           <span>Exsisting</span>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" value='true' name="newPart" formControlName="newPart" type="radio" (click)="onPartChange()">
+          <input class="form-check-input" value='true' name="newPart" formControlName="newPart" type="radio"
+            (click)="onPartChange()">
           <span>New Part</span>
         </div>
       </div>
@@ -81,7 +106,8 @@
     <!-- ewo title -->
     <div class="form-group col">
       <label for="input_title">EWO Title: </label>
-      <input class="form-control" type="text" formControlName="title" placeholder=" What we calling it?" [ngClass]="{ 'is-invalid': ewoForm.get('title').invalid && ewoForm.get('title').touched }" />
+      <input class="form-control" type="text" formControlName="title" placeholder=" What we calling it?"
+        [ngClass]="{ 'is-invalid': ewoForm.get('title').invalid && ewoForm.get('title').touched }" />
       <div *ngIf="ewoForm.get('title').touched && ewoForm.get('title').errors" class="invalid-feedback"> Need a title
       </div>
     </div>
@@ -91,7 +117,8 @@
 
   <div class="form-group">
     <label for="input_descript">Description of Project: </label>
-    <textarea class="form-control" rows="4" formControlName="descript" placeholder="What we doing?" [ngClass]="{ 'is-invalid': ewoForm.get('descript').invalid && ewoForm.get('descript').touched }"></textarea>
+    <textarea class="form-control" rows="4" formControlName="descript" placeholder="What we doing?"
+      [ngClass]="{ 'is-invalid': ewoForm.get('descript').invalid && ewoForm.get('descript').touched }"></textarea>
 
     <div *ngIf="ewoForm.get('descript').touched && ewoForm.get('descript').errors" class="invalid-feedback"> Give us an
       idea of what you need done.
@@ -129,13 +156,15 @@
     <!-- col-12 -->
     <div class="col-12 mb-3">
       <div class="form-check form-check-inline mr-3">
-        <input class="form-check-input" type="radio" [value]="false" formControlName="outsourced" (click)="onSourceChange(false)">
+        <input class="form-check-input" type="radio" [value]="false" formControlName="outsourced"
+          (click)="onSourceChange(false)">
         <label class="form-check-label" for="manf">
           Manufactured
         </label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" [value]="true" formControlName="outsourced" (click)="onSourceChange(true)">
+        <input class="form-check-input" type="radio" [value]="true" formControlName="outsourced"
+          (click)="onSourceChange(true)">
         <label class="form-check-label" for="purch">
           Purchased
         </label>

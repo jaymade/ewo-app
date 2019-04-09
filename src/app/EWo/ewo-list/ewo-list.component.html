@@ -54,7 +54,7 @@
         <!-- <td>{{ewo.userId}}</td> -->
         <td>{{ewo.starter}}</td>
         <td>{{ewo.title}}</td>
-        <td>{{ewo.descript}}</td>
+        <td>{{ewo.descript | slice: 0:30 }}...</td>
         <td>{{ewo.status}}</td>
         <td>
           <a class="btn btn-primary" [routerLink]="['/detail', ewo._id]">
