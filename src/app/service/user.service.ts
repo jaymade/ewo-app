@@ -29,7 +29,9 @@ export class UserService {
 
   getUserList() {
     this.http
-      .get<{ message: string; users: any }>('http://localhost:3000/api/users')
+      .get<{ message: string; users: any }>(
+        'http://172.16.1.50:3000/api/users'
+      )
       .subscribe(mapedUsers => {
         this.users = mapedUsers.users;
         this.usersUpdated.next([...this.users]);
@@ -46,7 +48,7 @@ export class UserService {
       eng: boolean;
       admin: boolean;
       active: boolean;
-    }>('http://localhost:3000/api/users/' + id);
+    }>('http://172.16.1.50:3000/api/users/' + id);
   }
   // update Users observable
   getUserUpdatedListener() {
@@ -71,7 +73,7 @@ export class UserService {
 
     this.http
       .post<{ message: string; userId: string }>(
-        'http://localhost:3000/api/users',
+        'http://172.16.1.50:3000/api/users',
         user
       )
       .subscribe(responseData => {
@@ -101,10 +103,12 @@ export class UserService {
       active: active
     };
     this.http
-      .put('http://localhost:3000/api/users/' + _id, user)
+      .put('http://172.16.1.50:3000/api/users/' + _id, user)
       .subscribe(response => {
         const updatedUsers = [...this.users];
-        const oldUserIndex = updatedUsers.findIndex(u => u._id === user._id);
+        const oldUserIndex = updatedUsers.findIndex(
+          u => u._id === user._id
+        );
         updatedUsers[oldUserIndex] = user;
         this.users = updatedUsers;
         this.usersUpdated.next([...this.users]);
@@ -114,7 +118,7 @@ export class UserService {
   // delete user
   deleteUser(userId: string) {
     this.http
-      .delete('http://localhost:3000/api/users/' + userId)
+      .delete('http://172.16.1.50:3000/api/users/' + userId)
       .subscribe(() => {
         // console.log('Deleted EWO: ' + ewoId);
         const updatedUsers = this.users.filter(user => user._id !== userId);
@@ -130,7 +134,7 @@ export class UserService {
         admin: boolean;
         active: boolean;
         expiresIn: number;
-      }>('http://localhost:3000/api/login/', userData)
+      }>('http://172.16.1.50:3000/api/login/', userData)
       .subscribe(response => {
         const token = response.token;
         this.token = token;
@@ -141,7 +145,9 @@ export class UserService {
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
           const now = new Date();
-          const xpireDate = new Date(now.getTime() + expiresInDuration * 1000);
+          const xpireDate = new Date(
+            now.getTime() + expiresInDuration * 1000
+          );
           console.log('XPIRE:', xpireDate);
           this.saveAuthData(token, xpireDate);
           this.router.navigate(['/eng']);

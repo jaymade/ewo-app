@@ -13,14 +13,17 @@ const app = express();
 
 mongoose
   // .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/ewo_db", {
-  .connect('mongodb://topelf:rpw4NIC@ds213255.mlab.com:13255/ewo_db', {
+  // .connect('mongodb://topelf:rpw4NIC@ds213255.mlab.com:13255/ewo_db', {
+  .connect("mongodb://172.16.1.50:27017/ewos_db", {
     useNewUrlParser: true,
     useCreateIndex: true
   })
   .then(() => {
     console.log("Boom goes the dynomite!");
   })
-  .catch(() => {
+  .catch((err) => {
+    console.log("Error: ", err);
+
     console.log("Danger Will Roberson, db connection error!");
   });
 app.use(bodyParser.json());
