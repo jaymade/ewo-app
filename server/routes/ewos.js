@@ -8,7 +8,7 @@ const router = express.Router();
 const MIME_TYPE_MAP = {
   'image/png': 'png',
   'image/jpg': 'jpg',
-  'image/jpeg': 'jpeg',
+  'image/jpeg': 'jpg',
   'application/pdf': 'pdf'
 };
 
@@ -19,8 +19,7 @@ const storage = multer.diskStorage({
     if (isValid) {
       error = null;
     }
-    cb(null, '/uploads/');
-
+    cb(error, 'ewo-api/uploads');
   },
   filename: (rew, file, cb) => {
     const name = file.originalname.toLowerCase().split(' ').join('-');

@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use('/uploads', express.static(path.join(__dirname, 'server/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'ewo-api/uploads')));
 app.use('/', express.static(path.join(__dirname, 'angular')));
 
 app.use((req, res, next) => {

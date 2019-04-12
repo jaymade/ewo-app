@@ -1,19 +1,17 @@
 import { AbstractControl } from '@angular/forms';
 import { Observable, Observer, of } from 'rxjs';
 
-export const mimeType = (
-  control: AbstractControl
-): Promise<{ [key: string]: any }> | Observable<{ [key: string]: any }> => {
+export const mimeType = ( control: AbstractControl ): Promise<{ [key: string]: any }> | Observable<{ [key: string]: any }> => {
   if (!control.value || typeof (control.value) === 'string') { return of(null); }
   const file = control.value as File;
-  const fileReader = new FileReader();
-  const frObs = Observable.create(
-    (observer: Observer<{ [key: string]: any }>) => {
+  const fileReader = new FileReader(); // read in value of file
+  const frObs = Observable.create( // create own observ
+    (observer: Observer<{ [key: string]: any }>) => { // observe new data emited
       fileReader.addEventListener('loadend', () => {
         // const arr = new Uint8Array(fileReader.result).subarray(0, 4);
         const arr = new Uint8Array(<ArrayBuffer>fileReader.result).subarray(0, 4 );
         let header = '';
-        let isValid = true;
+        let isValid = false;
         for (let i = 0; i < arr.length; i++) {
           header += arr[i].toString(16);
         }

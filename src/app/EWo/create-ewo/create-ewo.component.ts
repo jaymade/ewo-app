@@ -81,44 +81,44 @@ export class CreateEwoComponent implements OnInit {
 
   ngOnInit() {
     this.ewoForm = new FormGroup({
-      startDate: new FormControl(null, {
+      'startDate': new FormControl(null, {
         validators: [Validators.required]
       }),
-      starter: new FormControl(null, {
+      'starter': new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
-      team: new FormControl('choose', {
+      'team': new FormControl('choose', {
         validators: [Validators.required]
       }),
-      reqtype: new FormControl('choose', {
+      'reqtype': new FormControl('choose', {
         validators: [Validators.required]
       }),
       // new stuf
-      custName: new FormControl(''),
-      custContact: new FormControl(''),
-      needDate: new FormControl(''),
+      'custName': new FormControl(''),
+      'custContact': new FormControl(''),
+      'needDate': new FormControl(''),
       // newstuff
-      newPart: new FormControl(null),
-      partNum: new FormControl(null),
-      priority: new FormControl('choose', {
+      'newPart': new FormControl(null),
+      'partNum': new FormControl(null),
+      'priority': new FormControl('choose', {
         validators: [Validators.required]
       }),
-      title: new FormControl(null, {
+      'title': new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
       }),
-      descript: new FormControl(null, {
+      'descript': new FormControl(null, {
         validators: [Validators.required]
       }),
-      status: new FormControl(null),
-      outsourced: new FormControl(false),
-      eoq: new FormControl(null),
-      asq: new FormControl(null),
-      moq: new FormControl(null),
-      oqp: new FormControl(null),
-      vendnum: new FormControl(null),
-      leadtime: new FormControl(null),
-      // image: new FormControl(null)
-      image: new FormControl(null, { asyncValidators: [mimeType] })
+      'status': new FormControl(null),
+      'outsourced': new FormControl(false),
+      'eoq': new FormControl(null),
+      'asq': new FormControl(null),
+      'moq': new FormControl(null),
+      'oqp': new FormControl(null),
+      'vendnum': new FormControl(null),
+      'leadtime': new FormControl(null),
+      'image': new FormControl(null)
+      // image: new FormControl(null, { asyncValidators: [mimeType] })
     });
 
     this.ewoForm.controls['startDate'].setValue(this.currentDate());
@@ -155,12 +155,12 @@ export class CreateEwoComponent implements OnInit {
     this.newPart = !this.newPart;
   }
   onImagePicked(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.ewoForm.patchValue({ image: file });
-    this.ewoForm.get('image').updateValueAndValidity();
+    const file = (event.target as HTMLInputElement).files[0]; // single file
+    this.ewoForm.patchValue({ image: file }); // get file object
+    this.ewoForm.get('image').updateValueAndValidity(); // informs ng that the name has change and fetches aagin
     // console.log('FILE: ', file);
-    // console.log('FORM: ', this.ewoForm);
-    const reader = new FileReader();
+    // console.log('FORMGROUP: ', this.ewoForm);
+    const reader = new FileReader(); //initate file rader
     reader.onload = () => {
       this.imagePreview = <string>reader.result; // website reference to patch error
     };
@@ -197,7 +197,6 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.hours,
       this.ewoForm.value.image
     );
-
     this.ewoForm.reset();
   }
 }
