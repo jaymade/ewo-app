@@ -33,6 +33,7 @@ export class CreateEwoComponent implements OnInit {
 
   requests: Select[] = [
     { id: 'choose', name: 'Choose One' },
+    { id: 'App Update', name: 'App Update' },
     { id: 'Assembly', name: 'Assembly' },
     { id: 'Color Change', name: 'Color Change' },
     { id: 'Enter into Baan', name: 'Enter into Baan' },
@@ -160,7 +161,7 @@ export class CreateEwoComponent implements OnInit {
     this.ewoForm.get('image').updateValueAndValidity(); // informs ng that the name has change and fetches aagin
     // console.log('FILE: ', file);
     // console.log('FORMGROUP: ', this.ewoForm);
-    const reader = new FileReader(); //initate file rader
+    const reader = new FileReader(); // initate file rader
     reader.onload = () => {
       this.imagePreview = <string>reader.result; // website reference to patch error
     };
