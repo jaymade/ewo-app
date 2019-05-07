@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './detail-ewo.component.html',
   styleUrls: ['./detail-ewo.component.scss']
 })
-export class DetailEwoComponent implements OnInit {
+export class DetailEwoComponent implements OnInit, OnDestroy {
   engineer = true;
   ewo: Ewo;
   userIsAuthenticated = false;
@@ -102,6 +102,7 @@ export class DetailEwoComponent implements OnInit {
         const req = this.ewo.reqtype;
         const eng = this.ewo.assignment;
         const hours = this.ewo.hours;
+        const descript = this.ewo.descript;
         // form
         this.ewoUpdateForm = new FormGroup({
           assignment: new FormControl(null, {
@@ -118,6 +119,9 @@ export class DetailEwoComponent implements OnInit {
           }),
           reqtype: new FormControl(null, {
             validators: [Validators.required]
+          }),
+          descript: new FormControl(null, {
+            validators: [Validators.required]
           })
         });
         // console.log('%c STAT: ', 'color:red', this.stat);
@@ -126,6 +130,7 @@ export class DetailEwoComponent implements OnInit {
         this.ewoUpdateForm.controls['reqtype'].setValue(req);
         this.ewoUpdateForm.controls['lastupdated'].setValue(this.timestamp);
         this.ewoUpdateForm.controls['hours'].setValue(hours);
+        this.ewoUpdateForm.controls['descript'].setValue(descript);
       });
     });
     this.userIsAuthenticated = this.userService.getIsAuth();
@@ -158,7 +163,7 @@ export class DetailEwoComponent implements OnInit {
       this.ewoUpdateForm.value.partNum,
       this.ewo.priority,
       this.ewo.title,
-      this.ewo.descript,
+      this.ewoUpdateForm.value.descript,
       this.ewoUpdateForm.value.status,
       this.ewo.eoq,
       this.ewo.asq,
@@ -172,7 +177,6 @@ export class DetailEwoComponent implements OnInit {
       this.ewoUpdateForm.value.completed,
       this.ewoUpdateForm.value.hours
     );
-
     this.ewoUpdateForm.reset();
   }
   ngOnDestroy(): void {
