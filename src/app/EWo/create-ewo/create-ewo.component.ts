@@ -15,8 +15,8 @@ import { mimeType } from '../../_helpers/mime-type.validator';
 export class CreateEwoComponent implements OnInit {
   departments: Select[] = [
     { id: 'choose', name: 'Choose One' },
-    { id: 'Telcom -Sales', name: 'Telcom -Sales' },
-    { id: 'Contract - Sales', name: 'Contract - Sales' },
+    { id: 'Telcom', name: 'Telcom -Sales' },
+    { id: 'NON-Telcom', name: 'NON-Telcom' },
     { id: 'Dimension Change', name: 'Dimension Change' },
     { id: 'Development', name: 'Development' },
     { id: 'Purchasing', name: 'Purchasing' },
@@ -78,7 +78,7 @@ export class CreateEwoComponent implements OnInit {
 
   private ewoId: string;
 
-  constructor(public ewoService: EwoService, public route: ActivatedRoute) {}
+  constructor(public ewoService: EwoService, public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.ewoForm = new FormGroup({
