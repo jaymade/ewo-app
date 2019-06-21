@@ -15,7 +15,7 @@ import { mimeType } from '../../_helpers/mime-type.validator';
 export class CreateEwoComponent implements OnInit {
   departments: Select[] = [
     { id: 'choose', name: 'Choose One' },
-    { id: 'Telcom', name: 'Telcom -Sales' },
+    { id: 'Telcom', name: 'Telcom' },
     { id: 'NON-Telcom', name: 'NON-Telcom' },
     { id: 'Dimension Change', name: 'Dimension Change' },
     { id: 'Development', name: 'Development' },
