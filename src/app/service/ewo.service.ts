@@ -12,7 +12,7 @@ export class EwoService {
   private ewos: Ewo[] = [];
   private ewosUpdated = new Subject<Ewo[]>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   getEwo(id: string) {
     console.log('%c F.E. ewo.service.getEwo()  param ID: ', 'color:green;', id);
@@ -125,7 +125,7 @@ export class EwoService {
     ewoFormData.append('timestamp', 'TBD');
     ewoFormData.append('completed', 'TBD');
     ewoFormData.append('hours', 'TBD');
-    ewoFormData.append('image', image, title);
+    // ewoFormData.append('image', image, title);
 
     this.http
       .post<{ message: string; ewo: Ewo }>(
