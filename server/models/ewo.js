@@ -81,6 +81,9 @@ var ewoSchema = mongoose.Schema({
   imagePath: {
     type: String
   },
+  ewoid: {
+    type: Number
+  }
 });
 
 // Compile model from schema

@@ -21,9 +21,9 @@ export class UpdateEwoComponent implements OnInit {
   timestamp = this.currentDate();
   private ewoId: string;
 
-  constructor(private ewoService: EwoService, route: ActivatedRoute) {}
+  constructor(private ewoService: EwoService, route: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   currentDate() {
     const currentDate = new Date();
     return currentDate.toISOString().substring(0, 10);
@@ -55,6 +55,7 @@ export class UpdateEwoComponent implements OnInit {
       this.ewoUpdateForm.value.timestamp,
       this.ewoUpdateForm.value.completed,
       this.ewoUpdateForm.value.hours,
+      this.ewoUpdateForm.value.ewoid,
     );
   }
 }

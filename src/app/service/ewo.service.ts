@@ -43,6 +43,7 @@ export class EwoService {
       completed: string;
       hours: string;
       imagePath: string;
+      ewoid: number;
     }>('http://172.16.1.50:3000/api/ewos/' + id);
   }
 
@@ -73,7 +74,8 @@ export class EwoService {
     timestamp: string,
     completed: string,
     hours: string,
-    image: File
+    image: File,
+    ewoid: string,
   ) {
     // const ewo: Ewo = {
     //   startDate: startDate,
@@ -159,7 +161,8 @@ export class EwoService {
           timestamp: timestamp,
           completed: completed,
           hours: hours,
-          imagePath: responseData.ewo.imagePath
+          imagePath: responseData.ewo.imagePath,
+          ewoid: responseData.ewo.ewoid,
         };
         // const id = responseData.ewoId;
         // ewo._id = id;
@@ -215,7 +218,8 @@ export class EwoService {
     lastupdated: string,
     timestamp: string,
     completed: string,
-    hours: string
+    hours: string,
+    ewoid: number,
   ) {
     const ewo: Ewo = {
       _id: _id,
@@ -242,7 +246,8 @@ export class EwoService {
       timestamp: timestamp,
       completed: completed,
       hours: hours,
-      imagePath: null
+      imagePath: null,
+      ewoid: ewoid,
     };
     this.http
       .put('http://172.16.1.50:3000/api/ewos/' + _id, ewo)

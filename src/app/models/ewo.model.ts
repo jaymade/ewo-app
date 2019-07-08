@@ -25,4 +25,5 @@ export interface Ewo {
   completed: string;
   hours: string;
   imagePath?: string;
+  ewoid: number;
 }

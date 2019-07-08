@@ -64,7 +64,7 @@ export class DetailEwoComponent implements OnInit, OnDestroy {
     public ewoService: EwoService,
     public userService: UserService,
     public route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -95,7 +95,8 @@ export class DetailEwoComponent implements OnInit, OnDestroy {
           completed: ewoData.completed,
           timestamp: ewoData.timestamp,
           hours: ewoData.hours,
-          imagePath: ewoData.imagePath
+          imagePath: ewoData.imagePath,
+          ewoid: ewoData.ewoid
         };
 
         const stat = this.ewo.status;
@@ -175,7 +176,8 @@ export class DetailEwoComponent implements OnInit, OnDestroy {
       this.ewoUpdateForm.value.lastupdated,
       this.ewoUpdateForm.value.timestamp,
       this.ewoUpdateForm.value.completed,
-      this.ewoUpdateForm.value.hours
+      this.ewoUpdateForm.value.hours,
+      this.ewoUpdateForm.value.ewoid,
     );
     this.ewoUpdateForm.reset();
   }

@@ -196,7 +196,8 @@ export class CreateEwoComponent implements OnInit {
       this.ewoForm.value.timestamp,
       this.ewoForm.value.completed,
       this.ewoForm.value.hours,
-      this.ewoForm.value.image
+      this.ewoForm.value.image,
+      this.ewoForm.value.ewoid,
     );
     this.ewoForm.reset();
   }
